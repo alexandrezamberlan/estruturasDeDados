@@ -1,0 +1,24 @@
+1o) criar projeto no GitHub
+	- criar um repositório
+	- fique atento para o .gitignore
+	- fica a dica (exiba arquivos ocultos no gerenciador de pastas)
+2o) clonar o projeto na sua estação de trabalho
+	- no diretório desejado faça a clonagem
+	git clone <link>
+3o) começar o projeto de programação na estação de trabalho
+	- lembre de criar as pastas e os arquivos dentro do diretório
+	  clonado que foi criado no seu computador
+	  
+	  
+---------
+ push -> enviar
+	git add .
+	git commit -m "mensagem de texto do que foi alterado"
+	git push origin master
+
+ pull -> buscar 
+	usar esse recurso sempre que começar a trabalhar no projeto
+	1o) ir para o diretório do projeto clonado e salvo na máquina
+	2o) digitar:
+	git pull orgin master
+
