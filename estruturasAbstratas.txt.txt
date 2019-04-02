@@ -1,0 +1,18 @@
+Estruturas de Dados Abstratas
+
+Estruturas de Dados Físicas -> variáveis -> dependentes da linguagem
+
+Estruturas de Dados Abstratas
+  -> Algoritmos de gestão da memória -> otimização
+  -> independentes da linguagem
+  -> Lineares:
+    - Pilha: regras de inserção e remoção (LIFO - Last In, First Out); ponteiro topo indica o último elemento
+    - Lista: restrições (ordenação e controle de duplicidade)
+    - Fila: regras de inserção e remoção (FIFO - First In, First Out); ponteiro cabeça indicando o primeiro elemento; ponteiro cauda indicando o último elemento
+
+  Operações de:
+    - Percurso -> Lista
+    - Inserção -> Lista, Pilha e Fila
+    - Remoção -> Lista, Pilha e Fila
+
+-> Não Lineares: Árvores e Grafos
