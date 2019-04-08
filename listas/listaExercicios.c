@@ -74,6 +74,17 @@ Celula *excluirPares(Celula *l) {
 	return l;
 }
 
+Celula *destruir(Celula *l) {
+	Celula *p, *pR;
+	if (!l) return l;
+	
+	for (pR = l, p = l->prox; p; pR = p, p = p->prox) {
+		free(pR);
+	}
+	free(pR);
+	return NULL;
+}
+
 int main() {
     Celula *lista = NULL;
 
@@ -84,7 +95,7 @@ int main() {
         lista = inserir(rand() % 1000, lista);
     }
     exibir(lista);
-
+/*
     int numero;
     printf("Informe um numero para exclusao: ");
     scanf("%d", &numero);
@@ -97,7 +108,23 @@ int main() {
     lista = excluirPares(lista);
     exibir(lista);
     
+    //faca metodo para destruir a lista
+    printf("Destruindo a lista, ou seja, liberando memoria....\n");
     lista = destruir(lista);
+    exibir(lista);
     
+    */
+    int ini, fim;
+    printf("Escolha posicao logica inicial (indice): ");   
+    scanf("%d", &ini);
+    fflush(stdin);
+    
+    do {
+    	printf("Escolha posicao logica final (indice): ");   
+    	scanf("%d", &fim);
+    } while (ini >= fim || ini < 0 || fim < 0);
     return 1;
+    
+    lista = excluirFaixa(ini,fim,lista);
+    exibir(lista);
 }
