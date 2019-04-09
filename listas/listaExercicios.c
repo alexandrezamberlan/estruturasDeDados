@@ -85,8 +85,26 @@ Celula *destruir(Celula *l) {
 	return NULL;
 }
 
+Celula *excluirFaixa(int ini, int fim, Celula *l) {
+	Celula *p, *pR;
+	int i;
+	
+	if (!l) return l;
+	
+	for (i = 0, pR = NULL, p = l; p && i <= fim; i++,
+	                                             pR = p,
+												 p = p->prox) {
+		if (i >= ini && i <= fim) {
+			printf("%d -> %d\n",i, p->dado);
+			//aqui vai a exclusao
+		}		
+	}
+	return l;
+}
+
 int main() {
     Celula *lista = NULL;
+	 int ini, fim;
 
     srand(time(NULL));
     int i = rand() % 30;
@@ -114,17 +132,14 @@ int main() {
     exibir(lista);
     
     */
-    int ini, fim;
+   
     printf("Escolha posicao logica inicial (indice): ");   
     scanf("%d", &ini);
-    fflush(stdin);
-    
-    do {
-    	printf("Escolha posicao logica final (indice): ");   
-    	scanf("%d", &fim);
-    } while (ini >= fim || ini < 0 || fim < 0);
-    return 1;
-    
+	printf("Escolha posicao logica final (indice): ");   
+	scanf("%d", &fim);
     lista = excluirFaixa(ini,fim,lista);
-    exibir(lista);
+    
+    //exibir(lista);
+	
+	return 1;
 }
