@@ -9,8 +9,9 @@ typedef struct no {
 
 void exibir(Celula *l) {
     Celula *p;
-    for (p = l; p; p = p->prox) {
-        printf("%d\n", p->dado);
+    int i;
+    for (i = 0,p = l; p; p = p->prox, i++) {
+        printf("%d -> %p -> %d\n", i, p, p->dado);
     }
 }
 
