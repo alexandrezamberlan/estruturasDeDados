@@ -86,26 +86,33 @@ Celula *destruir(Celula *l) {
 }
 
 Celula *excluirFaixa(int ini, int fim, Celula *l) {
-	Celula *p, *pR, *lixo;
+	Celula *pR, *p, *lixo;
 	int i;
 	
-	if (!l) return l;
-	
-	for (i = 0, pR = NULL, p = l; p && i < fim; i++, p = p->prox) {
-		if (i >= ini && i <= fim) {
-			//printf("%d -> %d\n",i, p->dado);
-			//aqui vai a exclusao
+	for (i =0, pR = NULL, p = l; i < fim && p; i++, p = p->prox) {
+		if (i >= ini) {
+			//printf("%d -> %d\n", i, p->dado);
 		} else {
-			pR = p;
-		}			
+			pR = p;				
+		}									 		
 	}
-	printf("feito....%d -> %d\n", pR->prox->dado, p->dado);
-	lixo = pR->prox;
-	pR->prox = p->prox;
-	p->prox = NULL;
-	
-	lixo = destruir(lixo);
-	
+	if (p) {
+		if (!pR) { //caso o indice 0 precise ser excluido
+			lixo = l;
+			l = p->prox;
+		} else {
+			lixo = pR->prox;
+			pR->prox = p->prox;
+		}	
+		p->prox = NULL;
+		lixo = destruir(lixo);
+	} else { //para excluir do ini ateh o final da lista
+		if (pR) {
+			lixo = pR->prox;
+			pR->prox = NULL;
+			lixo = destruir(lixo);
+		}
+	}
 	return l;
 }
 
