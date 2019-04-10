@@ -149,8 +149,12 @@ int main() {
    
     printf("Escolha posicao logica inicial (indice): ");   
     scanf("%d", &ini);
-	printf("Escolha posicao logica final (indice): ");   
+    
+    do {
+    	printf("Escolha posicao logica final (indice): ");   
 	scanf("%d", &fim);
+    } while (ini >= fim);
+    
     lista = excluirFaixa(ini,fim,lista);
     
     exibir(lista);
