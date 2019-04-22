@@ -1,0 +1,9 @@
+Tendo como base os programas de lista simples e circular (insercaoExclusao), faça os seguintes métodos nos dois códigos:
+
+1) método que recebe uma lista e retorna a quantidade de elementos (simples e circular).
+
+2) método que recebe uma lista e retorna 0 se for vazia; 1 se for circular; 2 se for simples.
+
+3) método que recebe uma lista e exibe todos os elementos duplicados (simples e circular).
+
+4) método que recebe uma lista e remove todos os pares da lista (simples e circular).
