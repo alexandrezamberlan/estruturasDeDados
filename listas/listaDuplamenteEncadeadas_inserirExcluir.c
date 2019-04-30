@@ -34,6 +34,36 @@ int contarElementosD(CelulaD *l) {
 	return qtd;
 }
 
+CelulaD *excluirD(int valor, CelulaD *l) {
+	CelulaD *p, *pR;
+	
+	if (!l) return l;
+	
+	for (;l->ant;l = l->prox);
+	
+	for (pR = NULL, p = l; p; pR = p, p = p->prox) {
+		if (valor == p->dado) break; //achei dado para exclusao
+	}
+	if (!p) {
+		printf("%d nao foi localizado na lista dupla!!\n", valor);
+		return l;
+	}
+	if (p == l) { //primeiro
+		l = l->prox;
+		if (l) l->ant = NULL; //caso seja o unico elemento a ser excluido
+		free(p);
+		return l;
+	}
+	if (!p->prox) { //ultimo
+		pR->prox = NULL;		
+	} else { //meio
+		pR->prox = p->prox;
+		p->prox->ant = pR;
+	}
+	free(p);
+	return l;
+}
+
 CelulaD *inserirD(int valor, CelulaD *l) {
 	CelulaD *p, *pR, *novo = (CelulaD *)malloc(sizeof(CelulaD));
 	
@@ -69,11 +99,19 @@ int main() {
 	CelulaD *listaD = NULL;
 	srand(time(NULL));
 	
-	int qtd = (rand() % 20) + 5;
+	int qtd = (rand() % 20) + 2;
 	for (; qtd > 0; qtd--) {
 		listaD = inserirD(rand() % 100, listaD);
 	}
 	exibirD(listaD);
 	printf("Total de elementos na lista dupla: %d\n", contarElementosD(listaD));
+	
+	int numero;
+	printf("Informe numero para excluir: ");
+	scanf("%d", &numero);
+	listaD = excluirD(numero, listaD);
+	
+	exibirD(listaD);
+	printf("Total de elementos na lista dupla apos exclusao: %d\n", contarElementosD(listaD));
 	return 1;
 }
