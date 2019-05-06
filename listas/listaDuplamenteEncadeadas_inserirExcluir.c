@@ -95,6 +95,33 @@ CelulaD *inserirD(int valor, CelulaD *l) {
 	return l;
 }
 
+void mostrarSequenciaD(CelulaD *l, int ini, int fim) {
+	int i;
+	if (!l) return;
+
+	if (ini < fim) {
+		for (; l->ant; l = l->ant);
+
+		printf("Mostrando sequencia de %d a %d\n", ini, fim);
+		for (i = 1 ; l ; l = l->prox, i++) {
+			if (i >= ini && i <= fim) {
+				printf("%d\t", l->dado);
+			}
+		}
+	} else if (fim < ini) {
+		
+		for (; l->prox; l = l->prox); //l foi enviado para o final da lista
+
+		printf("Mostrando sequencia de %d a %d\n", ini, fim);
+		for (i = contarElementosD(l); l ; l = l->ant, i--) {
+			if (i <= ini && i >= fim) {
+				printf("%d\t", l->dado);
+			}
+		}
+	}
+	printf("\n\n");
+}
+
 CelulaD *podarD(CelulaD *l) {
 	if (!l) return l;
 
@@ -102,11 +129,12 @@ CelulaD *podarD(CelulaD *l) {
 
 	if (!l->prox) { //para um elemento
 		free(l);
-	}
-	return NULL;
+		return NULL;
+	}	
 	
 	l = l->prox;
 	free(l->ant); //retirando o primeiro elemento
+	l->ant = NULL;
 
 	for (; l->prox; l = l->prox);
 
@@ -152,19 +180,22 @@ int main() {
 	exibirD(listaD);
 	printf("Total de elementos na lista dupla: %d\n", contarElementosD(listaD));
 	
-	int numero;
-	printf("Informe numero para excluir: ");
-	scanf("%d", &numero);
-	listaD = excluirD(numero, listaD);
+	// int numero;
+	// printf("Informe numero para excluir: ");
+	// scanf("%d", &numero);
+	// listaD = excluirD(numero, listaD);
 	
-	exibirD(listaD);
-	printf("Total de elementos na lista dupla apos exclusao: %d\n", contarElementosD(listaD));
+	// exibirD(listaD);
+	// printf("Total de elementos na lista dupla apos exclusao: %d\n", contarElementosD(listaD));
 
-	listaD = podarD(listaD);
-	exibirD(listaD);
-	printf("Total de elementos na lista dupla apos poda\n");	
+	mostrarSequenciaD(listaD, 7, 7);
 
-	listaD = destruirD(listaD);
-	printf("Lista destruida... ou seja, toda memoria foi liberada da lista\n");
+	// listaD = podarD(listaD);
+	// exibirD(listaD);
+	// printf("Total de elementos na lista dupla apos poda: %d\n", contarElementosD(listaD));
+
+
+	// listaD = destruirD(listaD);
+	// printf("Lista destruida... ou seja, toda memoria foi liberada da lista\n");
 	return 1;
 }
