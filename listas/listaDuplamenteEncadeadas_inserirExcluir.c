@@ -95,11 +95,57 @@ CelulaD *inserirD(int valor, CelulaD *l) {
 	return l;
 }
 
+CelulaD *podarD(CelulaD *l) {
+	if (!l) return l;
+
+	for (; l->ant; l = l->ant);
+
+	if (!l->prox) { //para um elemento
+		free(l);
+	}
+	return NULL;
+	
+	l = l->prox;
+	free(l->ant); //retirando o primeiro elemento
+
+	for (; l->prox; l = l->prox);
+
+	if (!l->ant) { //soh sobrou um elemento
+		free(l);
+		return NULL;
+	}
+	l = l->ant;
+	free(l->prox);
+	l->prox = NULL;
+	
+	return l;
+}
+
+CelulaD *destruirD(CelulaD *l) {
+
+	if (!l) return l;
+
+	for (; l->ant; l = l->ant);
+
+	if (!l->prox) { //
+		free(l);
+	}
+	return NULL;
+	
+	for (l = l->prox; l->prox; l = l->prox) {
+		free(l->ant);
+	}
+	free(l->ant);
+	free(l);
+
+	return NULL;
+}
+
 int main() {
 	CelulaD *listaD = NULL;
 	srand(time(NULL));
 	
-	int qtd = (rand() % 20) + 2;
+	int qtd = 10;
 	for (; qtd > 0; qtd--) {
 		listaD = inserirD(rand() % 100, listaD);
 	}
@@ -113,5 +159,12 @@ int main() {
 	
 	exibirD(listaD);
 	printf("Total de elementos na lista dupla apos exclusao: %d\n", contarElementosD(listaD));
+
+	listaD = podarD(listaD);
+	exibirD(listaD);
+	printf("Total de elementos na lista dupla apos poda\n");	
+
+	listaD = destruirD(listaD);
+	printf("Lista destruida... ou seja, toda memoria foi liberada da lista\n");
 	return 1;
 }
