@@ -39,7 +39,7 @@ CelulaD *excluirD(int valor, CelulaD *l) {
 	
 	if (!l) return l;
 	
-	for (;l->ant;l = l->prox);
+	for (;l->ant;l = l->ant);
 	
 	for (pR = NULL, p = l; p; pR = p, p = p->prox) {
 		if (valor == p->dado) break; //achei dado para exclusao
@@ -188,7 +188,7 @@ int main() {
 	// exibirD(listaD);
 	// printf("Total de elementos na lista dupla apos exclusao: %d\n", contarElementosD(listaD));
 
-	mostrarSequenciaD(listaD, 7, 7);
+	mostrarSequenciaD(listaD, 7, 2);
 
 	// listaD = podarD(listaD);
 	// exibirD(listaD);
