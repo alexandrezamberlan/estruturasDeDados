@@ -1,0 +1,20 @@
+Estruturas de Dados Lineares
+
+Pilha - LIFO - operações de inserção e remoção no topo (ponteiro)
+
+Lista - Ordenação - todas as operações (percurso como principal)
+
+Fila - FIFO (First In, First Out)
+	-> dois ponteiros:
+		- inicio/cabeça: controla o início da fila, onde as 
+		                 exclusões serão realizadas
+
+		- fim/cauda: controla o final da fila, onde as 
+		             inserções serão realizadas
+
+	-> pode usar a mesma struct de lista simples e pilha
+	
+	typedef struct no {
+		int dado;
+		struct *prox;
+	} Celula;
