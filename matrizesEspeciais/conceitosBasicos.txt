@@ -1,0 +1,12 @@
+Matrizes especiais
+
+    * muitas linhas e muitas colunas - dimensão 'grande'
+    * a maioria das células igual a zero ou nula
+    TIPOS
+        Esparsa
+        Diagonal principal: i == j
+        Diagonal secundária: i + j == n - 1
+        Triangular superior da principal: j > i
+        Triangular inferior da principal: i > j
+        Triangular superior da secundária: i + j > n - 1
+        Triangular inferior da secundária: i + j < n - 1
