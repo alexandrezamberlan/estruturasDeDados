@@ -40,6 +40,27 @@ int contarR(Celula *l) {
 	return 0;
 }
 
+Celula *removerR(int valor, Celula *l) {
+	if (l) {
+		if (valor == l->dado) {
+			Celula *tmp = l->prox;
+			free(l);
+			return tmp;
+		}
+		l->prox = removerR(valor, l->prox);
+		return l;
+	}
+	return NULL;
+}
+
+Celula* destruirR(Celula *l) {
+	if (l){
+		l->prox = destruirR(l->prox);
+		free(l);
+	}
+	return NULL;
+}
+
 int main() {
 	Celula *lista = NULL;
 	int i;
@@ -56,5 +77,16 @@ int main() {
 	exibirR(lista);
 	
 	printf("\n\nTotal de elementos: %d\n", contarR(lista));
+	
+	printf("Digite uma valor para excluir: ");
+	scanf("%d", &valor);
+	lista = removerR(valor, lista);
+	printf("Lista apos a remocao de valor\n");
+	exibirR(lista);
+	
+	lista = destruirR(lista);
+	
+	printf("\n\nLista apos sua destruicao\n");
+	exibirR(lista);
 	return 1;
 }
