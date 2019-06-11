@@ -47,6 +47,35 @@ void exibirEDR(Arvore *r) {
 	}
 }
 
+void exibir(Arvore *r, int nivel) {
+	if (r) {
+		exibir(r->dir, nivel + 1);//vai para direita
+		
+		int i;
+		for (i = 0; i < nivel; i++) {
+			printf("   ");
+		}
+		printf("(%d)%d\n", nivel, r->dado);
+		
+		exibir(r->esq, nivel + 1);//vai para esquerda
+	}
+}
+
+Arvore *localizar(int valor, Arvore *r){
+	if (r) {
+		if (valor == r->dado) return r; //dado localizado
+		if (valor < r->dado) return localizar(valor, r->esq); //procurar na esquerda
+		/*else*/ return localizar(valor, r->dir);
+	}
+	return NULL;
+}
+
+int contarNos(Arvore *r) {
+	if (r) {
+		return 1 + contarNos(r->esq) + contarNos(r->dir);
+	}
+	return 0;
+}
 
 int main() {
 	Arvore *raiz = NULL;
@@ -68,6 +97,16 @@ int main() {
 	
 	printf("\n\nExibe pos-fixado: vai esq; vai dir; visita raiz\n");
 	exibirEDR(raiz);
+	
+	printf("\n\nExibe tipo arvore deitada a partir do nivel 0\n");
+	exibir(raiz, 0);
+	
+	printf("Informe um inteiro para pesquisa na arvore: ");
+	scanf("%d", &valor);
+	
+	printf("Endereco de %d na arvore: %p\n", valor, localizar(valor, raiz));
+	
+	printf("Total de elementos na arvore: %d\n", contarNos(raiz));
 	
 	return 1;
 }
