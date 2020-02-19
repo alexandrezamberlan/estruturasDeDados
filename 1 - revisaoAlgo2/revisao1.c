@@ -1,3 +1,5 @@
+//Faça um programa que recebe e armazene números inteiros em vetor de tamanho TAM.
+//Entretanto, os números não podem repetir. Ao final, exibir o vetor.
 #include <stdio.h>
 #include <stdlib.h>
 #define TAM 10
