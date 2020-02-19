@@ -1,0 +1,8 @@
+!) Faça o programa do quadrado mágico. O sistema deve receber uma dimensão da matriz, mas deverá ser quadrada e ímpar. Na sequência, 
+o programa deve distribuir os números de forma que a soma das linhas e das colunas e das diagonais sempre sejam iguais.
+
+2) Faça um programa que receba e armazene números inteiros em vetor de tamanho TAM. Entretanto, os números digitados não podem ser
+repetidos. Ao final, exibir o vetor.
+
+3) Tendo como base o programa do exercício 2, crie um procedimento que ordene o vetor, outro procedimento que exiba o vetor.
+
