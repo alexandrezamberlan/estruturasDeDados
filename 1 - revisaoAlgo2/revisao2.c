@@ -1,15 +1,21 @@
 //Entretanto, os números não podem repetir. Ao final, exibir o vetor.
 #include <stdio.h>
 #include <stdlib.h>
-#define TAM 5
+
 int main() {
-   int vetor[TAM];
+   int *vetor;
+   int tamanhoVetor;
    int contador;
    int numero;
    int existe; //booleano para verificar se numero jah inserido
 
+   printf("Quantos numeros quer cadastrar: ");
+   scanf("%d", &tamanhoVetor);
+
+   vetor = malloc(sizeof(int) * tamanhoVetor);
+
    //inicializacao do vetor com -1
-   for (int i = 0; i < TAM; i++) {
+   for (int i = 0; i < tamanhoVetor; i++) {
       vetor[i] = -1;
    }
 
@@ -33,14 +39,15 @@ int main() {
       vetor[contador] = numero;
       contador++;
 
-   } while (contador < TAM);
+   } while (contador < tamanhoVetor);
 
 
    //exibicao do vetor
-   for (int i = 0; i < TAM; i++) {
+   for (int i = 0; i < tamanhoVetor; i++) {
       printf("%d\t", vetor[i]);
    }
 
+   free(vetor);
 
    return 1;
 }
