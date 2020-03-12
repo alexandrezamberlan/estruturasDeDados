@@ -7,6 +7,7 @@ typedef struct nodo {
 	struct nodo *prox;
 } Celula;
 
+//inserindo na lista sem ordenacao, sempre na última posição
 Celula *inserir(int valor, Celula *lista) {
 	Celula *novo; //para alocar nova celula
 
@@ -22,7 +23,7 @@ Celula *inserir(int valor, Celula *lista) {
 	return novo; //novo eh retornado
 }
 
-//inserindo na lista sem ordenacao, sempre na última posição
+
 Celula *remover(Celula *lista) {
 	Celula *lixo;
 
@@ -70,29 +71,32 @@ int contar(Celula *lista) {
 }
 
 void exibirElementosMeio(Celula *lista) {
-    Celula *p; 
+    Celula *p, *pR; 
 
     if (!lista) {
         printf("Lista vazia, logo não há meio\n");
         return ;
     }
     int totalElementos = contar(lista);    
+    totalElementos = totalElementos / 2;
 
     if (totalElementos % 2 != 0) { //estrutura impar
-        totalElementos = totalElementos / 2;
         for (p = lista; totalElementos > 0; totalElementos--, p = p->prox);
+        printf("Elemento do meio: %p->%d\n",p,p->conteudo);
+    } else { //estrutura par
 
+        for (pR = NULL, p = lista; totalElementos > 0; totalElementos--, pR = p, p = p->prox);
+
+        printf("Elemento do meio: %p->%d\n",pR,pR->conteudo);
         printf("Elemento do meio: %p->%d\n",p,p->conteudo);
 
-    } else { //estrutura par
-        printf("É preciso fazer......\n");
     }
 }
 
 int main() {
     setlocale(LC_ALL,"Portuguese");
 	Celula *lista = NULL;
-    int TAM = 5;
+    int TAM = 4;
     int i;
     int valor;
     for (i = 0; i < TAM; i++ ) {
