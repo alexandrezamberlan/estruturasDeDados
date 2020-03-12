@@ -61,7 +61,7 @@ Celula *localizar(int valor, Celula *topo) {
 }
 
 int main() {
-    setlocale(LC_ALL,"");
+    setlocale(LC_ALL,"Portuguese");
 	Celula *pilha = NULL;
     int TAM = 5;
     int i;
@@ -73,6 +73,7 @@ int main() {
             pilha = inserir(valor, pilha);
         } else {
             printf("%d já existe na estrutura.\n", valor);
+            i--;
         }
     }
 	
