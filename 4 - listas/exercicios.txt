@@ -1,0 +1,52 @@
+Exercícios sobre listas encadeadas
+1. Escreva uma função que receba uma lista encadeada simples e retorne quantos elementos há.
+
+2. Escreva uma função que receba uma lista encadeada circular e retorne quantos elementos há.
+
+3. Escreva uma função que receba uma lista encadeada simples e devolva o endereço de um nó que esteja 
+o mais próximo possível do meio da lista.
+
+4. Escreva um programa que leia um arquivo texto (com números inteiros um abaixo do outro) e salve os 
+números em uma lista encadeada simples. Ao final, o programa deverá exibir os números armazenados na lista 
+e mostrar o maior deles.
+
+5. Escreva uma função que receba como parâmetro um ponteiro para o primeiro elemento de uma lista encadeada 
+simples e retorne a soma dos valores de todos os elementos.
+
+6. Construa uma função que receba como parâmetro um ponteiro que aponta para o primeiro elemento de uma 
+lista encadeada simples e elimine o primeiro e o último elementos da lista. Se a lista for composta por 
+apenas um elemento, este deve ser apagado.
+
+7. Escreva um procedimento que receba como parâmetros dois ponteiros, cada um apontando para o primeiro 
+elemento de uma lista encadeada. O procedimento deve trocar a segunda metade de cada lista, ou seja, a 
+segunda metade da primeira lista deve ser colocada na segunda lista, e a segunda metade da segunda lista 
+deve ser colocada na primeira lista. No caso de lista(s) com número impar de elementos, o elemento central 
+pode ou não ser trocado. As listas em questão podem ter tamanhos diferentes. Não devem ser alocados novos 
+elementos, já que as listas resultantes são criadas com os elementos das listas recebidas como parâmetros.
+
+8. Escreva uma função que receba como parâmetro um ponteiro para o primeiro elemento de uma lista e 
+retorne um valor indicando se a lista é circular ou não.
+
+9. Escreva uma função que receba como parâmetros um ponteiro para um elemento de uma lista encadeada 
+circular e dois valores inteiros x e y. Considerando que a posição do primeiro elemento é 1, do segundo é 2, 
+e assim por diante, a função deve eliminar todos os elementos cujas posições estejam entre x e y (inclusive). 
+Se x for negativo, zero ou maior que o tamanho da lista, nenhuma alteração deve ser feita, e se x for válido 
+e y maior que o tamanho da lista, devem ser eliminados todos elementos a partir de x até o final da lista.
+
+10. Escreva uma função que receba como parâmetros dois ponteiros, cada um apontando para um elemento de uma 
+lista encadeada circular. A função deve unir as duas listas, intercalando seus elementos um a um, ou seja, 
+o primeiro elemento da primeira lista deve ser seguido do primeiro elemento da segunda lista, que por sua 
+vez deve ser seguido pelo segundo elemento da primeira lista, que deve ser seguido pelo segundo elemento 
+da segunda lista, e assim por diante. A função deve retornar um ponteiro para o primeiro elemento da lista 
+resultante. Não devem ser alocados novos elementos, já que a lista resultante é criada com os elementos das 
+listas recebidas como parâmetros.
+
+11. Escreva uma função que receba como parâmetros um ponteiro para um elemento qualquer de uma lista 
+duplamente encadeada e um valor inteiro, e insira (no início) um elemento com este valor se o novo valor 
+for maior que todos os valores já presentes na lista. Não considere a existência de qualquer ordem entre 
+os elementos da lista.
+
+12. Escreva uma função que receba como parâmetro um ponteiro para um elemento qualquer de uma lista 
+duplamente encadeada. Considerando que a posição do primeiro elemento é a posição 1, do segundo é 2, 
+e assim por diante, elimine todos os elementos de posições pares. Em outras palavras, para cada par de 
+elementos, deve ser eliminado da lista e desalocado o segundo.

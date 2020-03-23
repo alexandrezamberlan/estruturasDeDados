@@ -8,17 +8,35 @@ typedef struct nodo {
 	struct nodo *prox;
 } Celula;
 
-//inserindo na lista sem ordenacao, sempre na última posição - comportamento de PILHA
+//inserindo na lista com ordenacao. Na sua posição correta: no início, no fim, ou no meio
 Celula *inserir(int valor, Celula *lista) {
 	Celula *novo; //para alocar nova celula
-    
+    Celula *p, *pR;
+
 	//alocar memoria
 	novo = (Celula *)malloc(sizeof(Celula));
 	//depositar valor
 	novo->conteudo = valor;
-    novo->prox = lista;
-       	
-	return novo; //retornamos o primeiro elemento
+    novo->prox = NULL; //nao sabemos onde o novo será inserido
+
+    //percorrer a lista a procura da posicao correta
+    for (pR = NULL, p = lista; p ; pR = p, p = p->prox) {
+        if (valor < p->conteudo) {
+            //achamos a posicao
+            break;
+        }
+    }
+    //numero inserido como primeiro
+    if (!pR) { // p == lista
+        novo->prox = p; //ou novo->prox = lista;
+        return novo;
+    } else if (p == NULL) {//numero inserido na ultima posicao
+        pR->prox = novo;
+    } else {//numero inserido no meio
+        pR->prox = novo;
+        novo->prox = p;
+    }	
+	return lista; //retornamos o primeiro elemento
 }
 
 void exibir(Celula *lista) {
@@ -55,7 +73,7 @@ int main() {
     setlocale(LC_ALL,"Portuguese");
 	Celula *lista = NULL;
     
-    lista = popular(lista,5);
+    lista = popular(lista,10);
     printf("A lista contém: %d números sorteados\n", contar(lista));
     exibir(lista);
 
