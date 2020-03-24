@@ -69,22 +69,81 @@ Celula *popular(Celula *lista, int quantidade) {
     return lista;
 }
 
+float calcularMedia(Celula *lista) {
+    int totalElementos = contar(lista);
+    
+    if (totalElementos == 0) return 0;
+
+    Celula *p;
+    int soma = 0;
+
+    for (p = lista; p ; p = p->prox) {
+        soma = soma + p->conteudo;
+    }
+    return soma / totalElementos;
+}
+
+int menorValor(Celula *lista) {
+    if (!lista) {
+        return 0; //significa que não houve menor elemento
+    }
+    return lista->conteudo;
+}
+
+int maiorValor(Celula *lista) {
+    if (!lista) {
+        return 0; //significa que não ha maior elemento
+    }
+
+    Celula *p;
+    for (p = lista; p->prox; p = p->prox); //leva o p para a última posição, sem sair da lista
+
+    return p->conteudo; //maior elemento
+}
+
+void mostrarMediana(Celula *lista) {
+    Celula *p, *pR;
+
+    int totalElementos = contar(lista);
+
+    if (totalElementos % 2 != 0) { //quantidade impar
+        totalElementos = totalElementos / 2;
+        
+        for (p = lista; totalElementos > 0; totalElementos--, p = p->prox); //leva o p até o meio da lista
+
+        printf("O valor mediano da lista de tamanho ímpar é: %d\n", p->conteudo);
+    } else {
+        totalElementos = totalElementos / 2;
+
+        for (pR = NULL, p = lista; totalElementos > 0; totalElementos--, pR = p, p = p->prox);
+
+        printf("O primeiro valor mediano da lista de tamanho par é: %d\n", pR->conteudo);
+        printf("O segundo valor mediano da lista de tamanho par é: %d\n", p->conteudo);
+    }
+
+}
+
 int main() {
     setlocale(LC_ALL,"Portuguese");
 	Celula *lista = NULL;
     
-    lista = popular(lista,10);
+    lista = popular(lista,7);
     printf("A lista contém: %d números sorteados\n", contar(lista));
     exibir(lista);
 
     //calcular e mostrar a média da lista
+    printf("O valor médio da lista é: %.2f\n", calcularMedia(lista));
 
     //mostrar o menor elemento
+    printf("O menor elemento da lista é: %d\n", menorValor(lista));
 
-    //mostrar o menor elemento
+    //mostrar o maior elemento
+    printf("O maior elemento da lista é: %d\n", maiorValor(lista));
 
     //mostrar a mediana (se a lista for ímpar, mostrar o elemento do meio. 
     //se a lista for par, mostar os dois elementos do meio)
+
+    mostrarMediana(lista);
 
 	return 1;
 }
