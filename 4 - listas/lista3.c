@@ -67,11 +67,52 @@ Celula *popular(Celula *lista, int quantidade) {
     return lista;
 }
 
+Celula *excluir(int valor, Celula *lista) {
+    Celula *p, *pR, *lixo;
+
+    if (!lista) {
+        return lista; //return NULL;
+    }
+
+    for (pR = NULL, p = lista; p ; pR = p, p = p->prox) {
+        if (valor == p->conteudo) {
+            printf("Valor localizado e será removido\n");
+            break;
+        }
+    }
+
+    if (!p) {
+        printf("Valor não localizado\n");
+        return lista;
+    }
+    //valor é o primeiro elemento
+    if (!pR) { // if (p == lista)
+        //código para remover o primeiro elemento
+        lista = lista->prox;
+    } else if (!p->prox) {
+        //código para remover o último elemento
+        pR->prox = NULL;
+    } else {
+        //código para remover o elemento que estiver no meio da lista
+        pR->prox = p->prox;
+    }
+    free(p);
+    return lista;
+}
+
 int main() {
     setlocale(LC_ALL,"Portuguese");
 	Celula *lista = NULL;
     
     lista = popular(lista,5);
+    exibir(lista);
+
+    int numero;
+    printf("Digite um número da lista para excluir: ");
+    scanf("%d", &numero);
+    lista = excluir(numero, lista);
+
+    printf("Números na lista após exclusão\n");
     exibir(lista);
 
 	return 1;

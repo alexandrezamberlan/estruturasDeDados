@@ -71,33 +71,33 @@ Celula *popular(Celula *lista, int quantidade) {
 
 float calcularMedia(Celula *lista) {
     int totalElementos = contar(lista);
-
-    if (totalElementos == 0) {
-        return 0;
-    }
+    if (totalElementos == 0) return 0;
 
     int soma = 0;
     Celula *p;
-    for (p = lista; p ; p = p->prox) {
+    for (p = lista; p; p = p->prox) {
         soma = soma + p->conteudo;
     }
-    return soma / totalElementos;
+    return soma/totalElementos;
 }
 
 int menorValor(Celula *lista) {
     if (!lista) {
-        return -27; //lista inexistente e não há menor valor
+        return -27;//representa o ESC
     }
+
     return lista->conteudo;
 }
 
 int maiorValor(Celula *lista) {
     if (!lista) {
-        return -27; //lista inexistente e não há menor valor
+        return -27;//representa o ESC ou um erro
     }
-    Celula *p;
-    for (p = lista; p->prox ; p = p->prox);
 
+    Celula *p;
+    
+    for (p = lista; p->prox ; p = p->prox);
+    
     return p->conteudo;
 }
 
@@ -129,6 +129,25 @@ void mostrarMediana(Celula *lista) {
     }
 }
 
+Celula *unir(Celula *lista1, Celula *lista2) {
+    //só é possível unir se as duas listas existirem
+
+    if (!lista1 && !lista2) {
+        printf("As duas listas precisam existir para ocorrer a unificação.\n");
+        return NULL;
+    }
+
+    //a ideia é ir até o final da primeira lista;
+    Celula *p;
+    for (p = lista1; p->prox; p = p->prox); //levamos o p até a última posição da lista1
+
+    //conectar o fim da lista1 com o início da lista2;
+    p->prox = lista2;
+
+    //agora é retornar a lista1 que é o início dessa nova lista;
+    return lista1;
+}
+
 int main() {
     setlocale(LC_ALL,"Portuguese");
 	Celula *lista = NULL;
@@ -137,18 +156,30 @@ int main() {
     printf("A lista contém: %d números sorteados\n", contar(lista));
     exibir(lista);
 
-    //calcular e mostrar a média da lista
-    printf("O valor médio da lista é: %.2f\n", calcularMedia(lista));
+    // //calcular e mostrar a média da lista
+    // printf("O valor médio da lista é: %.2f\n", calcularMedia(lista));
 
-    //mostrar o menor elemento
-    printf("O menor elemento da lista é: %d\n", menorValor(lista));
+    // //mostrar o menor elemento
+    // printf("O menor elemento da lista é: %d\n", menorValor(lista));
 
-    //mostrar o maior elemento
-    printf("O maior elemento da lista é: %d\n", maiorValor(lista));
+    // //mostrar o maior elemento
+    // printf("O maior elemento da lista é: %d\n", maiorValor(lista));
 
-    //mostrar a mediana (se a lista for ímpar, mostrar o elemento do meio. 
-    //se a lista for par, mostar os dois elementos do meio)
-    mostrarMediana(lista);
+    // //mostrar a mediana (se a lista for ímpar, mostrar o elemento do meio. 
+    // //se a lista for par, mostar os dois elementos do meio)
+    // mostrarMediana(lista);
+
+
+    Celula *outraLista = NULL;
+    outraLista = popular(outraLista,3);
+    printf("A outra lista contém: %d números sorteados\n", contar(outraLista));
+    exibir(outraLista);
+
+    Celula *listaFinal = NULL;
+
+    listaFinal = unir(lista, outraLista);
+    printf("A lista final contém: %d números sorteados\n", contar(listaFinal));
+    exibir(listaFinal);
 
 	return 1;
 }
