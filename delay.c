@@ -15,8 +15,8 @@ void delay(int number_of_seconds) {
 
 int main() {
     printf("Esperando 3 segundos....\n");
-    delay(3);
-    printf("Feito.... passaram 3 segundos");
+    delay(3000);
+    printf("Feito.... passaram 3 segundos\n");
     return 1;
 }
  

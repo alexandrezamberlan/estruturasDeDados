@@ -68,7 +68,7 @@ Celula *popular(Celula *lista, int quantidade) {
 }
 
 Celula *excluir(int valor, Celula *lista) {
-    Celula *p, *pR, *lixo;
+    Celula *p, *pR;
 
     if (!lista) {
         return lista; //return NULL;
@@ -104,7 +104,7 @@ int main() {
     setlocale(LC_ALL,"Portuguese");
 	Celula *lista = NULL;
     
-    lista = popular(lista,5);
+    lista = popular(lista,8);
     exibir(lista);
 
     int numero;
@@ -114,6 +114,11 @@ int main() {
 
     printf("Números na lista após exclusão\n");
     exibir(lista);
+
+    lista = excluirFaixa(2,5,lista);
+    printf("Números na lista após exclusão de sequência\n");
+    exibir(lista);
+
 
 	return 1;
 }
