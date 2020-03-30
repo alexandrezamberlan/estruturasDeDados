@@ -65,121 +65,47 @@ Celula *popular(Celula *lista, int quantidade) {
     for (i = 0; i < quantidade; i++ ) {
         lista = inserir((60 + rand() % 300), lista);
     }
-
     return lista;
 }
 
-float calcularMedia(Celula *lista) {
-    int totalElementos = contar(lista);
-    if (totalElementos == 0) return 0;
-
-    int soma = 0;
+Celula *mesclar (Celula *lista1, Celula *lista2) {
+    Celula *listaResultado = NULL;
     Celula *p;
-    for (p = lista; p; p = p->prox) {
-        soma = soma + p->conteudo;
+
+    for (p = lista1; p ; p = p->prox) {
+        listaResultado = inserir(p->conteudo,listaResultado);
     }
-    return soma/totalElementos;
+
+    for (p = lista2; p ; p = p->prox) {
+        listaResultado = inserir(p->conteudo,listaResultado);
+    }
+
+    return listaResultado;
+
+
 }
 
-int menorValor(Celula *lista) {
-    if (!lista) {
-        return -27;//representa o ESC
-    }
-
-    return lista->conteudo;
-}
-
-int maiorValor(Celula *lista) {
-    if (!lista) {
-        return -27;//representa o ESC ou um erro
-    }
-
-    Celula *p;
-    
-    for (p = lista; p->prox ; p = p->prox);
-    
-    return p->conteudo;
-}
-
-void mostrarMediana(Celula *lista) {   
-    int totalElementos = contar(lista);
-    Celula *p, *pR;
-
-    if (totalElementos < 3) {
-        printf("Lista com elementos insuficientes. Não há mediana.\n");
-        return;
-    }
-
-    if (totalElementos % 2 != 0) { //quantidade impar, logo mostrar só o do meio
-        totalElementos = totalElementos / 2;
-        int i;
-        
-        for (i = 0, p = lista; i < totalElementos; i++, p = p->prox);
-
-        printf("O valor mediano de uma lista de tamanho ímpar é: %d\n", p->conteudo);
-    } else {
-        totalElementos = totalElementos / 2;
-
-        int i;
-        
-        for (i = 0, pR = NULL, p = lista; i < totalElementos; i++, pR = p, p = p->prox);
-
-        printf("O primeiro valor mediano de uma lista de tamanho par: %d\n", pR->conteudo);
-        printf("O segundo valor mediano de uma lista de tamanho par: %d\n", p->conteudo);
-    }
-}
-
-Celula *unir(Celula *lista1, Celula *lista2) {
-    //só é possível unir se as duas listas existirem
-
-    if (!lista1 && !lista2) {
-        printf("As duas listas precisam existir para ocorrer a unificação.\n");
-        return NULL;
-    }
-
-    //a ideia é ir até o final da primeira lista;
-    Celula *p;
-    for (p = lista1; p->prox; p = p->prox); //levamos o p até a última posição da lista1
-
-    //conectar o fim da lista1 com o início da lista2;
-    p->prox = lista2;
-
-    //agora é retornar a lista1 que é o início dessa nova lista;
-    return lista1;
-}
 
 int main() {
     setlocale(LC_ALL,"Portuguese");
-	Celula *lista = NULL;
+	Celula *lista1 = NULL;
     
-    lista = popular(lista,8);
-    printf("A lista contém: %d números sorteados\n", contar(lista));
-    exibir(lista);
+    lista1 = popular(lista1,8);
+    printf("A lista1 contém: %d números sorteados\n", contar(lista1));
+    exibir(lista1);
 
-    // //calcular e mostrar a média da lista
-    // printf("O valor médio da lista é: %.2f\n", calcularMedia(lista));
+    Celula *lista2 = NULL;
+    
+    lista2 = popular(lista2,3);
+    printf("A lista2 contém: %d números sorteados\n", contar(lista2));
+    exibir(lista2);
 
-    // //mostrar o menor elemento
-    // printf("O menor elemento da lista é: %d\n", menorValor(lista));
+    Celula *lista3 = NULL;
 
-    // //mostrar o maior elemento
-    // printf("O maior elemento da lista é: %d\n", maiorValor(lista));
+    lista3 = mesclar(lista1,lista2);
+    printf("A lista3 contém: %d números mesclados das 2 primeiras listas\n", contar(lista3));
+    exibir(lista3);
 
-    // //mostrar a mediana (se a lista for ímpar, mostrar o elemento do meio. 
-    // //se a lista for par, mostar os dois elementos do meio)
-    // mostrarMediana(lista);
-
-
-    Celula *outraLista = NULL;
-    outraLista = popular(outraLista,3);
-    printf("A outra lista contém: %d números sorteados\n", contar(outraLista));
-    exibir(outraLista);
-
-    Celula *listaFinal = NULL;
-
-    listaFinal = unir(lista, outraLista);
-    printf("A lista final contém: %d números sorteados\n", contar(listaFinal));
-    exibir(listaFinal);
 
 	return 1;
 }

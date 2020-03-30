@@ -100,6 +100,23 @@ Celula *excluir(int valor, Celula *lista) {
     return lista;
 }
 
+Celula *excluirFaixa(int ini, int fim, Celula *lista) {
+    int i;
+    Celula *p;
+
+    if (!lista) {
+        return lista; //return NULL;
+    }
+
+    for (i = 0, p = lista; p ; i++, p = p->prox) {
+        if () {
+            lista = excluir(p->conteudo,lista);
+        }
+    }
+
+    return lista;
+}
+
 int main() {
     setlocale(LC_ALL,"Portuguese");
 	Celula *lista = NULL;
