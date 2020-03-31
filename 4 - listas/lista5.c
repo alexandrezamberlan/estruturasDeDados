@@ -68,7 +68,7 @@ Celula *popular(Celula *lista, int quantidade) {
     return lista;
 }
 
-Celula *mesclar (Celula *lista1, Celula *lista2) {
+Celula *mesclar(Celula *lista1, Celula *lista2) {
     Celula *listaResultado = NULL;
     Celula *p;
 
@@ -81,10 +81,37 @@ Celula *mesclar (Celula *lista1, Celula *lista2) {
     }
 
     return listaResultado;
-
-
 }
 
+Celula *localizar(int valor, Celula *lista) {
+    Celula *p;
+    if (lista) {
+        for (p = lista; p; p = p->prox) {
+            if (valor == p->conteudo) {
+                return p; //achou o valor
+            }
+        }
+    }
+    return NULL; //valor não localizado
+}
+
+Celula *mesclarComControleDuplicidade(Celula *lista1, Celula *lista2) {
+    Celula *listaResultado = NULL;
+    Celula *p;
+
+    for (p = lista1; p ; p = p->prox) {
+        if (!localizar(p->conteudo, listaResultado)) {
+            listaResultado = inserir(p->conteudo,listaResultado);
+        } 
+    }
+    
+    for (p = lista2; p ; p = p->prox) {
+        if (!localizar(p->conteudo, listaResultado)) {
+            listaResultado = inserir(p->conteudo,listaResultado);
+        }
+    }
+    return listaResultado;
+}
 
 int main() {
     setlocale(LC_ALL,"Portuguese");
@@ -102,7 +129,7 @@ int main() {
 
     Celula *lista3 = NULL;
 
-    lista3 = mesclar(lista1,lista2);
+    lista3 = mesclarComControleDuplicidade(lista1,lista2);
     printf("A lista3 contém: %d números mesclados das 2 primeiras listas\n", contar(lista3));
     exibir(lista3);
 

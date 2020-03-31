@@ -136,7 +136,6 @@ int main() {
     printf("Números na lista após exclusão de sequência\n");
     exibir(lista);
 
-
 	return 1;
 }
 
