@@ -70,7 +70,7 @@ Celula *popular(Celula *lista, int quantidade) {
 
 Celula *mesclar(Celula *lista1, Celula *lista2) {
     Celula *listaResultado = NULL;
-    Celula *p;
+    Celula *p; //ponteiro de percurso
 
     for (p = lista1; p ; p = p->prox) {
         listaResultado = inserir(p->conteudo,listaResultado);
