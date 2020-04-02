@@ -91,6 +91,7 @@ int main() {
 	Celula *listaC = NULL;
     
     listaC = popular(listaC,8);
+    printf("Lista circular com %d elementos\n", contar(listaC));
     exibir(listaC);
     return 1;
 }
