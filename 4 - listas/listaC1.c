@@ -56,19 +56,29 @@ Celula *inserir(int valor, Celula *lista) {
 	//depositar valor
 	novo->conteudo = valor;
     novo->prox = NULL;
+
     //percorrer a lista a procura da posicao correta
-    for (pR = NULL, p = lista; p ; pR = p, p = p->prox) {
+    for (pR = NULL, p = lista; p->prox != lista ; pR = p, p = p->prox) {
         if (valor < p->conteudo) {
             //achamos a posicao
             break;
         }
     }
+    //será que é o último
+    if (p->prox == lista && valor < p->conteudo) {
+        p->prox = novo;
+        novo->prox = lista;
+        return lista;
+    }
     //numero inserido como primeiro
     if (!pR) {
-        novo->prox = p; //ou novo->prox = lista;
+        novo->prox = lista; 
+        
+        for (; p->prox != lista; p = p->prox);
+
+        p->prox = novo;
+
         return novo;
-    } else if (p == NULL) {//numero inserido na ultima posicao
-        pR->prox = novo;
     } else {//numero inserido no meio
         pR->prox = novo;
         novo->prox = p;
