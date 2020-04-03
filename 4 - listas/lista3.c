@@ -17,6 +17,11 @@ Celula *inserir(int valor, Celula *lista) {
 	//depositar valor
 	novo->conteudo = valor;
     novo->prox = NULL;
+
+    if (!lista) {
+        return novo;
+    }
+
     //percorrer a lista a procura da posicao correta
     for (pR = NULL, p = lista; p ; pR = p, p = p->prox) {
         if (valor < p->conteudo) {
