@@ -42,7 +42,6 @@ Celula *localizar(int valor, Celula *lista) {
         printf("Lista vazia.\n");
         return NULL;
     }
-
     for (p = lista; p->prox != lista ; p = p->prox) {
         if (valor == p->conteudo) {
             return p;
@@ -68,37 +67,38 @@ Celula *inserir(int valor, Celula *lista) {
             break;
         }
     }
-    //eh o primeiro elemento
-    if (!pR) { //if (p == lista)
+    
+    if (p->prox == lista && valor > p->conteudo) { //é o ultimo elemento
+        p->prox = novo;
+        novo->prox = lista;
+    } else if (!pR) { //if (p == lista) ou seja, é o primeiro elemento
         novo->prox = lista; //novo->prox = p;
         
         for (; p->prox != lista; p = p->prox);
 
         p->prox = novo;
         return novo;
-    }
-
-    if (p->prox == lista && valor > p->conteudo) { //eh o ultimo elemento
-        p->prox = novo;
-        novo->prox = lista;
     } else { //é um elemento de meio
         pR->prox = novo;
         novo->prox = p;
     }
-
 	return lista;
 }
 
 Celula *popular(Celula *lista, int quantidade) {
     srand(time(NULL));
     int i;
+    int numero;
+    printf("Números sorteados:\n");
     for (i = 0; i < quantidade; i++ ) {
-        lista = inserir(rand() % 100, lista);
+        numero = rand() % 100;
+        printf("%d\t", numero);
+        lista = inserir(numero, lista);
     }
+    printf("\n");
 
     return lista;
 }
-
 
 int ehListaSimples(Celula *lista) {
     Celula *p;
@@ -116,7 +116,6 @@ int main() {
 	Celula *listaC = NULL;
     
     listaC = popular(listaC,8);
-    
     printf("Lista circular com %d elementos\n", contar(listaC));
     exibir(listaC);
     return 1;
