@@ -75,11 +75,9 @@ Celula *popular(Celula *lista, int quantidade) {
 
 float calcularMedia(Celula *lista) {
     int totalElementos = contar(lista);
-
     if (totalElementos == 0) {
         return 0;
     }
-
     int soma = 0;
     Celula *p;
     for (p = lista; p ; p = p->prox) {

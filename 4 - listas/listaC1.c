@@ -78,14 +78,9 @@ Celula *inserir(int valor, Celula *lista) {
         return novo;
     }
 
-    if (p->prox == lista && valor < p->conteudo) {
-        pR->prox = novo;
-        novo->prox = p;
-        
-    } else if (p->prox == lista) {
+    if (p->prox == lista && valor > p->conteudo) { //eh o ultimo elemento
         p->prox = novo;
         novo->prox = lista;
-        
     } else { //é um elemento de meio
         pR->prox = novo;
         novo->prox = p;
@@ -120,16 +115,8 @@ int main() {
     setlocale(LC_ALL,"Portuguese");
 	Celula *listaC = NULL;
     
-    //listaC = popular(listaC,8);
+    listaC = popular(listaC,8);
     
-    listaC = inserir(10, listaC);
-    listaC = inserir(5, listaC);
-    listaC = inserir(1, listaC);
-    listaC = inserir(15, listaC);
-    listaC = inserir(7, listaC);
-
-    
-
     printf("Lista circular com %d elementos\n", contar(listaC));
     exibir(listaC);
     return 1;
