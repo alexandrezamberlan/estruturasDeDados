@@ -113,25 +113,35 @@ int ehListaSimples(Celula *lista) {
 
 Celula *excluir(int valor, Celula *lista) {
     Celula *p, *pR;
-    
     if (!lista) { //lista vazia... nada é excluído
         return lista;
     }
-
     for (pR = NULL, p = lista; p->prox != lista; pR = p, p = p->prox) {
         if (valor == p->conteudo){
             //vamos excluir, mas antes, vamos descobrir se é primeiro ou do meio
-
-
+            if (p == lista) { //if (!pR) é o primeiro
+                //código para eliminar o primeiro
+                for (; p->prox != lista; p = p->prox);
+                
+                lista = lista->prox; //este código deve ser realizado após o for.....
+                p->prox = lista;
+                free(p);
+                return lista;
+            } else {
+                //código para eliminar alguém no meio
+                //o mesmo código usado em listas simples
+                pR->prox = p->prox;
+                free(p);
+                return lista;
+            }
         }
     }
     //se saiu do for porque chegou no último elemento, assim, devemos testar se o último valor vai ser removido
     if (valor == p->conteudo) {
         //vamos excluir sabendo que é o último elemento
-
-
+        pR->prox = lista;
+        free(p);
     }
-
     return lista;
 }
 
