@@ -5,3 +5,6 @@ Fazer um programa em C que abra um arquivo com dados de glicemia e calcule e apr
 - maior valor glicêmico e em qual dia
 
 O arquivo contém duas colunas: data e valor da glicemia em jejum daquele dia.
+
+//rotina para abrir e validar o arquivo
+

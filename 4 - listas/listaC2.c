@@ -121,10 +121,12 @@ Celula *excluir(int valor, Celula *lista) {
             //vamos excluir, mas antes, vamos descobrir se é primeiro ou do meio
             if (p == lista) { //if (!pR) é o primeiro
                 //código para eliminar o primeiro
-                for (; p->prox != lista; p = p->prox);
-                
-                lista = lista->prox; //este código deve ser realizado após o for.....
-                p->prox = lista;
+                for (pR = lista; pR->prox != lista; pR = pR->prox);
+
+                pR->prox = lista->prox; //p->prox
+
+                lista = lista->prox;
+
                 free(p);
                 return lista;
             } else {
@@ -140,8 +142,9 @@ Celula *excluir(int valor, Celula *lista) {
     if (valor == p->conteudo) {
         //vamos excluir sabendo que é o último elemento
         pR->prox = lista;
-        free(p);
+        free(p);        
     }
+
     return lista;
 }
 
