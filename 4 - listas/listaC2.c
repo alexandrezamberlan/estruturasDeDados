@@ -148,11 +148,25 @@ Celula *excluir(int valor, Celula *lista) {
     return lista;
 }
 
+Celula *destruir(Celula *lista) {
+    Celula *pR, *p;
+
+    if (!lista) return lista;
+
+    for (pR = lista, p = lista->prox; p->prox != lista ; pR = p, p = p->prox) {
+        free(pR);
+    }
+    free(pR);
+    free(p);
+
+    return NULL;
+}
+
 int main() {
     setlocale(LC_ALL,"Portuguese");
 	Celula *listaC = NULL;
     
-    listaC = popular(listaC,8);
+    listaC = popular(listaC,1);
     printf("Lista circular com %d elementos\n", contar(listaC));
     exibir(listaC);
 
@@ -162,5 +176,11 @@ int main() {
     listaC = excluir(numero, listaC);
     printf("Lista circular depois da exclusão: %d elementos\n", contar(listaC));
     exibir(listaC);
+
+    listaC = destruir(listaC);
+
+    //continua código
+    exibir(listaC);
+
     return 1;
 }

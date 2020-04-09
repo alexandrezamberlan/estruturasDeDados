@@ -122,6 +122,19 @@ Celula *excluirFaixa(int ini, int fim, Celula *lista) {
     return lista;
 }
 
+Celula *destruir(Celula *lista) {
+    Celula *pR, *p;
+
+    if (!lista) return lista;
+
+    for (pR = lista, p = lista->prox; p ; pR = p, p = p->prox) {
+        free(pR);
+    }
+    free(pR);
+
+    return NULL;
+}
+
 int main() {
     setlocale(LC_ALL,"Portuguese");
 	Celula *lista = NULL;
@@ -139,6 +152,11 @@ int main() {
 
     lista = excluirFaixa(2,5,lista);
     printf("Números na lista após exclusão de sequência\n");
+    exibir(lista);
+
+    lista = destruir(lista); //liberar todos os endereços de memória
+
+    //continua código
     exibir(lista);
 
 	return 1;

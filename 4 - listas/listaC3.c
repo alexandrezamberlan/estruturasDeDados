@@ -151,7 +151,12 @@ Celula *excluir(int valor, Celula *lista) {
 Celula *excluirTodasOcorrencias(int valor, Celula *lista) {
     Celula *p;
 
+    for (p = lista; p->prox != lista; p = p->prox) {
+        
+    }
     
+
+    return lista;
 }
 
 int main() {
