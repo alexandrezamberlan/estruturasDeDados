@@ -1,6 +1,9 @@
 *.exe
 *.obj
 .DS_store
+.vscode
+.vs_code
+.vs
 bin
 lib
 roda
