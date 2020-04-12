@@ -1,0 +1,4 @@
+GitHub dos alunos e seus trabalhos
+
+Desafio da Glicemia:
+- Alisson: https://github.com/aler93/UFN_estruturas/tree/master/sistemaGlicose
