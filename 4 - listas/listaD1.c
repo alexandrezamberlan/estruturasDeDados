@@ -98,12 +98,14 @@ CelulaD *inserir(int valor, CelulaD *lista) {
 	return lista; //retornamos o primeiro elemento
 }
 
-Celula *excluir(int valor, Celula *lista) {
-    Celula *p, *pR;
+CelulaD *excluir(int valor, CelulaD *lista) {
+    CelulaD *p, *pR;
 
     if (!lista) {
         return lista; //return NULL;
     }
+
+    ???????
 
     for (pR = NULL, p = lista; p ; pR = p, p = p->prox) {
         if (valor == p->conteudo) {
@@ -131,6 +133,19 @@ Celula *excluir(int valor, Celula *lista) {
     return lista;
 }
 
+Celula *destruir(Celula *lista) {
+    Celula *pR, *p;
+
+    if (!lista) return lista;
+
+    for (pR = lista, p = lista->prox; p ; pR = p, p = p->prox) {
+        free(pR);
+    }
+    free(pR);
+
+    return NULL;
+}
+
 
 int main() {
     setlocale(LC_ALL,"Portuguese");
@@ -154,6 +169,8 @@ int main() {
 
     printf("A lista dupla tem %d elementos após a exclusão\n", contar(listaD));
     exibir(listaD);
+
+    listaD = destruir(listaD);
 
 
     return 1;
