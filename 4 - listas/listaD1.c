@@ -11,8 +11,150 @@ typedef struct nodo {
 } CelulaD;
 
 
+void exibir(CelulaD *lista) {
+    if (!lista) {
+        printf("Lista vazia\n");
+        return;
+    }
+
+    for ( ; lista->ant ; lista = lista->ant); //garante que o controle da lista dupla esteja no início
+
+    CelulaD *p;
+    for (p = lista; p ; p = p->prox) {
+        printf("%d\t", p->conteudo);
+    }
+    printf("\n");
+}
+
+int contar(CelulaD *lista) {
+    if (!lista) {
+        return 0;
+    }
+    
+    for ( ; lista->ant ; lista = lista->ant); //garante que o controle da lista dupla esteja no início
+
+    int conta = 0;
+    CelulaD *p;
+    for (p = lista; p ; conta++, p = p->prox);
+
+    return conta;
+}
+
+CelulaD *localizar(int valor, CelulaD *lista) {
+    if (!lista) {
+        return NULL;
+    }
+    CelulaD *p;
+
+    for ( ; lista->ant ; lista = lista->ant); //garante que o controle da lista dupla esteja no início
+
+    for (p = lista; p ; p = p->prox) {
+        if (valor == p->conteudo)
+            return p;
+    }    
+    return NULL;
+}
+
+//inserindo na lista com ordenacao. Na sua posição correta: no início, no fim, ou no meio
+CelulaD *inserir(int valor, CelulaD *lista) {
+	CelulaD *novo; //para alocar nova CelulaD 
+    CelulaD *pR, *p;
+
+	//alocar memoria
+	novo = (CelulaD *)malloc(sizeof(CelulaD));
+	
+    //depositar valor
+	novo->conteudo = valor;
+    novo->prox = NULL; //nao sabemos onde o novo será inserido
+    novo->ant = NULL;
+
+    if (!lista) {
+        return novo;
+    }
+
+    for ( ; lista->ant ; lista = lista->ant); //garante que o controle da lista dupla esteja no início
+
+    //percorrer a lista a procura da posicao correta
+    for (pR = NULL, p = lista; p ; pR = p, p = p->prox) {
+        if (valor < p->conteudo) {
+            //achamos a posicao
+            break;
+        }
+    }
+    //numero inserido como primeiro
+    if (!pR) { // p == lista
+        novo->prox = p; //ou novo->prox = lista;
+        p->ant = novo;
+        return novo;
+    } else if (p == NULL) {//numero inserido na ultima posicao
+        pR->prox = novo;
+        novo->ant = pR;
+    } else {//numero inserido no meio
+        pR->prox = novo;
+        novo->ant = pR;
+        novo->prox = p;
+        p->ant = novo;
+    }	
+	return lista; //retornamos o primeiro elemento
+}
+
+Celula *excluir(int valor, Celula *lista) {
+    Celula *p, *pR;
+
+    if (!lista) {
+        return lista; //return NULL;
+    }
+
+    for (pR = NULL, p = lista; p ; pR = p, p = p->prox) {
+        if (valor == p->conteudo) {
+            printf("Valor localizado e será removido\n");
+            break;
+        }
+    }
+
+    if (!p) {
+        printf("Valor não localizado\n");
+        return lista;
+    }
+    //valor é o primeiro elemento
+    if (!pR) { // if (p == lista)
+        //código para remover o primeiro elemento
+        lista = lista->prox;
+    } else if (!p->prox) {
+        //código para remover o último elemento
+        pR->prox = NULL;
+    } else {
+        //código para remover o elemento que estiver no meio da lista
+        pR->prox = p->prox;
+    }
+    free(p);
+    return lista;
+}
+
+
 int main() {
     setlocale(LC_ALL,"Portuguese");
+    CelulaD *listaD = NULL;
     
+    srand(time(NULL));
+
+    int i;
+    for (i = 0; i < 5; i++) {
+        listaD = inserir(rand() % 100, listaD);
+    }
+
+    printf("A lista dupla tem %d elementos\n", contar(listaD));
+    exibir(listaD);
+
+    int numero;
+    printf("Digite um número para excluir: ");
+    scanf("%d",&numero);
+
+    listaD = excluir(numero, listaD);
+
+    printf("A lista dupla tem %d elementos após a exclusão\n", contar(listaD));
+    exibir(listaD);
+
+
     return 1;
 }
