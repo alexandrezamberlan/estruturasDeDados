@@ -44,11 +44,12 @@ void inserirFila(int valor, Fila *f) {
 /*
 metodo que remove elemento da cabeca da fila
 */
-void removerFila(Fila *f) {
+int removerFila(Fila *f) {
 	Celula *lixo;
-
+    int ficha;
 	//fila existe?
 	if (f->cabeca) {
+		ficha = f->cabeca->dado;
 		lixo = f->cabeca;
 		f->cabeca = f->cabeca->prox;
 		free(lixo);
@@ -57,10 +58,9 @@ void removerFila(Fila *f) {
 		if (!f->cabeca) {
 			f->cauda = NULL;
 		}
-	} else {
-		printf("Fila vazia\n");
-	}
-
+		return ficha;
+	} 
+	return -27;
 }
 
 int main() {
@@ -76,8 +76,11 @@ int main() {
 
 	printf("Na cabeca: %d\nNa cauda: %d\n", fila.cabeca->dado, fila.cauda->dado);
 
-	removerFila(&fila);
-	removerFila(&fila);
+	int ficha;
+	ficha = removerFila(&fila);
+	printf("Ficha atendida: %d\n", ficha);
+	ficha = removerFila(&fila);
+	printf("Ficha atendida: %d\n", ficha);
 
 	printf("Situacao da fila apos remocoes!\n");
 	printf("Na cabeca: %d\nNa cauda: %d\n", fila.cabeca->dado, fila.cauda->dado);

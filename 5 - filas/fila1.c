@@ -18,11 +18,15 @@ void inicializacao(Fila *f) {
 	f->cauda = NULL;
 }
 
-int main() {
+int main() { 
 
-	Fila fila; //observe o tipo Fila utilizado
+	Fila fila1; //observe o tipo Fila utilizado
+	Fila fila2;
+	Fila fila3;
 
-	inicializacao(&fila); //observe que fila nao eh um ponteiro
-
+	inicializacao(&fila1); //observe que fila nao eh um ponteiro
+	inicializacao(&fila2); //observe que fila nao eh um ponteiro
+	inicializacao(&fila3); //observe que fila nao eh um ponteiro
+	
 	return 1;
 }
