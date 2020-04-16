@@ -117,6 +117,17 @@ Celula *mesclarComControleDuplicidade(Celula *lista1, Celula *lista2) {
     return listaResultado;
 }
 
+Celula *podar(Celula *lista) {
+  if (!lista) return lista;
+  lista = excluir(lista->conteudo,lista); //excluindo o primeiro
+  Celula *p;
+  if (!lista) return lista; //excluiu o primeiro e acabou a lista
+  for (p = lista; p->prox; p = p->prox);
+  lista = excluir(p->conteudo, lista); //exclui o último
+  return lista;
+}
+
+
 int main() {
     setlocale(LC_ALL,"Portuguese");
 	Celula *lista1 = NULL;

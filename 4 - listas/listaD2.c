@@ -135,6 +135,20 @@ CelulaD *excluir(int valor, CelulaD *lista) {
     return lista;
 }
 
+CelulaD *excluirTodasOcorrencias(int valor, CelulaD *lista) {
+    if (!lista) return lista;
+    
+    for ( ; lista->ant ; lista = lista->ant); //garante que o controle da lista dupla esteja no início
+
+    CelulaD *p;
+    for (p = lista; p ; p = p->prox) {
+        if (valor == p->conteudo) {
+            lista = excluir(valor, lista);
+        }
+    }
+    return lista;
+}
+
 CelulaD *destruir(CelulaD *lista) {
     CelulaD *pR, *p;
 
@@ -169,7 +183,7 @@ int main() {
     printf("Digite um número para excluir: ");
     scanf("%d",&numero);
 
-    listaD = excluir(numero, listaD);
+    listaD = excluirTodasOcorrencias(numero, listaD);
 
     printf("A lista dupla tem %d elementos após a exclusão\n", contar(listaD));
     exibir(listaD);
