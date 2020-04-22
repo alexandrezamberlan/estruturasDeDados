@@ -3,7 +3,7 @@
 
 //tipo para a celula, como em pilhas e listas simples
 typedef struct nodo {
-	int dado;
+	int conteudo;
 	struct nodo *prox;
 } Celula;
 
@@ -28,7 +28,7 @@ void inserirFila(int valor, Fila *f) {
 	Celula *novo;
 
 	novo = (Celula *)malloc(sizeof(Celula));
-	novo->dado = valor;
+	novo->conteudo = valor;
 	novo->prox = NULL;
 
 	//eh a primeira vez?
@@ -39,6 +39,18 @@ void inserirFila(int valor, Fila *f) {
 		f->cauda->prox = novo;
 		f->cauda = novo;
 	}
+}
+
+int contarFila(Fila f) {
+	int quantidade = 0;
+	if (!f.cabeca) return quantidade;
+
+	Celula *p;
+	for (p = f.cabeca; p ; p = p->prox) {
+		quantidade++;
+	}
+
+	return quantidade;
 }
 
 int main() {
@@ -52,7 +64,9 @@ int main() {
 	inserirFila(13, &fila);
 	inserirFila(66, &fila);
 
-	printf("Na cabeca: %d\nNa cauda: %d\n", fila.cabeca->dado, fila.cauda->dado);
+	printf("Na cabeca: %d\nNa cauda: %d\n", fila.cabeca->conteudo, fila.cauda->conteudo);
+
+	printf("Tamanho da fila: %d\n", contarFila(fila)); //nao passo o endereco, pq nao vai se alterar a fila
 
 	return 1;
 }

@@ -1,4 +1,6 @@
-Construir programa em C que simule os processos de geração/retirada de senha em atendimento (normal ou prioritário) e a chamada da senha (a cada 3 atendimentos normais, chamar um prioritário).
+Construir programa em C que simule os processos de geração/retirada de 
+senha em atendimento (normal ou prioritário) e a chamada da senha 
+(a cada 3 atendimentos normais, chamar um prioritário).
 
 Sugere-se um menu:
 
@@ -8,4 +10,7 @@ Sugere-se um menu:
 
 3 - Atender
 
-Como incremento do desafio, sugere-se a construção de uma comunicação serial ou paralela, em que em um computador há o processo geração de fichas e em outro computador, o processo de atendimento de fichas.
+Como incremento do desafio, sugere-se a construção de uma 
+comunicação serial ou paralela, em que em um computador há o 
+processo geração de fichas e em outro computador, o processo de atendimento de 
+fichas.

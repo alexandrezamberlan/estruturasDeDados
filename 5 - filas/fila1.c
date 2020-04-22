@@ -20,6 +20,9 @@ void inicializacao(Fila *f) {
 
 int main() { 
 
+	Celula *lista = NULL;
+	Celula *listaC = NULL;
+
 	Fila fila1; //observe o tipo Fila utilizado
 	Fila fila2;
 	Fila fila3;
