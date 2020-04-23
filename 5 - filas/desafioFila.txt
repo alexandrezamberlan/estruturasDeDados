@@ -10,7 +10,7 @@ Sugere-se um menu:
 
 3 - Atender
 
-Como incremento do desafio, sugere-se a construção de uma 
-comunicação serial ou paralela, em que em um computador há o 
-processo geração de fichas e em outro computador, o processo de atendimento de 
-fichas.
+4 - Sair
+
+Regra do negócio: a cada 3 fichas normais atendidas, chamar um ficha Prioritária
+DICA: usar duas filas, uma para normal (1  a 999) outra para Prioritária (1000 a 2000)
