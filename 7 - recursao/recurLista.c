@@ -54,22 +54,28 @@ void exibir(Celula *lista) {
     }
     printf("\n");
 }
-
-
 //20 -> 45 -> 78 -> 98
 
-void exibirR(Celula *lista) { //inicialização é sempre no parâmetro - Ponto A
-    if (lista) { //Ponto B
-        printf("%d\t", lista->conteudo);
-        exibirR(lista->prox); //Ponto C é no momento do empilhamento - Ponto de recursão
+void exibirR(Celula *lista) { //inicialização da variável de controle
+    if (lista) { //teste de parada
+        printf("%d\t", lista->conteudo); //código do empilhamento
+        exibirR(lista->prox); //ponto de recursão com a transformação da variável de controle
     }
 }
 
-void mostrarMaiorR(Celula *lista) {
-    if (lista->prox) {
-        mostrarMaioR(lista->prox);
-    } else {
-        printf("Maior elemento é: %d\n", lista->conteudo);
+void exibirParesImparesR(Celula *lista) { //inicialização variável de controle
+    if (lista) { //teste de parada usando a variável de controle
+        //no empilhamento
+        if (lista->conteudo % 2 == 0){
+            printf("%d\t", lista->conteudo);
+        }
+
+        exibirParesImparesR(lista->prox); //ponto de recursão com a transformação da variável de controle
+
+        //no desempilhamento
+        if (lista->conteudo % 2 != 0) {
+            printf("%d\t", lista->conteudo);
+        }
     }
 }
 
@@ -97,7 +103,7 @@ int main() {
     
     lista = popular(lista,10);
     printf("A lista contém: %d números sorteados\n", contar(lista));
-    exibirR(lista);
+    exibirParesImparesR(lista);
 
 	return 1;
 }

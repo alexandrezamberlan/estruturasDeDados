@@ -7,7 +7,7 @@ RECURSÃO
                         - por isso árvores são adequados com RECURSÃO
     
     - 3 pontos importantes de se avaliar em uma repetição com RECURSÃO
-        - ponto A: iniciazliação da varíavel de controle 
+        - ponto A: inicialização da varíavel de controle 
         - ponto B: teste de parada/continuação
         - ponto C: transformação na variável de controle    
             i++
@@ -19,7 +19,6 @@ RECURSÃO
     for (int i = 0; i < 10; i++) {
 
     }     
-
 
     - dois tipos de métodos recursivos
         - métodos sem retorno (void)
