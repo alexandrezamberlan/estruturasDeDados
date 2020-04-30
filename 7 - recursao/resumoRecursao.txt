@@ -29,16 +29,54 @@ EXERCÍCIOS
 
 1) Faça um método sem retorno e recursivo que receba um número inteiro (positivo) como 
 parâmetro e exiba todos os números pares entre 0 e ele.
+//método recursivo
+
+void mostraNumerosR(valor) { //Ponto A - inicialização da variável se dá no parâmetro
+	if (valor >= 0) { //ponto B
+		//códigos executados no empilhamento
+       
+		mostraNumerosR( valor - 1 ); //ponto de recursão com o Ponto C - transformação da var. de controle
+		
+        //códigos executados no desempilhamento
+        if (valor % 2 == 0) {
+            printf("%d\t", valor);
+        }
+		
+	}
+}
 
 2) Faça um método sem retorno e recursivo que receba um número inteiro (positivo) e uma
 lista simples. O método deve exibir o endereço físico do número passado no parâmetro.
-Caso exista o número esteja replicado na lista, exibir todos os endereços do número.
+Caso o número esteja replicado na lista, exibir todos os endereços do número.
 
-3) Faça um método sem retorno e recursivo que receba uma lista simples ou uma lista
-circular. O método deve escrever se a lista passada no parâmetro é SIMPLES ou CIRCULAR.
+void mostraEnderecoR(int valor, Celula *lista) {
+    if (lista) {
+        if (valor == lista->conteudo) {
+            printf("%p\n", lista);
+        }
+        mostraEnderecoR(valor, lista->prox);  
+    }
+}
+
 
 4) Faça um método sem retorno e recursivo que receba um vetor de inteiros e o seu tamanho.
 Exiba todos os elementos do vetor
 
+void exibirR(int *vetor, int n) {
+    if (n > 0) {
+        exibirR(vetor, n - 1);
+        printf("%d\t",vetor[n - 1]);
+    }
+}
+
 5) Faça um método sem retorno e recursivo que receba um vetor de inteiros e o seu tamanho.
 Exiba todos os elementos pares do vetor.
+
+void exibirR(int *vetor, int n) {
+    if (n > 0) {
+        exibirR(vetor, n - 1);
+        if (vetor[n - 1] % 2 == 0) {
+            printf("%d\t",vetor[n - 1]);
+        }
+    }
+}
