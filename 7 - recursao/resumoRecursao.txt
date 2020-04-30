@@ -24,3 +24,21 @@ RECURSÃO
         - métodos sem retorno (void)
 
         - métodos com retorno (return)
+
+EXERCÍCIOS
+
+1) Faça um método sem retorno e recursivo que receba um número inteiro (positivo) como 
+parâmetro e exiba todos os números pares entre 0 e ele.
+
+2) Faça um método sem retorno e recursivo que receba um número inteiro (positivo) e uma
+lista simples. O método deve exibir o endereço físico do número passado no parâmetro.
+Caso exista o número esteja replicado na lista, exibir todos os endereços do número.
+
+3) Faça um método sem retorno e recursivo que receba uma lista simples ou uma lista
+circular. O método deve escrever se a lista passada no parâmetro é SIMPLES ou CIRCULAR.
+
+4) Faça um método sem retorno e recursivo que receba um vetor de inteiros e o seu tamanho.
+Exiba todos os elementos do vetor
+
+5) Faça um método sem retorno e recursivo que receba um vetor de inteiros e o seu tamanho.
+Exiba todos os elementos pares do vetor.
