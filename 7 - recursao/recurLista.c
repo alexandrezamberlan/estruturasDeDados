@@ -43,6 +43,16 @@ Celula *inserir(int valor, Celula *lista) {
 	return lista; //retornamos o primeiro elemento
 }
 
+Celula *popular(Celula *lista, int quantidade) {
+    srand(time(NULL));
+    int i;
+    for (i = 0; i < quantidade; i++ ) {
+        lista = inserir(rand() % 100, lista);
+    }
+
+    return lista;
+}
+
 void exibir(Celula *lista) {
     Celula *p;
     if (!lista) {
@@ -54,7 +64,6 @@ void exibir(Celula *lista) {
     }
     printf("\n");
 }
-//20 -> 45 -> 78 -> 98
 
 void exibirR(Celula *lista) { //inicialização da variável de controle
     if (lista) { //teste de parada
@@ -81,20 +90,47 @@ void exibirParesImparesR(Celula *lista) { //inicialização variável de control
 
 int contar(Celula *lista) {
     Celula *p;
-    int total = 0;
-    for (p = lista; p; p = p->prox, total++);
+    int conta = 0;
+    for (p = lista; p; p = p->prox, conta++);
 
-    return total;
+    return conta;
 }
 
-Celula *popular(Celula *lista, int quantidade) {
-    srand(time(NULL));
-    int i;
-    for (i = 0; i < quantidade; i++ ) {
-        lista = inserir(rand() % 100, lista);
-    }
 
-    return lista;
+int contarR(Celula *lista) { //inicialização da variável de controle no parâmetro
+    if (lista) { //teste de parada usando a variável de controle
+        int c = contarR(lista->prox); //para o método que me chamou
+        return 1 + c;
+    }
+    return 0; //para o método que me chamou ... ponto de descida
+}
+
+int somarR(Celula *lista) { //inicialização da variável de controle no parâmetro
+    if (lista) { //teste de parada usando a variável de controle
+        return lista->conteudo + somarR(lista->prox); //para o método que me chamou
+    }
+    return 0; //para o método que me chamou ... ponto de descida
+}
+
+int maiorR(Celula *lista) {
+    if (lista->prox) {
+        int oQueVemDeCima = maiorR(lista->prox);
+        if (oQueVemDeCima > lista->conteudo)
+            return oQueVemDeCima;
+        return lista->conteudo;
+    }
+    return lista->conteudo;
+}
+
+// A              
+ 
+Celula *destruirR(Celula *lista) {
+    if (lista) {    
+        lista->prox = destruirR(lista->prox);
+        free(lista);
+        return NULL;
+    }
+    return NULL;
 }
 
 int main() {
@@ -102,9 +138,20 @@ int main() {
 	Celula *lista = NULL;
     
     lista = popular(lista,10);
-    printf("A lista contém: %d números sorteados\n", contar(lista));
-    exibirParesImparesR(lista);
+    printf("A lista contém: %d números sorteados\n", contarR(lista));
+    exibirR(lista);
+    printf("A soma dos elementos da lista é: %d\n", somarR(lista));
+    printf("O maior elemento da lista é: %d\n", maiorR(lista)); //supondo que a lista não está ordenada
+
+    lista = destruirR(lista);
 
 	return 1;
 }
+
+
+
+
+
+
+
 

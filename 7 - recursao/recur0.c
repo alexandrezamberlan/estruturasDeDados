@@ -47,19 +47,49 @@ void exibirFaixaR(int ini, int fim) {
     }
 }
 
+void exibirR(int *vetor, int n) {
+    if (n > 0) {
+        exibirR(vetor, n - 1);
+        printf("%d\t", vetor[n - 1]);
+    }
+}
+
+int somarR(int *vetor, int n) {
+    if (n > 0) {
+        return vetor[n - 1] + somarR(vetor, n - 1);
+    }
+    return 0;
+}
+
+int maiorR(int *vetor, int n) {
+    if (n > 1) {
+        int oQueVemDeCima = maiorR(vetor, n - 1);
+        if (oQueVemDeCima > vetor[n -1])
+            return oQueVemDeCima;
+        return vetor[n - 1];
+    }
+    return vetor[n - 1];
+}
 
 int main(){
-	int ini, fim;
-    printf("Digite um valor inicial: ");
-    scanf("%d",&ini);
+    // int vetor[4] = {5,1,450,89};
+    // exibirR(vetor,4);
+    // printf("A soma dos elementos do vetor é: %d\n", somarR(vetor, 4));
 
-    printf("Digite um valor final: ");
-    scanf("%d",&fim);
-    //exibirSequencia(ini);
-    //exibirSequenciaInvertida(ini);
-    //exibirSequenciaInvertidaR(ini);
+    // printf("Maior valor do vetor: %d\n", maiorR(vetor, 4));
+    
+    // int ini, fim;
+    // printf("Digite um valor inicial: ");
+    // scanf("%d",&ini);
 
+    // printf("Digite um valor final: ");
+    // scanf("%d",&fim);
+    // //exibirSequencia(ini);
+    // //exibirSequenciaInvertida(ini);
+    // //exibirSequenciaInvertidaR(ini);
+    // exibirFaixaR(ini,fim);
 
-    exibirFaixaR(ini,fim);
-	return 1;
+    printf("A quantidade de elementos na faixa é: %d\n", contarFaixaR(5,9));
+    printf("A soma de elementos na faixa é: %d\n", somarFaixaR(5,9));
+    return 1;
 }
