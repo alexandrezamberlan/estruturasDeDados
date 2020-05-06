@@ -80,9 +80,6 @@ int somarR(Celula *lista) {
 //     return 0;
 // }
 
-
-// A   B     C   .
-//12 -> 24 -> 56 ->.
 Celula *localizarR(int valor, Celula *lista) {
     if (lista) {
         if (valor == lista->conteudo) {
@@ -94,23 +91,43 @@ Celula *localizarR(int valor, Celula *lista) {
 }
 
 
+int posicaoLogicaR(int valor, Celula *lista) {
+    if (lista) {
+        if (valor == lista->conteudo) {//valor localizado, assume-se que é na posição 0
+            return 0;
+        } else {
+            int posicao = posicaoLogicaR(valor, lista->prox);
+        
+            if (posicao == -27) return -27; //se esta vindo do desempilhamento -27, mantemos -27
+
+            return 1 + posicao;
+        }
+    }
+    return -27;
+}
+// A   B     C   .
+//12 -> 24 -> 56 ->.
+Celula *destruirR(Celula *lista) { //free no desempilhamento
+    if (lista) {
+        lista->prox = destruirR(lista->prox);
+        free(lista);
+        return NULL;
+    }
+    return NULL;
+}
 
 int main() {
     srand(time(NULL));
     Celula *lista = NULL;
-
     lista = inserirR(12,lista);
     lista = inserirR(24,lista);
     lista = inserirR(56,lista);
-
     exibirR(lista);
-
     printf("\nA lista tem %d elementos\n", contarR(lista));
     printf("A soma dos elementos da lista é: %d\n", somarR(lista));
-
     printf("Dado 56 está na lista? %p\n",localizarR(56,lista));
+    printf("A posição lógica do 12 é: %d\n", posicaoLogicaR(12,lista));
 
-    printf("A posição lógica do 56 é: %d\n", posicaoLogicaR(56,lista));
-
+    lista = destruirR(lista); //liberar a memória de todos os elementos alocados
     return 1;
 }
