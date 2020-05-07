@@ -10,7 +10,6 @@ typedef struct nodo {
     struct nodo *prox;
 } CelulaD;
 
-
 void exibir(CelulaD *lista) {
     if (!lista) {
         printf("Lista vazia\n");
@@ -55,86 +54,6 @@ CelulaD *localizar(int valor, CelulaD *lista) {
     return NULL;
 }
 
-//inserindo na lista com ordenacao. Na sua posição correta: no início, no fim, ou no meio
-CelulaD *inserir(int valor, CelulaD *lista) {
-	CelulaD *novo; //para alocar nova CelulaD 
-    CelulaD *pR, *p;
-
-	//alocar memoria
-	novo = (CelulaD *)malloc(sizeof(CelulaD));
-	
-    //depositar valor
-	novo->conteudo = valor;
-    novo->prox = NULL; //nao sabemos onde o novo será inserido
-    novo->ant = NULL;
-
-    if (!lista) {
-        return novo;
-    }
-
-    for ( ; lista->ant ; lista = lista->ant); //garante que o controle da lista dupla esteja no início
-
-    //percorrer a lista a procura da posicao correta
-    for (pR = NULL, p = lista; p ; pR = p, p = p->prox) {
-        if (valor < p->conteudo) {
-            //achamos a posicao
-            break;
-        }
-    }
-    //numero inserido como primeiro
-    if (!pR) { // p == lista
-        novo->prox = p; //ou novo->prox = lista;
-        p->ant = novo;
-        return novo;
-    } else if (p == NULL) {//numero inserido na ultima posicao
-        pR->prox = novo;
-        novo->ant = pR;
-    } else {//numero inserido no meio
-        pR->prox = novo;
-        novo->ant = pR;
-        novo->prox = p;
-        p->ant = novo;
-    }	
-	return lista; //retornamos o primeiro elemento
-}
-
-CelulaD *excluir(int valor, CelulaD *lista) {
-    CelulaD *p, *pR;
-
-    if (!lista) {
-        return lista; //return NULL;
-    }
-
-    for ( ; lista->ant ; lista = lista->ant); //garante que o controle da lista dupla esteja no início
-
-    for (pR = NULL, p = lista; p ; pR = p, p = p->prox) {
-        if (valor == p->conteudo) {
-            printf("Valor localizado e será removido\n");
-            break;
-        }
-    }
-
-    if (!p) {
-        printf("Valor não localizado\n");
-        return lista;
-    }
-    //valor é o primeiro elemento
-    if (!pR) { // if (p == lista)
-        //código para remover o primeiro elemento
-        lista = lista->prox;
-        lista->ant = NULL;
-    } else if (!p->prox) {
-        //código para remover o último elemento
-        pR->prox = NULL;
-    } else {
-        //código para remover o elemento que estiver no meio da lista
-        pR->prox = p->prox;
-        p->prox->ant = pR;
-    }
-    free(p);
-    return lista;
-}
-
 CelulaD *destruir(CelulaD *lista) {
     CelulaD *pR, *p;
 
@@ -149,7 +68,6 @@ CelulaD *destruir(CelulaD *lista) {
 
     return NULL;
 }
-
 
 int main() {
     setlocale(LC_ALL,"Portuguese");

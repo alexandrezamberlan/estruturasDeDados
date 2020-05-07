@@ -4,9 +4,9 @@ senha em atendimento (normal ou prioritário) e a chamada da senha
 
 Sugere-se um menu:
 
-1 - Gerar Ficha Normal
+1 - Gerar Ficha Normal - (1 a 999)
 
-2 - Gerar Ficha Prioritária
+2 - Gerar Ficha Prioritária (1000 - 1999)
 
 3 - Atender
 

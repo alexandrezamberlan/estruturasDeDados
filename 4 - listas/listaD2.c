@@ -10,7 +10,6 @@ typedef struct nodo {
     struct nodo *prox;
 } CelulaD;
 
-
 void exibir(CelulaD *lista) {
     if (!lista) {
         printf("Lista vazia\n");

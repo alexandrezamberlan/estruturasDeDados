@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-
 void exibirSequencia(int valor) {
     int i;
     for (i = 0; i <= valor; i++) {
@@ -71,6 +69,16 @@ int maiorR(int *vetor, int n) {
     return vetor[n - 1];
 }
 
+
+
+
+//0   1   1   2   3
+void fibonacciR(int pen, int ult, int n) {
+    if (n > 0) {
+
+    }
+}
+
 int main(){
     // int vetor[4] = {5,1,450,89};
     // exibirR(vetor,4);
@@ -89,7 +97,15 @@ int main(){
     // //exibirSequenciaInvertidaR(ini);
     // exibirFaixaR(ini,fim);
 
-    printf("A quantidade de elementos na faixa é: %d\n", contarFaixaR(5,9));
-    printf("A soma de elementos na faixa é: %d\n", somarFaixaR(5,9));
+    // printf("A quantidade de elementos na faixa é: %d\n", contarFaixaR(5,9));
+    // printf("A soma de elementos na faixa é: %d\n", somarFaixaR(5,9));
+
+    int numero;
+    printf("Insira número para descobrir fatorial: ");
+    scanf("%d", &numero);
+    printf("Fatorial de %d é %.0f\n", numero, fatorialR(numero));
+
+    fibonacciR(0,1,5);
+
     return 1;
 }

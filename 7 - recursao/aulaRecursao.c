@@ -80,38 +80,16 @@ int somarR(Celula *lista) {
 //     return 0;
 // }
 
-Celula *localizarR(int valor, Celula *lista) {
-    if (lista) {
-        if (valor == lista->conteudo) {
-            return lista;
-        }
-        return localizarR(valor, lista->prox);
-    }
-    return NULL;
-}
 
 
-int posicaoLogicaR(int valor, Celula *lista) {
-    if (lista) {
-        if (valor == lista->conteudo) {//valor localizado, assume-se que é na posição 0
-            return 0;
-        } else {
-            int posicao = posicaoLogicaR(valor, lista->prox);
-        
-            if (posicao == -27) return -27; //se esta vindo do desempilhamento -27, mantemos -27
 
-            return 1 + posicao;
-        }
-    }
-    return -27;
-}
 // A   B     C   .
-//12 -> 24 -> 56 ->.
+//12 -> 24 -> 56 .
 Celula *destruirR(Celula *lista) { //free no desempilhamento
     if (lista) {
         lista->prox = destruirR(lista->prox);
         free(lista);
-        return NULL;
+        // return NULL; nao precisa, pq o return NULL será chamado em seguida
     }
     return NULL;
 }

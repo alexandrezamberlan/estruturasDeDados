@@ -72,6 +72,40 @@ Celula *popular(Celula *lista, int quantidade) {
     return lista;
 }
 
+//inserindo na lista sem ordenacao, sempre na última posição
+Celula *inserir(int valor, Celula *lista) {
+	Celula *novo; //para alocar nova celula
+    Celula *p, *pR;
+	//alocar memoria
+	novo = (Celula *)malloc(sizeof(Celula));
+	//depositar valor
+	novo->conteudo = valor;
+    novo->prox = NULL;
+
+    if (!lista) {
+        return novo;
+    }
+
+    //percorrer a lista a procura da posicao correta
+    for (pR = NULL, p = lista; p ; pR = p, p = p->prox) {
+        if (valor < p->conteudo) {
+            //achamos a posicao
+            break;
+        }
+    }
+    //numero inserido como primeiro
+    if (!pR) {
+        novo->prox = p; //ou novo->prox = lista;
+        return novo;
+    } else if (p == NULL) {//numero inserido na ultima posicao
+        pR->prox = novo;
+    } else {//numero inserido no meio
+        pR->prox = novo;
+        novo->prox = p;
+    }	
+	return lista; //retornamos o primeiro elemento
+}
+
 Celula *excluir(int valor, Celula *lista) {
     Celula *p, *pR;
 
