@@ -70,9 +70,14 @@ int maiorR(int *vetor, int n) {
 }
 
 
+//6 * 5 * 4 * 3 * 2
+double fatorialR(int numero) { //ponto A - inicialização da variável de controle
+    if (numero > 1) {          //ponto B - teste de parada com a variável de controle
+        return numero * fatorialR(numero - 1); //ponto C - ponto de recursão com a transformação da variável de controle
+    }
+    return 1;
+}
 
-
-//0   1   1   2   3
 void fibonacciR(int pen, int ult, int n) {
     if (n > 0) {
 
@@ -105,7 +110,7 @@ int main(){
     scanf("%d", &numero);
     printf("Fatorial de %d é %.0f\n", numero, fatorialR(numero));
 
-    fibonacciR(0,1,5);
+    //fibonacciR(0,1,5);
 
     return 1;
 }

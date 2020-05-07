@@ -81,8 +81,6 @@ int somarR(Celula *lista) {
 // }
 
 
-
-
 // A   B     C   .
 //12 -> 24 -> 56 .
 Celula *destruirR(Celula *lista) { //free no desempilhamento
@@ -94,6 +92,22 @@ Celula *destruirR(Celula *lista) { //free no desempilhamento
     return NULL;
 }
 
+Celula *localizarR(int valor, Celula *lista) { //ponto A - inicialização da variável de controle lista
+    if (lista) { //ponto B - teste de parada da recursão
+        if (valor == lista->conteudo) {
+            return lista; //outro ponto de desempilhamento
+        } 
+        Celula *resposta = localizarR(valor, lista->prox);
+
+        //inserir códigos para serem executados depois do desempilhamento
+
+        return resposta; //ponto C - ponto de recursão com a transformação da variável de controle
+    }
+    return NULL; //ponto de desempilhamento
+}
+
+//A    B    C
+//12 - 24 - 56
 int main() {
     srand(time(NULL));
     Celula *lista = NULL;
@@ -103,8 +117,8 @@ int main() {
     exibirR(lista);
     printf("\nA lista tem %d elementos\n", contarR(lista));
     printf("A soma dos elementos da lista é: %d\n", somarR(lista));
-    printf("Dado 56 está na lista? %p\n",localizarR(56,lista));
-    printf("A posição lógica do 12 é: %d\n", posicaoLogicaR(12,lista));
+    printf("Dado 88 está na lista? %p\n",localizarR(88,lista));
+    //printf("A posição lógica do 12 é: %d\n", localizarPosicaoLogicaR(12,lista));
 
     lista = destruirR(lista); //liberar a memória de todos os elementos alocados
     return 1;
