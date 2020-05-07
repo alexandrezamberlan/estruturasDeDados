@@ -80,7 +80,9 @@ double fatorialR(int numero) { //ponto A - inicialização da variável de contr
 
 void fibonacciR(int pen, int ult, int n) {
     if (n > 0) {
-
+        int atual = pen + ult;
+        printf("%d\t",atual);
+        fibonacciR(ult, atual, n - 1);
     }
 }
 
@@ -106,11 +108,11 @@ int main(){
     // printf("A soma de elementos na faixa é: %d\n", somarFaixaR(5,9));
 
     int numero;
-    printf("Insira número para descobrir fatorial: ");
+    printf("Insira número para descobrir fatorial e fibonacci: ");
     scanf("%d", &numero);
     printf("Fatorial de %d é %.0f\n", numero, fatorialR(numero));
 
-    //fibonacciR(0,1,5);
+    fibonacciR(0,1,numero);
 
     return 1;
 }
