@@ -69,21 +69,30 @@ int maiorR(int *vetor, int n) {
     return vetor[n - 1];
 }
 
-
 //6 * 5 * 4 * 3 * 2
 double fatorialR(int numero) { //ponto A - inicialização da variável de controle
-    if (numero > 1) {          //ponto B - teste de parada com a variável de controle
-        return numero * fatorialR(numero - 1); //ponto C - ponto de recursão com a transformação da variável de controle
+    if (numero > 1) {
+        double var = fatorialR(numero - 1);          //ponto B - teste de parada com a variável de controle
+        //aplicar código no desempilhamento, analisando o conteúdo de var
+        return numero *  var; //ponto C - ponto de recursão com a transformação da variável de controle
     }
     return 1;
 }
-
-void fibonacciR(int pen, int ult, int n) {
-    if (n > 0) {
+//0 1 1 2 3 5 8 13 21 34
+void fibonacciR(int pen, int ult, int n) { //ponto A - inicialização da variável de controle
+    if (n > 0) { //ponto B - teste de parada
         int atual = pen + ult;
         printf("%d\t",atual);
-        fibonacciR(ult, atual, n - 1);
+        fibonacciR(ult, atual, n - 1); //ponto C - ponto de recursão, onde a variável de controle é transformada
     }
+}
+
+int ehPrimoR(int numero, int i) { //um numero primo é somente dividido por 1 e por ele mesmo
+    if (i > 1) {
+        if (numero % i == 0) return 0; //numero é dividido por outro
+        return ehPrimoR(numero, i - 1);
+    }
+    return 1; //passamos por todos os números
 }
 
 int main(){
@@ -113,6 +122,8 @@ int main(){
     printf("Fatorial de %d é %.0f\n", numero, fatorialR(numero));
 
     fibonacciR(0,1,numero);
+
+    printf("\n\n%d vai ser primo? (1 - sim; 0 - não): %d\n",numero, ehPrimoR(numero,numero-1));
 
     return 1;
 }

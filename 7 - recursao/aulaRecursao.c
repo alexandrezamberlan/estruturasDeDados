@@ -24,17 +24,17 @@ typedef struct no {
  * 
  * */
 
-Celula *inserirR(int valor, Celula *l) {		
-	if (l && valor > l->conteudo) {
+Celula *inserirR(int valor, Celula *lista) {		
+	if (lista && valor > lista->conteudo) {
 		//percorria - empilhar
-		l->prox = inserirR(valor, l->prox);
-		return l;
+		lista->prox = inserirR(valor, lista->prox);
+		return lista;
 	} else { //sai da lista
 		//aloca
 		Celula *novo = (Celula *)malloc(sizeof(Celula));
 		//deposita
 		novo->conteudo = valor;
-		novo->prox = l;
+		novo->prox = lista;
 		
 		//retorna
 		return novo;

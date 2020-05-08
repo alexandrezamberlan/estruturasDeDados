@@ -5,60 +5,74 @@
 #define TAM 8
 
 typedef struct no {
-	int dado;
+	int conteudo;
 	struct no *prox;
 } Celula;
 
-void exibirR(Celula *l) { //inicializou a variavel de controle
-	if (l) { //teste de parada
-		printf("%d\t", l->dado);			
-		exibirR(l->prox); //PONTO DE RECURSAO: transformacao variavel de controle
+void exibirR(Celula *lista) { //inicializou a variavel de controle
+	if (lista) { //teste de parada
+		printf("%d\t", lista->conteudo);			
+		exibirR(lista->prox); //PONTO DE RECURSAO: transformacao variavel de controle
 	}
 }
 
-Celula *inserirR(int valor, Celula *l) {		
-	if (l && valor > l->dado) {
+Celula *inserirR(int valor, Celula *lista) {		
+	if (lista && valor > lista->conteudo) {
 		//percorria - empilhar
-		l->prox = inserirR(valor, l->prox);
-		return l;
+		lista->prox = inserirR(valor, lista->prox);
+		return lista;
 	} else { //sai da lista
 		//aloca
 		Celula *novo = (Celula *)malloc(sizeof(Celula));
 		//deposita
-		novo->dado = valor;
-		novo->prox = l;
+		novo->conteudo = valor;
+		novo->prox = lista;
 		
 		//retorna
 		return novo;
 	}
 }
 
-int contarR(Celula *l) {
-	if (l) {
-		return 1 + contarR(l->prox);
+int contarR(Celula *lista) {
+	if (lista) {
+		return 1 + contarR(lista->prox);
 	}
 	return 0;
 }
 
-Celula *removerR(int valor, Celula *l) {
-	if (l) {
-		if (valor == l->dado) {
-			Celula *tmp = l->prox;
-			free(l);
+Celula *removerR(int valor, Celula *lista) {
+	if (lista) {
+		if (valor == lista->conteudo) {
+			Celula *tmp = lista->prox;
+			free(lista);
 			return tmp;
 		}
-		l->prox = removerR(valor, l->prox);
-		return l;
+		lista->prox = removerR(valor, lista->prox);
+		return lista;
 	}
 	return NULL;
 }
 
-Celula* destruirR(Celula *l) {
-	if (l){
-		l->prox = destruirR(l->prox);
-		free(l);
+Celula* destruirR(Celula *lista) {
+	if (lista){
+		lista->prox = destruirR(lista->prox);
+		free(lista);
 	}
 	return NULL;
+}
+
+Celula *localizarR(int valor, Celula *lista) { //ponto A - inicialização da variável de controle lista
+    if (lista) { //ponto B - teste de parada da recursão
+        if (valor == lista->conteudo) {
+            return lista; //outro ponto de desempilhamento
+        } 
+        Celula *resposta = localizarR(valor, lista->prox);
+
+        //inserir códigos para serem executados depois do desempilhamento
+
+        return resposta; //ponto C - ponto de recursão com a transformação da variável de controle
+    }
+    return NULL; //ponto de desempilhamento
 }
 
 int main() {
