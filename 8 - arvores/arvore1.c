@@ -25,30 +25,6 @@ Arvore *inserir(int valor, Arvore *r) { //Arvore Binaria de Pesquisa ou Ordenada
 	}
 }
 
-void exibirRED(Arvore *r) {
-	if (r) {
-		printf("%d\t", r->conteudo);
-		exibirRED(r->esq);
-		exibirRED(r->dir);
-	}
-}
-
-void exibirERD(Arvore *r) {
-	if (r) {		
-		exibirERD(r->esq);
-		printf("%d\t", r->conteudo);
-		exibirERD(r->dir);
-	}
-}
-
-void exibirEDR(Arvore *r) {
-	if (r) {		
-		exibirEDR(r->esq);
-		exibirEDR(r->dir);
-		printf("%d\t", r->conteudo);		
-	}
-}
-
 void exibir(Arvore *r, int nivel) {
 	if (r) {
 		exibir(r->dir, nivel + 1);//vai para direita
@@ -91,16 +67,7 @@ int main() {
 		raiz = inserir(valor, raiz);
 	}
 	
-	printf("\n\nExibe pre-fixado: visita raiz; vai esq; vai dir\n");
-	exibirRED(raiz);
-	
-	printf("\n\nExibe in-fixado: vai esq; visita raiz; vai dir\n");
-	exibirERD(raiz);
-	
-	printf("\n\nExibe pos-fixado: vai esq; vai dir; visita raiz\n");
-	exibirEDR(raiz);
-	
-	printf("\n\nExibe tipo arvore deitada a partir do nivel 0\n");
+	printf("Exibe tipo arvore deitada a partir do nivel 0\n");
 	exibir(raiz, 0);
 	
 	printf("Informe um inteiro para pesquisa na arvore: ");
