@@ -48,9 +48,43 @@ Arvore *localizar(int valor, Arvore *r){
 	return NULL;
 }
 
+int localizarNivel(int valor, Arvore *r) {
+	if (r) {
+		
+	}
+	return -1;
+}
+
 int contarNos(Arvore *r) {
 	if (r) {
 		return 1 + contarNos(r->esq) + contarNos(r->dir);
+	}
+	return 0;
+}
+
+int contarNosFolhas(Arvore *r) {
+	if (r) {
+		if (!r->esq && !r->dir) {
+			return 1;
+		}
+		return 0 + contarNosFolhas(r->esq) + contarNosFolhas(r->dir);
+	}
+	return 0;
+}
+
+int contarNosNaoFolhas(Arvore *r) {
+	if (r) {
+		if (!r->esq && !r->dir) {
+			return 0;
+		}
+		return 1 + contarNosNaoFolhas(r->esq) + contarNosNaoFolhas(r->dir);
+	}
+	return 0;
+}
+
+int somarNos(Arvore *r) {
+	if (r) {
+		return r->conteudo+ somarNos(r->esq) + somarNos(r->dir);
 	}
 	return 0;
 }
@@ -67,15 +101,14 @@ int main() {
 		raiz = inserir(valor, raiz);
 	}
 	
-	printf("Exibe tipo arvore deitada a partir do nivel 0\n");
+	printf("Exibe arvore deitada a partir do nivel 0\n");
 	exibir(raiz, 0);
 	
 	printf("Informe um inteiro para pesquisa na arvore: ");
 	scanf("%d", &valor);
 	
-	printf("Endereco de %d na arvore: %p\n", valor, localizar(valor, raiz));
+	printf("Endereco de %d na arvore: %d\n", valor, localizarNivel(valor, raiz));
 	
-	printf("Total de elementos na arvore: %d\n", contarNos(raiz));
 	
 	return 1;
 }
