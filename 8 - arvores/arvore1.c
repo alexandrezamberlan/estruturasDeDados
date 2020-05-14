@@ -1,22 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <locale.h>
+
 #define TAM 5
 
 typedef struct no { //arvore binaria
-	int dado;
+	int conteudo;
 	struct no *esq, *dir;
 }Arvore;
 
 Arvore *inserir(int valor, Arvore *r) { //Arvore Binaria de Pesquisa ou Ordenada
 	if (r) {
-		if (valor < r->dado) r->esq = inserir(valor, r->esq); //vai para esquerda
+		if (valor < r->conteudo) r->esq = inserir(valor, r->esq); //vai para esquerda
 		else r->dir = inserir(valor, r->dir); //vai para direita
 		
 		return r;
 	} else {
 		Arvore *novo = (Arvore *)malloc(sizeof(Arvore));
-		novo->dado = valor;
+		novo->conteudo = valor;
 		novo->esq = NULL;
 		novo->dir = NULL;
 		return novo;
@@ -25,7 +27,7 @@ Arvore *inserir(int valor, Arvore *r) { //Arvore Binaria de Pesquisa ou Ordenada
 
 void exibirRED(Arvore *r) {
 	if (r) {
-		printf("%d\t", r->dado);
+		printf("%d\t", r->conteudo);
 		exibirRED(r->esq);
 		exibirRED(r->dir);
 	}
@@ -34,7 +36,7 @@ void exibirRED(Arvore *r) {
 void exibirERD(Arvore *r) {
 	if (r) {		
 		exibirERD(r->esq);
-		printf("%d\t", r->dado);
+		printf("%d\t", r->conteudo);
 		exibirERD(r->dir);
 	}
 }
@@ -43,7 +45,7 @@ void exibirEDR(Arvore *r) {
 	if (r) {		
 		exibirEDR(r->esq);
 		exibirEDR(r->dir);
-		printf("%d\t", r->dado);		
+		printf("%d\t", r->conteudo);		
 	}
 }
 
@@ -55,7 +57,7 @@ void exibir(Arvore *r, int nivel) {
 		for (i = 0; i < nivel; i++) {
 			printf("   ");
 		}
-		printf("(%d)%d\n", nivel, r->dado);
+		printf("(%d)%d\n", nivel, r->conteudo);
 		
 		exibir(r->esq, nivel + 1);//vai para esquerda
 	}
@@ -63,8 +65,8 @@ void exibir(Arvore *r, int nivel) {
 
 Arvore *localizar(int valor, Arvore *r){
 	if (r) {
-		if (valor == r->dado) return r; //dado localizado
-		if (valor < r->dado) return localizar(valor, r->esq); //procurar na esquerda
+		if (valor == r->conteudo) return r; //conteudo localizado
+		if (valor < r->conteudo) return localizar(valor, r->esq); //procurar na esquerda
 		/*else*/ return localizar(valor, r->dir);
 	}
 	return NULL;
@@ -85,7 +87,7 @@ int main() {
 	printf("Gerando numeros aleatorios para a arvore\n");
 	for (i = 0; i < TAM; i++){
 		valor = rand() % 100;
-		printf("%d\t", valor);
+		//printf("%d\t", valor);
 		raiz = inserir(valor, raiz);
 	}
 	
