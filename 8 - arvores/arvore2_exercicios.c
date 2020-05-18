@@ -38,6 +38,60 @@ void exibir(Arvore *r, int nivel) {
 		exibir(r->esq, nivel + 1);//vai para esquerda
 	}
 }
+/*
+1. Escreva uma função que receba como parâmetros: um ponteiro para a raiz de uma árvore 
+binária de pesquisa; e um valor inteiro. Ao final, esse método deverá retornar quantos 
+nós da árvore são múltiplos do valor inteiro passado como parâmetro.
+*/
+
+
+/*
+3. Escreva um método que receba como parâmetro um ponteiro para a raiz de uma árvore 
+binária de pesquisa. O método deverá retirar todos os nós folhas, ou seja, realizar a 
+poda.
+*/
+
+/*
+4. Escreva uma função que receba como parâmetros um ponteiro apontando para a raiz da 
+árvore binária de pesquisa e um valor inteiro. Faça com que a função delete o valor caso 
+localizado na Árvore e se estiver em nodo folha.
+*/
+
+/*
+5. Escreva um método que receba como parâmetro um ponteiro para a raiz de uma árvore 
+binária de pesquisa. O método deverá retirar todos os nós da árvore.
+*/
+
+
+/*
+7. Construa uma função que receba como parâmetro um ponteiro apontando para a raiz de 
+uma árvore binária de pesquisa e retorne um valor indicando verdadeiro se a árvore 
+existir e se os nós de maior e menor valor da árvore estiverem no mesmo nível. 
+Por valor do nó, entenda-se o conteúdo armazenado no campo valor.
+*/
+
+/*
+9. Escreva uma função que receba como parâmetro um ponteiro para a raiz de uma árvore 
+binária de pesquisa e retorne um ponteiro para o nó NÃO FOLHA de maior valor.
+*/
+
+/*
+10. Escreva uma função que receba como parâmetros: (i) um ponteiro para a raiz de uma 
+árvore binária de pesquisa; (ii) valor inteiro em n. A função deverá contar os nós da 
+árvore que NÃO estão na subárvore que tem em sua raiz o valor n (se houver esse nó). 
+Se esse nó não existir, devem ser contados todos os nós da árvore, e se ele for a raiz 
+recebida como parâmetro, a contagem deve ser 0 (zero). O resultado da contagem deve ser 
+retornado. Não use variáveis globais.
+*/
+
+/*
+11. Escreva uma função que receba como parâmetros um ponteiro apontando para a raiz 
+da árvore binária de pesquisa e dois valores inteiros M e N. Faça com que a função 
+verifique se existe um nó com valor igual a M no caminho entre a raiz e o nó de valor 
+igual a N. Se existir, a função deve retornar a diferença entre os níveis dos dois nós. 
+Se N não existir na árvore, ou se M não existir no caminho até N, deve ser retornado o 
+valor -1.
+*/
 
 Arvore *localizar(int valor, Arvore *r){
 	if (r) {
@@ -48,6 +102,12 @@ Arvore *localizar(int valor, Arvore *r){
 	return NULL;
 }
 
+/*
+2. Escreva uma função que receba dois parâmetros: um valor inteiro e um ponteiro para o 
+primeiro elemento de uma árvore binária de pesquisa. A função deverá retornar o nível 
+que se encontra esse valor inteiro na árvore. Lembrando que o primeiro nível é Zero, 
+segundo é Um e assim por diante. Caso o valor não esteja na árvore, retornar -1.
+*/
 int localizarNivel(int valor, Arvore *r) {
 	if (r) {
 		if (valor == r->conteudo) return 0;
@@ -113,6 +173,10 @@ int somarNos(Arvore *r) {
 	return 0;
 }
 
+/*
+6. Construa uma função que receba como parâmetro um ponteiro apontando para a raiz de 
+uma árvore binária e retorne a altura dessa árvore.
+*/
 int calcularAltura(Arvore *r) {
 	if (r) {
 		int alturaEsquerda = calcularAltura(r->esq);
