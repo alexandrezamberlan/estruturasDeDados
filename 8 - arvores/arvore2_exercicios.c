@@ -43,13 +43,36 @@ void exibir(Arvore *r, int nivel) {
 binária de pesquisa; e um valor inteiro. Ao final, esse método deverá retornar quantos 
 nós da árvore são múltiplos do valor inteiro passado como parâmetro.
 */
-
+int multiplos(Arvore *r, int valor) {
+	if (r) {
+		if (r->conteudo % valor == 0) {
+			return 1 + multiplos(r->esq, valor) + multiplos(r->dir,valor);
+		}
+		return 0 + multiplos(r->esq, valor) + multiplos(r->dir,valor);
+	}
+	return 0;
+}
 
 /*
 3. Escreva um método que receba como parâmetro um ponteiro para a raiz de uma árvore 
 binária de pesquisa. O método deverá retirar todos os nós folhas, ou seja, realizar a 
 poda.
 */
+
+Arvore *podar(Arvore *r) {
+	if (r) {
+		if (!r->esq && !r->dir) {
+			//encontrado uma folha e será excluída
+			free(r);
+			return NULL;//para o pai dele
+		}
+		r->esq = podar(r->esq);
+		r->dir = podar(r->dir);
+
+		return r; //retorna o nodo que não é folha
+	}
+	return NULL;
+}
 
 /*
 4. Escreva uma função que receba como parâmetros um ponteiro apontando para a raiz da 
@@ -207,10 +230,18 @@ int main() {
 	printf("Total de nós folhas: %d\n", contarNosFolhas(raiz));
 	mostrarNosFolhas(raiz);
 	
-	printf("\nInforme um inteiro para pesquisa na arvore: ");
-	scanf("%d", &valor);
+	// printf("\nInforme um inteiro para pesquisa na arvore: ");
+	// scanf("%d", &valor);
 	
-	printf("Nivel de %d na arvore: %d\n", valor, localizarNivel(valor, raiz));
+	// printf("Nivel de %d na arvore: %d\n", valor, localizarNivel(valor, raiz));
+
+	raiz = podar(raiz);
+
+	printf("\n\nDepois da poda\n\n");
+	printf("Exibe arvore deitada a partir do nivel 0\n");
+	exibir(raiz, 0);
+
+	printf("A altura da árvore é: %d\n", calcularAltura(raiz));
 	
 	return 1;
 }
