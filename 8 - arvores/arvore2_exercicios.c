@@ -95,9 +95,17 @@ Arvore *excluirElementoFolha(Arvore *r, int valor) {
 
 /*
 5. Escreva um método que receba como parâmetro um ponteiro para a raiz de uma árvore 
-binária de pesquisa. O método deverá retirar todos os nós da árvore.
+binária de pesquisa. O método deverá retirar todos os nós da árvore. (destruir)
 */
+Arvore *destruir(Arvore *r) {
+	if (r) {
+		r->esq = destruir(r->esq);
+		r->dir = destruir(r->dir);
 
+		free(r);
+	}
+	return NULL;
+}
 
 /*
 7. Construa uma função que receba como parâmetro um ponteiro apontando para a raiz de 
@@ -105,11 +113,34 @@ uma árvore binária de pesquisa e retorne um valor indicando verdadeiro se a á
 existir e se os nós de maior e menor valor da árvore estiverem no mesmo nível. 
 Por valor do nó, entenda-se o conteúdo armazenado no campo valor.
 */
+int maiorMenorMesmoNivel(Arvore *r) {
+	Arvore *p;
+	int contaNivelMenor = 0, contaNivelMaior = 0;
+
+	if (!r) return -1;
+
+	for (p = r; p->esq; p = p->esq, contaNivelMenor++);
+
+	for (p = r; p->dir; p = p->dir, contaNivelMaior++);
+
+	return contaNivelMenor == contaNivelMaior;
+}
 
 /*
 9. Escreva uma função que receba como parâmetro um ponteiro para a raiz de uma árvore 
 binária de pesquisa e retorne um ponteiro para o nó NÃO FOLHA de maior valor.
 */
+
+int maiorNaoFolha(Arvore *r) {
+	Arvore *p, *pR;
+	if (!r) return -27;
+
+	for (pR = NULL, p = r; p->dir; pR = p, p = p->dir);
+
+	if (!p->esq) return pR->conteudo;
+
+	return p->conteudo;
+}
 
 /*
 10. Escreva uma função que receba como parâmetros: (i) um ponteiro para a raiz de uma 
@@ -128,7 +159,6 @@ igual a N. Se existir, a função deve retornar a diferença entre os níveis do
 Se N não existir na árvore, ou se M não existir no caminho até N, deve ser retornado o 
 valor -1.
 */
-
 Arvore *localizar(int valor, Arvore *r){
 	if (r) {
 		if (valor == r->conteudo) return r; //conteudo localizado
@@ -242,14 +272,17 @@ int main() {
 	printf("A altura da árvore é: %d\n", calcularAltura(raiz));
 	printf("Total de nós folhas: %d\n", contarNosFolhas(raiz));
 	mostrarNosFolhas(raiz);
+
+	printf("\n\nMaior valor não folha: %d\n", maiorNaoFolha(raiz));
+	// printf("\n\nMaior e menor estão no mesmo nível? %d\n", maiorMenorMesmoNivel(raiz));
 	
-	printf("\nInforme um inteiro para pesquisa na arvore: ");
-	scanf("%d", &valor);
+	// printf("\nInforme um inteiro para pesquisa na arvore: ");
+	// scanf("%d", &valor);
 
-	raiz = excluirElementoFolha(raiz, valor);
+	// raiz = destruir(raiz);
 
-	printf("Exibe arvore deitada a partir do nivel 0\n");
-	exibir(raiz, 0);
+	// printf("Exibe arvore deitada a partir do nivel 0\n");
+	// exibir(raiz, 0);
 
 	
 	// printf("Nivel de %d na arvore: %d\n", valor, localizarNivel(valor, raiz));
