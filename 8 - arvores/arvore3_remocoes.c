@@ -114,9 +114,18 @@ Arvore *excluir(int valor, Arvore *r) {
 			} else {
 				//Se estamos aqui, é porque o valor a ser excluído está em nodo com 2 filhos
 				Arvore *novoPai = r->esq;
-					
+				Arvore *temp = novoPai->dir;
+				Arvore *p;
+				novoPai->dir = r->dir;
+				
+				free(r);
+				if (temp) {
+					for (p = novoPai; p->esq; p = p->esq);
+					p->esq = temp;
+				}
+				
+				return novoPai;
 			}
-
 		}
 		if (valor < r->conteudo) {
 			//ir para esquerda
@@ -130,6 +139,8 @@ Arvore *excluir(int valor, Arvore *r) {
 	return NULL; //valor não será excluído, pq não foi localizado
 }
 
+//excluir todas as ocorrencias
+
 int main() {
 	Arvore *raiz = NULL;
 	int i, valor;
@@ -137,7 +148,7 @@ int main() {
 	
 	printf("Gerando numeros aleatorios para a arvore\n");
 	for (i = 0; i < TAM; i++){
-		valor = rand() % 100;
+		valor = rand() % 10;
 		//printf("%d\t", valor);
 		raiz = inserir(valor, raiz);
 	}
@@ -153,7 +164,7 @@ int main() {
 	
 	printf("Nivel de %d na arvore: %d\n", valor, localizarNivel(valor, raiz));
 
-	raiz = excluir(valor,raiz);
+	raiz = excluirTodasAsOcorrencias(valor,raiz);
 	printf("Exibe arvore após tentativa de exclusão\n");
 	exibir(raiz, 0);
 	
