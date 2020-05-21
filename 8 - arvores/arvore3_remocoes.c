@@ -95,6 +95,41 @@ int calcularAltura(Arvore *r) {
 	return 0;
 }
 
+Arvore *excluir(int valor, Arvore *r) {
+	if (r) {
+		if (valor == r->conteudo) { //valor encontrado
+			//excluir
+			//1o pergunta: é folha?
+			if (!r->esq && !r->dir) {
+				free(r);
+				return NULL;
+			} 
+			//2o pergunta: tem só um filho
+			if ((r->esq && !r->dir) || (!r->esq && r->dir)) {
+				Arvore *novoPai;
+				if (r->esq) novoPai = r->esq;
+				else novoPai = r->dir;
+				free(r);
+				return novoPai;
+			} else {
+				//Se estamos aqui, é porque o valor a ser excluído está em nodo com 2 filhos
+				Arvore *novoPai = r->esq;
+					
+			}
+
+		}
+		if (valor < r->conteudo) {
+			//ir para esquerda
+			r->esq = excluir(valor, r->esq);
+		} else {
+			//ir para direita
+			r->dir = excluir(valor, r->dir);
+		}
+		return r;
+	}
+	return NULL; //valor não será excluído, pq não foi localizado
+}
+
 int main() {
 	Arvore *raiz = NULL;
 	int i, valor;
@@ -117,6 +152,10 @@ int main() {
 	scanf("%d", &valor);
 	
 	printf("Nivel de %d na arvore: %d\n", valor, localizarNivel(valor, raiz));
+
+	raiz = excluir(valor,raiz);
+	printf("Exibe arvore após tentativa de exclusão\n");
+	exibir(raiz, 0);
 	
 	return 1;
 }
