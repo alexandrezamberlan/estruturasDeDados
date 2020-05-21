@@ -130,7 +130,6 @@ int maiorMenorMesmoNivel(Arvore *r) {
 9. Escreva uma função que receba como parâmetro um ponteiro para a raiz de uma árvore 
 binária de pesquisa e retorne um ponteiro para o nó NÃO FOLHA de maior valor.
 */
-
 int maiorNaoFolha(Arvore *r) {
 	Arvore *p, *pR;
 	if (!r) return -27;
