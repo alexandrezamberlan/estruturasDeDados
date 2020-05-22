@@ -140,6 +140,9 @@ Arvore *excluir(int valor, Arvore *r) {
 }
 
 //excluir todas as ocorrencias
+Arvore *excluirTodasAsOcorrencias(int valor, Arvore *r) {
+	//????
+}
 
 int main() {
 	Arvore *raiz = NULL;

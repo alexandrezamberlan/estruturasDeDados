@@ -58,7 +58,7 @@ int multiplos(Arvore *r, int valor) {
 binária de pesquisa. O método deverá retirar todos os nós folhas, ou seja, realizar a 
 poda.
 */
-Arvore *podar(Arvore *r) {
+Arvore *podar(Arvore *r) { //tem alteração na árvore
 	if (r) {
 		if (!r->esq && !r->dir) {
 			//encontrado uma folha e será excluída
@@ -86,8 +86,9 @@ Arvore *excluirElementoFolha(Arvore *r, int valor) {
 				return NULL;
 			} 
 		}
-		r->esq = excluirElementoFolha(r->esq, valor);
-		r->dir = excluirElementoFolha(r->dir, valor);
+		if (valor < r->esq) r->esq = excluirElementoFolha(r->esq, valor);
+		else r->dir = excluirElementoFolha(r->dir, valor);
+		
 		return r;
 	}
 	return NULL;
@@ -99,10 +100,10 @@ binária de pesquisa. O método deverá retirar todos os nós da árvore. (destr
 */
 Arvore *destruir(Arvore *r) {
 	if (r) {
-		r->esq = destruir(r->esq);
-		r->dir = destruir(r->dir);
+		r->esq = destruir(r->esq);//vai para esquerda
+		r->dir = destruir(r->dir);//vai para direita
 
-		free(r);
+		free(r); //visita raiz
 	}
 	return NULL;
 }
@@ -150,6 +151,14 @@ recebida como parâmetro, a contagem deve ser 0 (zero). O resultado da contagem 
 retornado. Não use variáveis globais.
 */
 
+int exercicio10(Arvore *r, int n) {
+	if (r) {
+		if (n == r->conteudo) return 0;
+		return 1 + exercicio10(r->esq, n) + exercicio10(r->dir, n)
+	}
+	return 0;
+}
+
 /*
 11. Escreva uma função que receba como parâmetros um ponteiro apontando para a raiz 
 da árvore binária de pesquisa e dois valores inteiros M e N. Faça com que a função 
@@ -162,7 +171,7 @@ Arvore *localizar(int valor, Arvore *r){
 	if (r) {
 		if (valor == r->conteudo) return r; //conteudo localizado
 		if (valor < r->conteudo) return localizar(valor, r->esq); //procurar na esquerda
-		/*else*/ return localizar(valor, r->dir);
+		/*else*/ return localizar(valor, r->dir); //procura na direita
 	}
 	return NULL;
 }
