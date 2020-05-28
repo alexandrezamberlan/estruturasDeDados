@@ -150,7 +150,6 @@ Se esse nó não existir, devem ser contados todos os nós da árvore, e se ele 
 recebida como parâmetro, a contagem deve ser 0 (zero). O resultado da contagem deve ser 
 retornado. Não use variáveis globais.
 */
-
 int exercicio10(Arvore *r, int n) {
 	if (r) {
 		if (n == r->conteudo) return 0;

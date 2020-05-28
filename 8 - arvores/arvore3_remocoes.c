@@ -123,7 +123,6 @@ Arvore *excluir(int valor, Arvore *r) {
 					for (p = novoPai; p->esq; p = p->esq);
 					p->esq = temp;
 				}
-				
 				return novoPai;
 			}
 		}
