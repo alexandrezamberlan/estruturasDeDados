@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include "fila.h"
 
 typedef struct {
 	int **matrizAdj;
@@ -8,7 +9,7 @@ typedef struct {
 	int qtdArestas;
 } Grafo;
 
-Grafo *inicializarGrafo(int vertices) {
+Grafo *inicializarGrafo(int vertices) { //"construtor" do grafo
 	int i, j;
 
 	Grafo *g = (Grafo *)malloc(sizeof(Grafo));
@@ -91,9 +92,35 @@ int ehSimetrico(Grafo *g) {
 }
 
 int temCaminhoAmplitude(Grafo *g, int origem, int destino) {
-
+	return 1;
 }
 
 void percorreAmplitude(Grafo *g, int origem) {
+	int *visitados;
+	Fila fila;
+	int i;
+	int no;
 
+	if (!g) return;
+
+	inicializarFila(&fila);
+	visitados = malloc(sizeof(int) * g->qtdVertices);
+	for (i = 0; i < g->qtdVertices; i++) {
+		visitados[i] = 0;
+	}
+	no = origem;
+	visitados[no] = 1; //a origem começa como visitado
+
+	do {
+		//visitar o vértice (print, if, cont, ...)
+		printf("%d\t", no);
+		for (i = 0; i < g->qtdVertices; i++) {
+			if (g->matrizAdj[no][i] != 0 && !visitados[i]) {
+				visitados[i] = 1; //marcar como visitado
+				inserirFila(i,&fila); //adicionar na fila
+			}
+		}
+		no = removerFila(&fila); //tem vertice na fila?
+	} while (no != -1);
+	printf("\n\n");
 }

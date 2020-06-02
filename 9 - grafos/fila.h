@@ -15,7 +15,7 @@ typedef struct {
 /*
 metodo que incializa a fila
 */
-void inicializacao(Fila *f) {
+void inicializarFila(Fila *f) {
 	f->cabeca = NULL;
 	f->cauda = NULL;
 }
@@ -59,5 +59,5 @@ int removerFila(Fila *f) {
 		}
 		return ficha;
 	} 
-	return -27;
+	return -1; //indica que a fila está vazia
 }
