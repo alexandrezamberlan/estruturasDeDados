@@ -92,7 +92,36 @@ int ehSimetrico(Grafo *g) {
 }
 
 int temCaminhoAmplitude(Grafo *g, int origem, int destino) {
-	return 1;
+	int *visitados;
+	Fila fila;
+	int i;
+	int no;
+
+	if (!g) return -27; //grafo vazio
+
+	inicializarFila(&fila);
+	visitados = malloc(sizeof(int) * g->qtdVertices);
+	for (i = 0; i < g->qtdVertices; i++) {
+		visitados[i] = 0;
+	}
+	no = origem;
+	visitados[no] = 1; //a origem começa como visitado
+
+	do {
+		//visitar o vértice (print, if, cont, ...)
+		//printf("%d\t", no);
+		//conta++;
+		if (no == destino) return 1; //tem caminho
+		for (i = 0; i < g->qtdVertices; i++) {
+			if (g->matrizAdj[no][i] != 0 && !visitados[i]) {
+				visitados[i] = 1; //marcar como visitado
+				inserirFila(i,&fila); //adicionar na fila
+			}
+		}
+		no = removerFila(&fila); //tem vertice na fila?
+	} while (no != -1);
+	//se chegou até aqui, pq não tem caminho entre origem e destino
+	return 0;
 }
 
 void percorreAmplitude(Grafo *g, int origem) {
