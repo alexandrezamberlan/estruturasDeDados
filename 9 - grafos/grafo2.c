@@ -1,14 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
-
 typedef struct {
 	int **matrizAdj;
 	int qtdVertices; //qtdNos ou qtdNodos
 	int qtdArestas;
 } Grafo;
 
-Grafo *inicializarGrafo(int vertices) {
+Grafo *inicializarGrafo(int vertices) { //ideia de construtor
 	int i, j;
 
 	Grafo *g = (Grafo *)malloc(sizeof(Grafo));
@@ -67,7 +66,7 @@ void exibirGrafo(Grafo *g) {
 }
 
 int grauVertice(int vertice, Grafo *g) {
-    if (!g) return 0;
+    if (!g) return 0; //grafo vazio, logo não existe
     int i;
     int conta = 0;
     for (i = 0; i < g->qtdVertices; i++) {
@@ -78,16 +77,16 @@ int grauVertice(int vertice, Grafo *g) {
 }
 
 int ehSimetrico(Grafo *g) {
-    if (!g) return -27;
+    if (!g) return -27; //código de erro
     int i, j;
 
     for (i = 0; i < g->qtdVertices; i++) {
-        for (j = i; j < g->qtdVertices; j++) {
+        for (j = i; j < g->qtdVertices; j++) { //analise somente a parte de cima da diagonal principal
             if (g->matrizAdj[i][j] != g->matrizAdj[j][i])
-                return 0;
+                return 0; //não é simétrico
         }
     }
-    return 1;
+    return 1; //é simétrico
 }
 
 int main() {
