@@ -92,64 +92,63 @@ int ehSimetrico(Grafo *g) {
 }
 
 int temCaminhoAmplitude(Grafo *g, int origem, int destino) {
-	int *visitados;
+	int i, no;
 	Fila fila;
-	int i;
-	int no;
-
-	if (!g) return -27; //grafo vazio
-
 	inicializarFila(&fila);
+
+	int *visitados;
 	visitados = malloc(sizeof(int) * g->qtdVertices);
-	for (i = 0; i < g->qtdVertices; i++) {
+	for (i = 0; i < g->qtdVertices; i++){
 		visitados[i] = 0;
 	}
+	int conta = 0;
+	visitados[origem] = 1;
 	no = origem;
-	visitados[no] = 1; //a origem começa como visitado
-
 	do {
-		//visitar o vértice (print, if, cont, ...)
-		//printf("%d\t", no);
+		//usar o vertice - print, if, cont, ...
 		//conta++;
-		if (no == destino) return 1; //tem caminho
+		//printf("%d\t", no);
+		if (no == destino) return 1;
+
 		for (i = 0; i < g->qtdVertices; i++) {
 			if (g->matrizAdj[no][i] != 0 && !visitados[i]) {
-				visitados[i] = 1; //marcar como visitado
-				inserirFila(i,&fila); //adicionar na fila
+				visitados[i] = 1;
+				inserirFila(i, &fila);
 			}
 		}
-		no = removerFila(&fila); //tem vertice na fila?
+		no = removerFila(&fila);
+
 	} while (no != -1);
-	//se chegou até aqui, pq não tem caminho entre origem e destino
-	return 0;
+	//printf("\nTotal de vértices visitados: %d\n\n", conta);
+	return 0; //nao tem caminho
 }
 
 void percorreAmplitude(Grafo *g, int origem) {
-	int *visitados;
+	int i, no;
 	Fila fila;
-	int i;
-	int no;
-
-	if (!g) return;
-
 	inicializarFila(&fila);
+
+	int *visitados;
 	visitados = malloc(sizeof(int) * g->qtdVertices);
-	for (i = 0; i < g->qtdVertices; i++) {
+	for (i = 0; i < g->qtdVertices; i++){
 		visitados[i] = 0;
 	}
+	int conta = 0;
+	visitados[origem] = 1;
 	no = origem;
-	visitados[no] = 1; //a origem começa como visitado
-
 	do {
-		//visitar o vértice (print, if, cont, ...)
+		//usar o vertice - print, if, cont, ...
+		conta++;
 		printf("%d\t", no);
+
 		for (i = 0; i < g->qtdVertices; i++) {
 			if (g->matrizAdj[no][i] != 0 && !visitados[i]) {
-				visitados[i] = 1; //marcar como visitado
-				inserirFila(i,&fila); //adicionar na fila
+				visitados[i] = 1;
+				inserirFila(i, &fila);
 			}
 		}
-		no = removerFila(&fila); //tem vertice na fila?
+		no = removerFila(&fila);
+
 	} while (no != -1);
-	printf("\n\n");
+	printf("\nTotal de vértices visitados: %d\n\n", conta);
 }
