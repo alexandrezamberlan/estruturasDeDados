@@ -31,12 +31,12 @@ int main() {
 	printf("Digite um vértice de origem válido: ");
 	scanf("%d", &origem);
 
-	// printf("Digite um vértice de destino válido: ");
-	// scanf("%d", &destino);
+	printf("Digite um vértice de destino válido: ");
+	scanf("%d", &destino);
     
-	// printf("Será que tem caminho entre %d e %d? %d\n", origem, destino, temCaminhoProfundidade(grafo1, origem, destino));
+	printf("\nSerá que tem caminho entre %d e %d? %d\n", origem, destino, temCaminhoProfundidade(grafo1, origem, destino));
 	
-	percorreProfundidade(grafo1,origem);
+	// percorreProfundidade(grafo1,origem);
 
 	return 1;
 }
