@@ -152,3 +152,33 @@ void percorreAmplitude(Grafo *g, int origem) {
 	} while (no != -1);
 	printf("\nTotal de vértices visitados: %d\n\n", conta);
 }
+
+void profundidadeR(Grafo *g, int no, int *visitados) {
+	int i;
+	//usar o vértice no - printf, if, cont
+	printf("%d\t", no);
+	for (i = 0; i < g->qtdVertices; i++) {
+		if (g->matrizAdj[no][i] != 0 && !visitados[i]) {
+			visitados[i] = 1;
+			profundidadeR(g, i, visitados); //chamada recursiva, ou seja é aqui que o nodo visitado é inserido na pilha
+		}
+	}
+}
+
+void percorreProfundidade(Grafo *g, int origem) {
+	int i, no;
+	
+	int *visitados;
+	visitados = malloc(sizeof(int) * g->qtdVertices);
+	for (i = 0; i < g->qtdVertices; i++){
+		visitados[i] = 0;
+	}
+	no = origem;
+	visitados[no] = 1;
+	profundidadeR(g, no, visitados); //chama a pilha recursiva do SO
+	printf("\n");
+}
+
+int temCaminhoProfundidade(Grafo *g, int origem, int destino) {
+
+}
