@@ -6,7 +6,9 @@
 typedef struct matTab {
   int linha;
   int coluna;
-  float valor;
+  float valorR; //0-255
+  float valorG;
+  float valorB;
   struct matTab *prox;
 } MEBD;
 
