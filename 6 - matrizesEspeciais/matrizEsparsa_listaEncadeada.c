@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define TAM_L 50
-#define TAM_C 30
+#define TAM_L 500
+#define TAM_C 300
 
 typedef struct matTab {
   int linha;
@@ -43,19 +43,19 @@ void exibir (MEBD *matriz){
 
 int main (){
   MEBD *matrizE = NULL;
-  float matrizO[TAM_L][TAM_C];
+  float matrizO[TAM_L][TAM_C]; //pode representar uma imagem, um vÃ­deo, planilha excel
 
   int i,j, cont;
   float val;
 
   /*fazer uma rotina que popule a matriz origem com alguns elementos
-    não nullos e o restante com nulos.*/
+    nï¿½o nullos e o restante com nulos.*/
   //inicializando a matriz com zeros
   for (i = 0; i < TAM_L; i++)
     for (j = 0; j < TAM_C; j++)
       matrizO[i][j] = 0.0;
 
-  for (cont = 0; cont < 3; cont++) {
+  for (cont = 0; cont < 5; cont++) {
     do {
       printf("Digite coordenada linha: ");
       scanf("%d",&i);
@@ -75,11 +75,11 @@ int main (){
   }
 
   // fazer rotina que popule a matriz esparsa (lista) com elementos
-  // não nulos da matriz original.
+  // nï¿½o nulos da matriz original.
   for (i = 0; i < TAM_L; i++)
     for (j = 0; j < TAM_C; j++)
       if (matrizO[i][j] != 0.0)
-        matrizE = inserir(i, j, matrizO[i][j], matrizE);
+        matrizE = inserir(i, j, matrizO[i][j], matrizE); //representando uma lista encadeada
 
 
   printf("DIGITANDO MAIS UM ELEMENTO PARA VERIFICAR DUPLICIDADE\nDigite coordenada linha: ");

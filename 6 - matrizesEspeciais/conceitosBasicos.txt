@@ -1,9 +1,22 @@
 Matrizes especiais
-
     * muitas linhas e muitas colunas - dimensão 'grande'
     * a maioria das células igual a zero ou nula
+    * ocorrem em tratamento de imagens e vídeos
+
+    * Principal problema de matrizes especiais  
+        - consumo excessivo da memória
+        - tempo de processamento excessivo
+
+    * Solução para o problema
+        - converter os elementos não nulos em elementos de uma lista encadeada
+            - guarda-se: posição linha, posição coluna, valor (pixel)
+        
+        - descartar a matriz especial
+
+
     TIPOS
         Esparsa
+        
         Diagonal principal: i == j
         Diagonal secundária: i + j == n - 1
         Triangular superior da principal: j > i
