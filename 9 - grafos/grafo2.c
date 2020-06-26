@@ -106,16 +106,19 @@ int main() {
 	exibirGrafo(grafo);
 
 	printf("\n");
+	printf("grafo é simétrico? %d\n", ehSimetrico(grafo));
+
+	
+    // printf("O grau do vértice 2 é: %d\n\n", grauVertice(2,grafo));
 
 	grafo1 = inicializarGrafo(3); //'construtor' do grafo
-    printf("O grau do vértice 2 é: %d\n\n", grauVertice(2,grafo));
-
 	inserirGrafoSimetrico(0,1,grafo1);
 	inserirGrafoSimetrico(1,2,grafo1);
 	inserirGrafoSimetrico(2,0,grafo1);
+	printf("\n");
 	exibirGrafo(grafo1);
 
-    printf("grafo é simétrico? %d\n", ehSimetrico(grafo));
+    printf("grafo é simétrico? %d\n", ehSimetrico(grafo1));
 
 	return 0;
 }

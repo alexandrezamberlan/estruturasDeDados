@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
-#include "fila.h"
+#include "fila.h" 
 
 typedef struct {
 	int **matrizAdj;
@@ -106,8 +106,8 @@ int temCaminhoAmplitude(Grafo *g, int origem, int destino) {
 	no = origem;
 	do {
 		//usar o vertice - print, if, cont, ...
-		//conta++;
-		//printf("%d\t", no);
+		conta++;
+		printf("%d\t", no);
 		if (no == destino) return 1;
 
 		for (i = 0; i < g->qtdVertices; i++) {
@@ -119,7 +119,7 @@ int temCaminhoAmplitude(Grafo *g, int origem, int destino) {
 		no = removerFila(&fila);
 
 	} while (no != -1);
-	//printf("\nTotal de vértices visitados: %d\n\n", conta);
+	printf("\nTotal de vértices visitados: %d\n\n", conta);
 	return 0; //nao tem caminho
 }
 
@@ -183,7 +183,8 @@ int profundidadeR2(Grafo *g, int no, int destino, int *visitados) {
 	int i;
 	//usar o vértice no - printf, if, cont
 	printf("%d\t", no);
-	if (no == destino) return 1;
+	if (no == destino) return 1; //localizei um caminho
+	
 	for (i = 0; i < g->qtdVertices; i++) {
 		if (g->matrizAdj[no][i] != 0 && !visitados[i]) {
 			visitados[i] = 1;
@@ -203,5 +204,5 @@ int temCaminhoProfundidade(Grafo *g, int origem, int destino) {
 	}
 	no = origem;
 	visitados[no] = 1;
-	return profundidadeR2(g, no, destino, visitados); //chama a pilha recursiva do SO
-}
+	return profundidadeR2(g, origem, destino, visitados); //chama a pilha recursiva do SO
+} 
