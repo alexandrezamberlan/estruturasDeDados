@@ -6,16 +6,17 @@
 typedef struct matTab {
   int linha;
   int coluna;
-  float valorR; //0-255
-  float valorG;
-  float valorB;
+  float valor;
+  // float valorR; //0-255
+  // float valorG;
+  // float valorB;
   struct matTab *prox;
-} MEBD;
+} Celula;
 
-MEBD *inserir(int lin, int col, float val, MEBD *matriz){
-  MEBD *novo, *p;
+Celula *inserir(int lin, int col, float val, Celula *matriz){
+  Celula *novo, *p;
 
-  novo = (MEBD*) malloc (sizeof (MEBD));
+  novo = (Celula*) malloc (sizeof (Celula));
   novo->linha = lin;
   novo->coluna = col;
   novo->valor = val;
@@ -33,7 +34,7 @@ MEBD *inserir(int lin, int col, float val, MEBD *matriz){
   return matriz;
 }
 
-void exibir (MEBD *matriz){
+void exibir (Celula *matriz){
   printf("\n\nImprimindo a lista da matriz esparsa\n\n");
   if (matriz){
     while (matriz){
@@ -44,18 +45,20 @@ void exibir (MEBD *matriz){
 }
 
 int main (){
-  MEBD *matrizE = NULL;
-  float matrizO[TAM_L][TAM_C]; //pode representar uma imagem, um vídeo, planilha excel
+  float matrizOriginal[TAM_L][TAM_C]; //pode representar uma imagem, um vídeo, planilha excel
 
   int i,j, cont;
   float val;
 
   /*fazer uma rotina que popule a matriz origem com alguns elementos
-    n�o nullos e o restante com nulos.*/
+    não nullos e o restante com nulos.*/
+
   //inicializando a matriz com zeros
-  for (i = 0; i < TAM_L; i++)
-    for (j = 0; j < TAM_C; j++)
-      matrizO[i][j] = 0.0;
+  for (i = 0; i < TAM_L; i++) {
+    for (j = 0; j < TAM_C; j++) {
+      matrizOriginal[i][j] = 0.0;
+    }
+  }
 
   for (cont = 0; cont < 5; cont++) {
     do {
@@ -73,15 +76,16 @@ int main (){
       scanf("%f", &val);
     } while(val == 0.0);
 
-    matrizO[i][j] = val;
+    matrizOriginal[i][j] = val;
   }
 
+  Celula *matrizEmLista = NULL;
   // fazer rotina que popule a matriz esparsa (lista) com elementos
   // n�o nulos da matriz original.
   for (i = 0; i < TAM_L; i++)
     for (j = 0; j < TAM_C; j++)
-      if (matrizO[i][j] != 0.0)
-        matrizE = inserir(i, j, matrizO[i][j], matrizE); //representando uma lista encadeada
+      if (matrizOriginal[i][j] != 0.0)
+        matrizEmLista = inserir(i, j, matrizOriginal[i][j], matrizEmLista); //representando uma lista encadeada
 
 
   printf("DIGITANDO MAIS UM ELEMENTO PARA VERIFICAR DUPLICIDADE\nDigite coordenada linha: ");
@@ -90,10 +94,10 @@ int main (){
   scanf("%d",&j);
   printf("Digite um valor nao nulo: ");
   scanf("%f", &val);
-  matrizE = inserir(i, j, val, matrizE);
+  matrizEmLista = inserir(i, j, val, matrizEmLista);
 
   // exibir a matriz esparsa.
-  exibir(matrizE);
+  exibir(matrizEmLista);
   system("pause");
   return 0;
 }

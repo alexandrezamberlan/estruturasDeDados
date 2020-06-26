@@ -3,11 +3,11 @@ Matrizes especiais
     * a maioria das células igual a zero ou nula
     * ocorrem em tratamento de imagens e vídeos
 
-    * Principal problema de matrizes especiais  
+    * Principais PROBLEMAS de matrizes especiais  
         - consumo excessivo da memória
         - tempo de processamento excessivo
 
-    * Solução para o problema
+    * SOLUÇÃO para o problema
         - converter os elementos não nulos em elementos de uma lista encadeada
             - guarda-se: posição linha, posição coluna, valor (pixel)
                 - em tons de cinza, pixel vai de 0 a 255
