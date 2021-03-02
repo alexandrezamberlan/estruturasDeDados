@@ -81,12 +81,16 @@ int main (){
 
   Celula *matrizEmLista = NULL;
   // fazer rotina que popule a matriz esparsa (lista) com elementos
-  // n�o nulos da matriz original.
-  for (i = 0; i < TAM_L; i++)
-    for (j = 0; j < TAM_C; j++)
-      if (matrizOriginal[i][j] != 0.0)
+  // nao nulos da matriz original.
+  for (i = 0; i < TAM_L; i++) {
+    for (j = 0; j < TAM_C; j++) {
+      if (matrizOriginal[i][j] != 0.0) {
         matrizEmLista = inserir(i, j, matrizOriginal[i][j], matrizEmLista); //representando uma lista encadeada
+      }
+    }
+  }
 
+  free(matrizOriginal);
 
   printf("DIGITANDO MAIS UM ELEMENTO PARA VERIFICAR DUPLICIDADE\nDigite coordenada linha: ");
   scanf("%d",&i);
