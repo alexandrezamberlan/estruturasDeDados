@@ -1,3 +1,6 @@
+Aprender a implementar as principais estruturas de dados que otimizam um sistema.
+
+
 Estruturas de Dados Abstratas
 
 Estruturas de Dados Físicas -> variáveis -> dependentes da linguagem
