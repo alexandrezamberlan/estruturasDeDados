@@ -1,0 +1,7 @@
+Ferramentas de apoio:
+    - Moodle: entregar tarefas; apresentação
+
+    - TEAMS: aulas online e presenciais; compartilhamento de tela; acesso remoto
+
+    - GitHub: portal dos programadores; repositórios; projetos; sistema de controle de versão
+        
