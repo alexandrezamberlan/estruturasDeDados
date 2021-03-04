@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <time.h>
+#include <string.h>
 
 time_t pegaData(){
     char dateStr[9];
