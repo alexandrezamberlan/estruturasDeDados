@@ -1,0 +1,15 @@
+Imagine uma expressao matematica com operações tradicionais e uso de parenteses.
+O programa feito em C++ deve analisar a expressao matemática e informar se ela está correta ou incorreta
+quanto ao uso dos parenteses.
+
+(8+3)*(8-2) - expressao correta quanto ao uso de parenteses.
+)8-1) - expressao incorreta quanto ao uso de parenteses.
+
+Uma possível solução é analisar caracter por caracter descartando tudo o que não for '(' ou ')'.
+
+O caracter '(' insere na pilha o parenteses. Enquanto o ')' remove da pilha.
+
+A expressão estará correta se ao final da análise da expressão a pilha estiver vazia. Caso a pilha
+contenha um ou mais parenteses dentro dela, ou ela assinale processo de pilha vazia por remoção,
+a expressão está incorreta.
+
