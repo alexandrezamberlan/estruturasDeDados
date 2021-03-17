@@ -12,5 +12,6 @@ public class PilhaJava {
         pilha.pop();
         pilha.pop();
         System.out.println(pilha.peek());
+
     }
 }
