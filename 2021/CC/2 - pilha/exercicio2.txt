@@ -1,0 +1,8 @@
+Criar um programa em C (modulado) que gere números aleatórios e inteiros.
+A quantidade de números é definida pelo usuário. 
+
+Para cada número gerado, analisar:
+    Se for par inseri-lo na pilha (conforme trabalho em aula). 
+    Se for ímpar, remover o elemento do topo.
+
+    Ao final, exibir a pilha resultante.
