@@ -1,0 +1,25 @@
+Lista é uma ED Abstrata dita completa
+    - percorrer
+    - inserir ordenado
+    - remover
+    - pesquisar
+
+    - Implementada em:
+        - vetor -> alocação estática e engessada
+        - struct e ponteiro -> alocação dinâmica em tempo de execução (flexível)
+    
+    - Entretanto, há 3 tipos de LISTAS:
+        - Simples: struct da lista é muito parecido com de uma pilha.
+        - Circular
+        - Dupla
+
+    - LISTAS Simples
+        - struct é igual ao de uma pilha.
+        - há no mínimo dois atributos: dado e um ponteiro para o próximo elemento
+
+    typedef struct no {
+        int dado;
+        struct no *prox; //ponteiro para o próximo elemento
+    } Celula;
+
+    
