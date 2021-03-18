@@ -10,6 +10,8 @@ typedef struct nodo {
 Celula *inserir(int valor, Celula *lista);
 void exibir(Celula *lista);
 int contarElementos(Celula *lista);
+Celula *localizarValor(int valor, Celula *lista);
+int somarElementos(Celula *lista);
 
 int main() {
     Celula *lista = NULL;
@@ -26,6 +28,15 @@ int main() {
     exibir(lista);
 
     cout << "A lista possui " << contarElementos(lista) << " elementos" << endl;
+
+    cout << "Digite um valor para pesquisa: ";
+    cin >> valor;
+
+    Celula *enderecoValor = localizarValor(valor, lista);
+
+    cout << "Valor encontrado no endereço " << enderecoValor << endl;
+
+    cout << "A soma dos elementos é: " << somarElementos(lista) << endl;
 
     return 1;
 }
@@ -49,6 +60,12 @@ Celula *inserir(int valor, Celula *lista) {
             free(novo); //libera a alocação pq o valor ja está na lista
             return lista;
         }
+    }
+    //atencao... como o for pára no último elemento, o if do for não é executado, por isso, o if foi repetido fora do for
+    if (valor == p->valor) {
+        cout << "valor ja inserido na lista!\n";
+        free(novo); //libera a alocação pq o valor ja está na lista
+        return lista;
     }
 
     //engatar na última posição
@@ -82,4 +99,32 @@ int contarElementos(Celula *lista) {
         contador++;
     } 
     return contador;
+}
+
+int somarElementos(Celula *lista) {
+   Celula *p;
+   int soma = 0;
+
+    if (!lista) {
+        return soma;
+    }
+    for (p = lista; p != NULL; p = p->prox) { //percurso clássico em listas
+        soma = soma + p->valor;
+    } 
+    return soma;
+}
+
+Celula *localizarValor(int valor, Celula *lista){
+    Celula *p; //ponteiro para percorrer a lista
+
+    if (!lista) {
+        cout << "Lista vazia!\n";
+        return lista;
+    }
+    for (p = lista; p != NULL; p = p->prox) { //percurso clássico em listas
+        if (valor == p->valor) {
+            return p;
+        }
+    }
+    return NULL;//se chegou, eh pq não encontrou o valor
 }
