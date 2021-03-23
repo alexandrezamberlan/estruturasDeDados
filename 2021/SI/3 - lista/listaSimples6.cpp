@@ -12,12 +12,14 @@ typedef struct nodo {
 //relação de protótipos
 Celula *inserir(int valor, Celula *lista);
 void exibir(Celula *lista);
-int contarElementos(Celula *lista);
-int somarElementos(Celula *lista);
+
 
 int main() {
-    Celula *lista = NULL;
-    int qtdNumeros, valor;
+    Celula *listaA = NULL;
+    Celula *listaB = NULL;
+    int valor, qtdNumeros;
+
+    system("clear");
 
     cout << "Quantos números quer gerar para a lista? ";
     cin >> qtdNumeros;
@@ -25,15 +27,18 @@ int main() {
     srand(time(NULL));
     for (int i = 0; i < qtdNumeros; i++) {
         valor = rand() % 100;
-        lista = inserir(valor,lista);
+        listaA = inserir(valor,listaA);
     } 
+    cout << "Lista A " << endl;
+    exibir(listaA);
+    
 
-    exibir(lista);
-    int qtdElementos = contarElementos(lista);
-    cout << "Foram cadastrados " << qtdElementos << " na lista" << endl;
-    double media = somarElementos(lista) / qtdElementos;
-    cout << "A média dos valores da lista é: " << media << endl;
-
+    for (int i = 0; i < qtdNumeros; i++) {
+        valor = rand() % 100;
+        listaB = inserir(valor,listaB);
+    } 
+    cout << "Lista B " << endl;
+    exibir(listaB);
     return 1;
 }
 
