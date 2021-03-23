@@ -45,7 +45,7 @@ Celula *inserir(int valor, Celula *lista) {
     Celula *p, *pR;
     for (pR = NULL, p = lista; p != NULL; pR = p, p = p->prox) {
         if (valor <= p->valor) { //encontramos a posição do valor
-            break;        
+            break;  //sai do for      
         }
     }
     //existem 2 motivos para sair do for:
