@@ -1,5 +1,5 @@
 Lista é uma ED Abstrata dita completa
-    - percorrer
+    - percorrer: para inserir ordenado; para localizar (alterar ou excluir)
     - inserir ordenado
     - remover
     - pesquisar

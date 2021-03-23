@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
 typedef struct nodo {
@@ -7,9 +8,11 @@ typedef struct nodo {
     struct nodo *prox;
 } Celula;
 
+//relação de protótipos
 Celula *inserir(int valor, Celula *lista);
 void exibir(Celula *lista);
 int contarElementos(Celula *lista);
+string mostrarOndeEsta(int valor, Celula *lista);
 
 int main() {
     Celula *lista = NULL;
@@ -27,6 +30,13 @@ int main() {
 
     cout << "A lista possui " << contarElementos(lista) << " elementos" << endl;
 
+    //rotina para pesquisar um valor e informar onde está na lista: primeiro, último, meio (alguma porção do meio)
+    cout << "Digite um valor para pesquisar: ";
+    cin >> valor;
+
+    string posicao = mostrarOndeEsta(valor,lista);
+    cout << "O valor está: " << posicao << endl;
+
     return 1;
 }
 
@@ -38,11 +48,11 @@ Celula *inserir(int valor, Celula *lista) {
     novo->valor = valor;
     novo->prox = NULL;
 
-    if (!lista) return novo; //se a lista for vazia, o novo será o primeiro e único elemento nela
+    if (!lista) return novo; //se a lista for vazia, o novo será o primeiro elemento nela
 
     //percorrer toda a lista e inserir na última posição
     Celula *p;
-    for (p = lista; p->prox != NULL; p = p->prox); //percurso para parar o p no último elemento
+    for (p = lista; p->prox != NULL; p = p->prox);
 
     //engatar na última posição
     p->prox = novo; //ultimo elemento vai apontar agora para o novo elemento alocado
@@ -64,7 +74,7 @@ void exibir(Celula *lista) {
     cout << endl;
 }
 
-int contarElementos(Celula *lista) { //lista contém o endereco do 1o elemento
+int contarElementos(Celula *lista) {
    Celula *p;
    int contador = 0;
 
@@ -75,4 +85,25 @@ int contarElementos(Celula *lista) { //lista contém o endereco do 1o elemento
         contador++;
     } 
     return contador;
+}
+
+string mostrarOndeEsta(int valor, Celula *lista) {
+    if (!lista) return "Lista vazia";
+
+    Celula *p;
+    for (p = lista; p != NULL; p = p->prox) {
+        if (valor == p->valor) {
+            //verificar se é o primeiro
+            if (p == lista) {
+                return "na primeira posição";
+            }
+            //verificar se é o último
+            if (p->prox == NULL) {
+                return "na última posição";
+            }
+            //está no meio
+            return "no meio";
+        }
+    }
+    return "ausente";
 }
