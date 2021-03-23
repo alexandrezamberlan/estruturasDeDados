@@ -12,6 +12,7 @@ typedef struct nodo {
 //relação de protótipos
 Celula *inserir(int valor, Celula *lista);
 void exibir(Celula *lista);
+int contarElementos(Celula *lista);
 
 int main() {
     Celula *lista = NULL;
@@ -27,6 +28,9 @@ int main() {
     } 
 
     exibir(lista);
+    int qtdElementos = contarElementos(lista);
+    double media = somarElementos(lista) / qtdElementos;
+    cout << "A média dos valores da lista é: " << media << endl;
 
     return 1;
 }
@@ -111,4 +115,17 @@ string mostrarOndeEsta(int valor, Celula *lista) {
         }
     }
     return "ausente";
+}
+
+int contarElementos(Celula *lista) {
+   Celula *p;
+   int contador = 0;
+
+    if (!lista) {
+        return contador;
+    }
+    for (p = lista; p != NULL; p = p->prox) { //percurso clássico em listas
+        contador++;
+    } 
+    return contador;
 }
