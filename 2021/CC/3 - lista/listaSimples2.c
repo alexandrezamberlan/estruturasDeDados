@@ -37,10 +37,21 @@ Celula *inserir(int valor, Celula *lista) {
 
     //percorrer com controle de duplicidade
     Celula *p;
-    for (p = lista; p->prox != NULL; p = p->prox); //percurso que pára no último elemento
-        //nada
+    for (p = lista; p->prox != NULL; p = p->prox) { //percurso que pára no último elemento
+        if (valor == p->valor) {
+            printf("Ja cadastrado!\n");
+            free(novo);
+            return lista;
+        }
+    }
+    //como o ultimo elemento nao foi testado, o código de teste sai do for
+    if (valor == p->valor) {
+        printf("Ja cadastrado!\n");
+        free(novo);
+        return lista;
+    }
+    // 4    6   1   7 
     
-
     //engatar
     p->prox = novo;
 
