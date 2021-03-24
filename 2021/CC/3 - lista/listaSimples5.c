@@ -81,12 +81,19 @@ char *regiaoValor(int valor, Celula *lista) {
     
     for (p = lista; p  ; p = p->prox) { //percurso clássico: exibir, contar, localizar, excluir, ....
         if (valor == p->valor) {
-            ???
+            //verificar se é o primeiro
+            if (p == lista) {
+                return "é o primeiro";
+            }
+            //verificar se é o último
+            if (p->prox == NULL) {
+                return "é o último";
+            }
+            //se não é o primeiro e nem o último, só pode estar em alguma posição do meio
+            return "está em alguma posição do meio";
         }
     }
-
-    
-    return ???;
+    return "não encontrado";
 }
 
 int main() {
