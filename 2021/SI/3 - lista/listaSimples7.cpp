@@ -12,12 +12,13 @@ typedef struct nodo {
 //relação de protótipos
 Celula *inserir(int valor, Celula *lista);
 void exibir(Celula *lista);
-void mostrarConjuncao(Celula *listaA, Celula *listaB);
+int contarElementos(Celula *lista);
+int pegarValorMeio(Celula *lista);
 
 
 int main() {
-    Celula *listaA = NULL;
-    Celula *listaB = NULL;
+    Celula *lista = NULL;
+    
     int valor, qtdNumeros;
 
     system("clear");
@@ -28,21 +29,12 @@ int main() {
     srand(time(NULL));
     for (int i = 0; i < qtdNumeros; i++) {
         valor = rand() % 100;
-        listaA = inserir(valor,listaA);
+        lista = inserir(valor,lista);
     } 
-    cout << "Lista A " << endl;
-    exibir(listaA);
+    cout << "Lista " << endl;
+    exibir(lista);
     
-
-    for (int i = 0; i < qtdNumeros; i++) {
-        valor = rand() % 100;
-        listaB = inserir(valor,listaB);
-    } 
-    cout << "Lista B " << endl;
-    exibir(listaB);
-
-    mostrarConjuncao(listaA, listaB);
-
+    cout << "O valor do meio da lista é: " << pegarValorMeio(lista) << endl;
     return 1;
 }
 
@@ -99,27 +91,6 @@ void exibir(Celula *lista) {
     cout << endl;
 }
 
-string mostrarOndeEsta(int valor, Celula *lista) {
-    if (!lista) return "Lista vazia";
-
-    Celula *p;
-    for (p = lista; p != NULL; p = p->prox) {
-        if (valor == p->valor) {
-            //verificar se é o primeiro
-            if (p == lista) {
-                return "na primeira posição";
-            }
-            //verificar se é o último
-            if (p->prox == NULL) {
-                return "na última posição";
-            }
-            //está no meio
-            return "no meio";
-        }
-    }
-    return "ausente";
-}
-
 int contarElementos(Celula *lista) {
    Celula *p;
    int contador = 0;
@@ -133,27 +104,21 @@ int contarElementos(Celula *lista) {
     return contador;
 }
 
-int somarElementos(Celula *lista) {
-   Celula *p;
-   int soma = 0;
 
-    if (!lista) {
-        return soma;
+int pegarValorMeio(Celula *lista) {
+    if (!lista) return -27; //código de lista vazia
+
+    int quantidade = contarElementos(lista);
+
+    if (quantidade == 1 || quantidade == 2) {
+        return lista->valor;
     }
-    for (p = lista; p != NULL; p = p->prox) { //percurso clássico em listas
-        soma = soma + p->valor;
-    } 
-    return soma;
+
+    quantidade = (int)quantidade / 2;
+
+    int i;
+    Celula *p;
+    for (i = 0, p = lista; i < quantidade; i++, p = p->prox); //leva o p ao meio
+
+    return p->valor;
 }
-
-void mostrarConjuncao(Celula *listaA, Celula *listaB) {
-    Celula *p1, *p2;
-
-    for (p1 = listaA; p1 != NULL; p1 = p1->prox) {
-        for (p2 = listaB; p2 != NULL; p2 = p2->prox) {
-            if (p1->valor == p2->valor) {
-                cout << p1->valor << " aparece nas duas listas" << endl;
-            }
-        }
-    }
-} 
