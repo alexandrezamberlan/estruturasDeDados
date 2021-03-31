@@ -73,6 +73,25 @@ int somarElementosC(Celula *lista) { //lista contém o endereco do 1o elemento
     return soma;
 }
 
+char *regiaoValorC(int valor, Celula *lista) {
+    if (!lista) return "Lista vazia"; 
+
+    Celula *p;
+    
+    for (p = lista; p  ; p = p->prox) { //percurso clássico: exibir, contar, localizar, excluir, ....
+        if (valor == p->valor) {
+            //verificar se é o primeiro
+           
+            //verificar se é o último
+           
+            //se não é o primeiro e nem o último, só pode estar em alguma posição do meio
+           
+        }
+    }
+    //???
+    return "não encontrado";
+}
+
 int main() {
     Celula *listaC = NULL;
     int valor;
@@ -89,6 +108,11 @@ int main() {
 
     printf("A lista circular possui %d elementos\n", contarElementosC(listaC));
     printf("Soma dos elementos da lista: %d\n", somarElementosC(listaC));
+
+    printf("Informe um valor de pesquisa: ");
+    scanf("%d", &valor);
+
+    printf("O valor está: %s\n", regiaoValorC(valor, listaC));
 
     return 1;
 }
