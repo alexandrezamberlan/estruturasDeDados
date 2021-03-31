@@ -58,50 +58,35 @@ int contarElementosC(Celula *lista) { //lista contém o endereco do 1o elemento
     return ++contador;
 }
 
-int somarElementosC(Celula *lista) { //lista contém o endereco do 1o elemento
-   Celula *p;
-   int soma = 0;
-
-    if (!lista) {
-        return soma;
-    }
-    for (p = lista; p->prox != lista; p = p->prox) { //percurso clássico em listas circulares
-        soma = soma + p->valor;
-    } 
-    soma = soma + p->valor;
-
-    return soma;
-}
-
-char *regiaoValorC(int valor, Celula *lista) {
-    if (!lista) return "Lista vazia"; 
-
+void mostrarPrimeiraMetadeC(Celula *lista) {
     Celula *p;
+    int qtd = contarElementosC(lista);
+    printf("PRIMEIRA METADE DA LISTA\n");
     
-    for (p = lista; p->prox != lista  ; p = p->prox) { //percurso clássico: exibir, contar, localizar, excluir, ....
-        if (valor == p->valor) {
-            //verificar se é o primeiro
-            if (p == lista) return "na primeira posição\n";
-           
-            // //verificar se é o último
-            // if (p->prox == lista) return "na última posição\n";
-           
-            //se não é o primeiro e nem o último, só pode estar em alguma posição do meio
-            return "em alguma posição do meio\n";
-        }
+    if (qtd == 0 || qtd == 1) {
+        printf("Lista Circular sem possibilidade de divisão\n");
+        return;
     }
-    if (valor == p->valor) {
-        //verificar se é o primeiro
-        if (p == lista) return "na primeira posição\n";
-        
-        //verificar se é o último
-        if (p->prox == lista) return "na última posição\n";
-        
-        //se não é o primeiro e nem o último, só pode estar em alguma posição do meio
-        return "em alguma posição do meio\n";
+
+    int metade = qtd / 2;
+    int i;
+    for (p = lista, i = 0; i < metade; p = p->prox, i++) {
+        printf("%d\t", p->valor);
     }
-    return "não encontrado";
+    printf("\n");
 }
+
+void mostrarSegundaMetadeC(Celula *lista) {
+    Celula *p;
+    int qtd = contarElementosC(lista);
+    printf("SEGUNDA METADE DA LISTA\n");
+
+    if (qtd == 0 || qtd == 1) {
+        printf("Lista Circular sem possibilidade de divisão\n");
+        return;
+    }
+}
+
 
 int main() {
     Celula *listaC = NULL;
@@ -118,12 +103,8 @@ int main() {
     exibirC(listaC);
 
     printf("A lista circular possui %d elementos\n", contarElementosC(listaC));
-    printf("Soma dos elementos da lista: %d\n", somarElementosC(listaC));
-
-    printf("Informe um valor de pesquisa: ");
-    scanf("%d", &valor);
-
-    printf("O valor está: %s\n", regiaoValorC(valor, listaC));
-
+    
+    mostrarPrimeiraMetadeC(listaC);
+    //mostrarSegundaMetade(listaC);
     return 1;
 }
