@@ -58,43 +58,27 @@ int contarElementosC(Celula *lista) { //lista contém o endereco do 1o elemento
     return ++contador;
 }
 
-void mostrarPrimeiraMetadeC(Celula *lista) {
-    Celula *p;
+Celula *podarC(Celula *lista) {
     int qtd = contarElementosC(lista);
-    printf("PRIMEIRA METADE DA LISTA\n");
-    
-    if (qtd == 0 || qtd == 1) {
-        printf("Lista Circular sem possibilidade de divisão\n");
-        return;
+    if (qtd >= 0 && qtd <= 2) {
+        printf("A quantidade não permite a poda\n");
+        return lista;
     }
 
-    int metade = qtd / 2;
-    int i;
-    for (p = lista, i = 0; i < metade; p = p->prox, i++) {
-        printf("%d\t", p->valor);
-    }
-    printf("\n");
+    Celula *p, *novaLista;
+    p = lista;
+    novaLista = lista->prox; //reposicionei o controle da lista no segundo elemento
+    free(p); //liberamos o endereço do primeiro elemento, ou seja, podamos o primeiro
+
+    //leva o p até o penúltimo elemento, pois o último elemento sera liberado
+    for (p = novaLista; p->prox->prox != lista; p = p->prox);
+
+    free(p->prox);
+    p->prox = novaLista;
+
+
+    return novaLista;
 }
-
-void mostrarSegundaMetadeC(Celula *lista) {
-    Celula *p;
-    int qtd = contarElementosC(lista);
-    printf("SEGUNDA METADE DA LISTA\n");
-
-    if (qtd == 0 || qtd == 1) {
-        printf("Lista Circular sem possibilidade de divisão\n");
-        return;
-    }
-
-    int metade = qtd / 2;
-    int i;
-    for (p = lista, i = 0; i < qtd; p = p->prox, i++) {
-        if (i >= metade) {
-            printf("%d\t", p->valor);
-        }
-    }
-}
-
 
 int main() {
     Celula *listaC = NULL;
@@ -112,7 +96,8 @@ int main() {
 
     printf("A lista circular possui %d elementos\n", contarElementosC(listaC));
     
-    mostrarPrimeiraMetadeC(listaC);
-    mostrarSegundaMetadeC(listaC);
+    listaC = podarC(listaC);
+    printf("Lista após a poda\n");
+    exibirC(listaC);
     return 1;
 }
