@@ -55,9 +55,17 @@ Celula *inserirC(int valor, Celula *lista) {
     //percorrer toda a lista e inserir na última posição
     Celula *p, *pR;
     for (pR = NULL, p = lista; p->prox != lista ; pR = p, p = p->prox){ //percurso para parar o p no último elemento
+        if (valor == p->valor) {
+            free(novo);
+            return lista;
+        }
         if (valor <= p->valor) { //encontramos a posição do valor
             break;        
         }
+    }
+    if (valor == p->valor) {
+        free(novo);
+        return lista;
     }
 
     //existem 2 motivos para sair do for:

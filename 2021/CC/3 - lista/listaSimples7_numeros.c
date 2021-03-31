@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 typedef struct nodo {
     int valor;
@@ -39,11 +40,11 @@ Celula *inserir(int valor, Celula *lista) {
     //percorrer com controle de duplicidade
     Celula *p, *pR; //pR sempre estará uma posição atrás do p
     for (pR = NULL, p = lista; p ; pR = p, p = p->prox) { 
-        if (valor == p->valor) {
-            printf("Ja cadastrado!\n");
-            free(novo);
-            return lista;
-        }
+        // if (valor == p->valor) {
+        //     printf("Ja cadastrado!\n");
+        //     free(novo);
+        //     return lista;
+        // }
        if (valor < p->valor) {
            break;
        }
@@ -81,80 +82,42 @@ int contarElementos(Celula *lista) {
     return contador;
 }
 
-char *regiaoValor(int valor, Celula *lista) {
-    if (!lista) return "Lista vazia"; 
-
-    Celula *p;
-    
-    for (p = lista; p  ; p = p->prox) { //percurso clássico: exibir, contar, localizar, excluir, ....
-        if (valor == p->valor) {
-            //verificar se é o primeiro
-            if (p == lista) {
-                return "é o primeiro";
-            }
-            //verificar se é o último
-            if (p->prox == NULL) {
-                return "é o último";
-            }
-            //se não é o primeiro e nem o último, só pode estar em alguma posição do meio
-            return "está em alguma posição do meio";
-        }
-    }
-    return "não encontrado";
-}
-
-int valorMeio(Celula *lista) {
-    if (!lista) return -27; //valor do ESC
-
-    int qtd = contarElementos(lista);
-
-    if (qtd == 1 || qtd == 2) {
-        return lista->valor;
-    }
-
-    qtd = (int)qtd / 2;
-
-    Celula *p;
-    int i;
-    for (i = 0, p = lista; i < qtd; i++, p = p->prox); //leva o p até o meio
-
-    return p->valor;
-}
 
 int main() {
     Celula *lista = NULL;
+    int valor;
+
+    clock_t tempoInicio, tempoFim;
+
     system("clear");
 
+    FILE *procuradorArquivo;
+    char nomeArquivo[100];
+
+    printf("Informe nome do arquivo com numeros: ");
+    scanf("%s", nomeArquivo);
+
+    //abri o arquivo
+    procuradorArquivo = fopen(nomeArquivo,"r");
+    if (!procuradorArquivo) {
+        printf("Arquivo nao encontrado.\n");
+        exit(0);
+    }
     
-    int valor;
+    //percorrer o arquivo
+    printf("iniciando a inserção\n");
+    tempoInicio = clock();
     do {
-        printf("Digite um numero inteiro (-1 para sair): ");
-        scanf("%d", &valor);
-        if (valor == -1)
-            break;
+        fscanf(procuradorArquivo,"%d",&valor);
+        lista = inserir(valor, lista);
+    } while (!feof(procuradorArquivo));
 
-        lista = inserir(valor, lista); //vamos inserir no final da lista //percorrendo e parando no último
+    tempoFim = clock();
+    printf("inserção finalizada em %f segundos\n", (float)(tempoFim - tempoInicio)/CLOCKS_PER_SEC);
 
-    } while (1);
+    exibir(lista);
 
-    exibir(lista); //percorrer passando por todos elementos
-
-    int quantidadeElementos = contarElementos(lista); //percorrer passando por todos elementos
-    printf("A lista possui %d elementos\n", quantidadeElementos);
-
-    printf("Valor no meio da lista é: %d\n", valorMeio(lista));
-
+    fclose(procuradorArquivo);
     return 1;
 }
 
-
-
-/**
- * numeros a serem inseridos: 30 7 12 5 90 1 3
- * 
- * pilha -> 3 1 90 5 12 7 30
- * 
- * lista -> 30 7 12 5 90 1 3
- * 
- * listaOrdenada -> 1 3 5 7 12 30 90
- */ 
