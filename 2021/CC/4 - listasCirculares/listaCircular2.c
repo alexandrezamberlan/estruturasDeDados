@@ -58,6 +58,21 @@ int contarElementosC(Celula *lista) { //lista contém o endereco do 1o elemento
     return ++contador;
 }
 
+int somarElementosC(Celula *lista) { //lista contém o endereco do 1o elemento
+   Celula *p;
+   int soma = 0;
+
+    if (!lista) {
+        return soma;
+    }
+    for (p = lista; p->prox != lista; p = p->prox) { //percurso clássico em listas circulares
+        soma = soma + p->valor;
+    } 
+    soma = soma + p->valor;
+    
+    return soma;
+}
+
 int main() {
     Celula *listaC = NULL;
     int valor;
