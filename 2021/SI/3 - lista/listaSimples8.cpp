@@ -77,7 +77,6 @@ Celula *inserir(int valor, Celula *lista) {
     pR->prox = novo;
     novo->prox = p;
     return lista;
-
 }
 
 void exibir(Celula *lista) {
