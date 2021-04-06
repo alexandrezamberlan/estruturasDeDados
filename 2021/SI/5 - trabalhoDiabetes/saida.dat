@@ -1,11 +1,19 @@
-Data: 05/04/2021. Hora: 21:05
+Data: 05/04/2021. Hora: 21:39
 Média da Glicemia: 94.00
 Média da Insulina: 8.00
 Média da Calorias: 2411.00
 Média da Carboidrato: 249.00
 
-Mediana da Glicemia: 94
+Mediana da Glicemia: 94 - 94
+Mediana da Insulina: 8 - 8
+Mediana da Calorias: 2377 - 2377
+Mediana da Carboidrato: 251 - 251
 
-Mediana da Insulina: 8
-Mediana da Calorias: 2377
-Mediana da Carboidrato: 251
+Moda da Glicemia: 92 aparece 42 vezes
+Moda da Insulina: 6 aparece 230 vezes
+Moda da Calorias: 2296 aparece 5 vezes
+Moda da Carboidrato: 209 aparece 10 vezes
+
+Para um diabético controlado:
+glicemia <= 100.
+carboidrato <= 200.

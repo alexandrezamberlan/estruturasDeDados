@@ -27,6 +27,11 @@ void calcularMedianaInsulina(Celula *lista, FILE *procuradorSaida);
 void calcularMedianaCalorias(Celula *lista, FILE *procuradorSaida);
 void calcularMedianaCarboidrato(Celula *lista, FILE *procuradorSaida);
 
+void calcularModaGlicemia(Celula *lista, FILE *procuradorSaida);
+void calcularModaInsulina(Celula *lista, FILE *procuradorSaida);
+void calcularModaCalorias(Celula *lista, FILE *procuradorSaida);
+void calcularModaCarboidrato(Celula *lista, FILE *procuradorSaida);
+
 int main() {
     Celula *listaOriginalGlicemia = NULL;
     Celula *listaOriginalInsulina = NULL;
@@ -106,14 +111,139 @@ int main() {
     calcularMedianaCalorias(listaOrdenadaCalorias, procuradorSaida);
     calcularMedianaCarboidrato(listaOrdenadaCarboidrato, procuradorSaida);
 
+    cout << endl;
+    fprintf(procuradorSaida, "\n");
+
     //calcular moda de cada valor glicêmico e 'jogar' na tela e arquivo de saida
+    calcularModaGlicemia(listaOrdenadaGlicemia, procuradorSaida);
+    calcularModaInsulina(listaOrdenadaInsulina, procuradorSaida);
+    calcularModaCalorias(listaOrdenadaCalorias, procuradorSaida);
+    calcularModaCarboidrato(listaOrdenadaCarboidrato, procuradorSaida);
+
+    cout << endl;
+    fprintf(procuradorSaida, "\n");
 
     //analisar os dados glicêmicos glicemia e carboidrato e dar um parecer
+    fprintf(procuradorSaida, "Para um diabético controlado:\n");    
+    fprintf(procuradorSaida, "glicemia <= 100.\n"); 
+    fprintf(procuradorSaida, "carboidrato <= 200.\n");
 
     //fechar arquivos
     fclose(procuradorEntrada);
     fclose(procuradorSaida);
     return 1;
+}
+
+void calcularModaGlicemia(Celula *lista, FILE *procuradorSaida) {
+    Celula *p1, *p2;
+    int valor, valorModa;
+    int qtdValor, qtdValorModa = 0;
+      
+    for (p1 = lista; p1; p1 = p1->prox) {
+        valor = p1->valor;
+        qtdValor = 0;
+        if (valor != valorModa) {
+            for (p2 = lista; p2; p2 = p2->prox) {
+                if (valor == p2->valor) {
+                    qtdValor++;
+                }
+                if (valor < p2->valor) {
+                    break; //vamos sair do segundo for
+                }
+            }
+            if (qtdValor > qtdValorModa) {
+                qtdValorModa = qtdValor;
+                valorModa = valor;
+            }
+        }
+    }
+
+    cout <<  "Moda da Glicemia: " << valorModa << " aparece " << qtdValorModa << " vezes na lista" << endl;
+    fprintf(procuradorSaida, "Moda da Glicemia: %d aparece %d vezes\n", valorModa, qtdValorModa);   
+}
+
+void calcularModaInsulina(Celula *lista, FILE *procuradorSaida) {
+    Celula *p1, *p2;
+    int valor, valorModa;
+    int qtdValor, qtdValorModa = 0;
+      
+    for (p1 = lista; p1; p1 = p1->prox) {
+        valor = p1->valor;
+        qtdValor = 0;
+        if (valor != valorModa) {
+            for (p2 = lista; p2; p2 = p2->prox) {
+                if (valor == p2->valor) {
+                    qtdValor++;
+                }
+                if (valor < p2->valor) {
+                    break; //vamos sair do segundo for
+                }
+            }
+            if (qtdValor > qtdValorModa) {
+                qtdValorModa = qtdValor;
+                valorModa = valor;
+            }
+        }
+    }
+
+    cout <<  "Moda da Insulina: " << valorModa << " aparece " << qtdValorModa << " vezes na lista" << endl;
+    fprintf(procuradorSaida, "Moda da Insulina: %d aparece %d vezes\n", valorModa, qtdValorModa);   
+}
+
+void calcularModaCalorias(Celula *lista, FILE *procuradorSaida) {
+    Celula *p1, *p2;
+    int valor, valorModa;
+    int qtdValor, qtdValorModa = 0;
+      
+    for (p1 = lista; p1; p1 = p1->prox) {
+        valor = p1->valor;
+        qtdValor = 0;
+        if (valor != valorModa) {
+            for (p2 = lista; p2; p2 = p2->prox) {
+                if (valor == p2->valor) {
+                    qtdValor++;
+                }
+                if (valor < p2->valor) {
+                    break; //vamos sair do segundo for
+                }
+            }
+            if (qtdValor > qtdValorModa) {
+                qtdValorModa = qtdValor;
+                valorModa = valor;
+            }
+        }
+    }
+
+    cout <<  "Moda da Calorias: " << valorModa << " aparece " << qtdValorModa << " vezes na lista" << endl;
+    fprintf(procuradorSaida, "Moda da Calorias: %d aparece %d vezes\n", valorModa, qtdValorModa);   
+}
+
+void calcularModaCarboidrato(Celula *lista, FILE *procuradorSaida) {
+    Celula *p1, *p2;
+    int valor, valorModa;
+    int qtdValor, qtdValorModa = 0;
+      
+    for (p1 = lista; p1; p1 = p1->prox) {
+        valor = p1->valor;
+        qtdValor = 0;
+        if (valor != valorModa) {
+            for (p2 = lista; p2; p2 = p2->prox) {
+                if (valor == p2->valor) {
+                    qtdValor++;
+                }
+                if (valor < p2->valor) {
+                    break; //vamos sair do segundo for
+                }
+            }
+            if (qtdValor > qtdValorModa) {
+                qtdValorModa = qtdValor;
+                valorModa = valor;
+            }
+        }
+    }
+
+    cout <<  "Moda da Carboidrato: " << valorModa << " aparece " << qtdValorModa << " vezes na lista" << endl;
+    fprintf(procuradorSaida, "Moda da Carboidrato: %d aparece %d vezes\n", valorModa, qtdValorModa);   
 }
 
 void calcularMedianaGlicemia(Celula *lista, FILE *procuradorSaida) {
