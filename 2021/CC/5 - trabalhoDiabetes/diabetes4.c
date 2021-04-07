@@ -122,9 +122,30 @@ int somarElementos(Celula *lista) {
 void calcularMedia(Celula *lista, FILE *procurador, char *frase) {
     double media = somarElementos(lista) / contarElementos(lista);
 
-    fprintf(procurador,"\n%s %.2f\n", frase, media);
+    fprintf(procurador,"\n%s %.2f", frase, media);
 }
 
+void calcularMediana(Celula *lista, FILE *procurador, char *frase) {
+    int qtd = contarElementos(lista);
+
+    if (qtd <= 2) {
+        fprintf(procurador,"\n%s Dados insuficientes para o cálculo da mediana", frase);
+    } else {
+        Celula *p;
+        int metade = qtd / 2;
+        int i;
+        
+        if (qtd % 2 == 1) {//lista tem tamanho impar, gravar somente um valor do meio
+            for (p = lista, i = 0; i < metade; i++, p = p->prox);
+
+            fprintf(procurador,"\n%s %d", frase, p->valor);
+        } else { //lista tem tamanho par, gravar os dois valores mais ao meio
+            for (p = lista, i = 0; i < metade-1; i++, p = p->prox);
+
+            fprintf(procurador,"\n%s %d e %d", frase, p->valor, p->prox->valor);
+        }
+    }    
+}
 
 int main() {
     Celula *listaOriginalGlicemia = NULL;
@@ -170,6 +191,7 @@ int main() {
     calcularMedia(listaOrdenadaGlicemia, procuradorSaida, "Média Glicemia: ");
 
     //calcular e gravar a mediana glicemia - PRECISA DA LISTA ORDENADA
+    calcularMediana(listaOrdenadaGlicemia, procuradorSaida, "Mediana Glicemia: ");
 
     //calcular e gravar moda glicemia
 
@@ -177,6 +199,7 @@ int main() {
     calcularMedia(listaOrdenadaCarboidratos, procuradorSaida, "Média Carboidratos: ");
 
     //calcular e gravar a mediana carboidratos
+    calcularMediana(listaOrdenadaCarboidratos, procuradorSaida, "Mediana Carboidratos: ");
 
     //calcular e gravar moda carboidratos
 
