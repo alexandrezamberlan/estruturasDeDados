@@ -13,6 +13,9 @@ typedef struct no {
 //lista de protótipos, ou seja, os métodos que deverão ser implementados no código
 Celula *inserirOrdenado(int valor, Celula *lista);
 Celula *inserirDesordenado(int valor, Celula *lista);
+Celula *inserirControleDuplicidade(int valor, Celula *lista);
+Celula *destruir(Celula *lista);
+
 void exibir(Celula *lista, string frase);
 int contarElementos(Celula *lista);
 int somarElementos(Celula *lista);
@@ -138,8 +141,13 @@ void calcularModaGlicemia(Celula *lista, FILE *procuradorSaida) {
     Celula *p1, *p2;
     int valor, valorModa;
     int qtdValor, qtdValorModa = 0;
+
+    Celula *listaModa = NULL;
       
     for (p1 = lista; p1; p1 = p1->prox) {
+        if (valor == p1->valor) {
+            continue;
+        }
         valor = p1->valor;
         qtdValor = 0;
         if (valor != valorModa) {
@@ -150,24 +158,47 @@ void calcularModaGlicemia(Celula *lista, FILE *procuradorSaida) {
                 if (valor < p2->valor) {
                     break; //vamos sair do segundo for
                 }
+
             }
             if (qtdValor > qtdValorModa) {
                 qtdValorModa = qtdValor;
                 valorModa = valor;
+                listaModa = destruir(listaModa);
+                listaModa = inserirOrdenado(valorModa, listaModa);
+            }
+
+            if (qtdValor == qtdValorModa) {
+                valorModa = valor;
+                listaModa = inserirControleDuplicidade(valorModa, listaModa);
             }
         }
     }
 
-    cout <<  "Moda da Glicemia: " << valorModa << " aparece " << qtdValorModa << " vezes na lista" << endl;
-    fprintf(procuradorSaida, "Moda da Glicemia: %d aparece %d vezes\n", valorModa, qtdValorModa);   
+    Celula *p;
+    cout <<  "Moda da Glicemia: ";
+    for (p = listaModa; p; p = p->prox) {
+        cout << p->valor << "\t";
+    }
+    cout << " aparece(m) " << qtdValorModa << " vezes na lista" << endl;
+
+    fprintf(procuradorSaida, "Moda da Glicemia: ");
+    for (p = listaModa; p; p = p->prox) {
+        fprintf(procuradorSaida, "%d\t", p->valor);
+    }
+    fprintf(procuradorSaida, " aparece(m) %d vezes\n", qtdValorModa);   
 }
 
 void calcularModaInsulina(Celula *lista, FILE *procuradorSaida) {
     Celula *p1, *p2;
     int valor, valorModa;
     int qtdValor, qtdValorModa = 0;
+
+    Celula *listaModa = NULL;
       
     for (p1 = lista; p1; p1 = p1->prox) {
+        if (valor == p1->valor) {
+            continue;
+        }
         valor = p1->valor;
         qtdValor = 0;
         if (valor != valorModa) {
@@ -182,20 +213,42 @@ void calcularModaInsulina(Celula *lista, FILE *procuradorSaida) {
             if (qtdValor > qtdValorModa) {
                 qtdValorModa = qtdValor;
                 valorModa = valor;
+                listaModa = destruir(listaModa);
+                listaModa = inserirOrdenado(valorModa, listaModa);
+            }
+
+            if (qtdValor == qtdValorModa) {
+                valorModa = valor;
+                listaModa = inserirControleDuplicidade(valorModa, listaModa);
             }
         }
     }
 
-    cout <<  "Moda da Insulina: " << valorModa << " aparece " << qtdValorModa << " vezes na lista" << endl;
-    fprintf(procuradorSaida, "Moda da Insulina: %d aparece %d vezes\n", valorModa, qtdValorModa);   
+    Celula *p;
+    cout <<  "Moda da Insulina: ";
+    for (p = listaModa; p; p = p->prox) {
+        cout << p->valor << "\t";
+    }
+    cout << " aparece(m) " << qtdValorModa << " vezes na lista" << endl;
+
+    fprintf(procuradorSaida, "Moda da Insulina: ");
+    for (p = listaModa; p; p = p->prox) {
+        fprintf(procuradorSaida, "%d\t", p->valor);
+    }
+    fprintf(procuradorSaida, " aparece(m) %d vezes\n", qtdValorModa);
 }
 
 void calcularModaCalorias(Celula *lista, FILE *procuradorSaida) {
     Celula *p1, *p2;
     int valor, valorModa;
     int qtdValor, qtdValorModa = 0;
+
+    Celula *listaModa = NULL;
       
     for (p1 = lista; p1; p1 = p1->prox) {
+        if (valor == p1->valor) {
+            continue;
+        }
         valor = p1->valor;
         qtdValor = 0;
         if (valor != valorModa) {
@@ -210,20 +263,42 @@ void calcularModaCalorias(Celula *lista, FILE *procuradorSaida) {
             if (qtdValor > qtdValorModa) {
                 qtdValorModa = qtdValor;
                 valorModa = valor;
+                listaModa = destruir(listaModa);
+                listaModa = inserirOrdenado(valorModa, listaModa);
+            }
+
+            if (qtdValor == qtdValorModa) {
+                valorModa = valor;
+                listaModa = inserirControleDuplicidade(valorModa, listaModa);
             }
         }
     }
 
-    cout <<  "Moda da Calorias: " << valorModa << " aparece " << qtdValorModa << " vezes na lista" << endl;
-    fprintf(procuradorSaida, "Moda da Calorias: %d aparece %d vezes\n", valorModa, qtdValorModa);   
+    Celula *p;
+    cout <<  "Moda da Calorias: ";
+    for (p = listaModa; p; p = p->prox) {
+        cout << p->valor << "\t";
+    }
+    cout << " aparece(m) " << qtdValorModa << " vezes na lista" << endl;
+
+    fprintf(procuradorSaida, "Moda da Calorias: ");
+    for (p = listaModa; p; p = p->prox) {
+        fprintf(procuradorSaida, "%d\t", p->valor);
+    }
+    fprintf(procuradorSaida, " aparece(m) %d vezes\n", qtdValorModa);
 }
 
 void calcularModaCarboidrato(Celula *lista, FILE *procuradorSaida) {
     Celula *p1, *p2;
     int valor, valorModa;
     int qtdValor, qtdValorModa = 0;
+
+    Celula *listaModa = NULL;
       
     for (p1 = lista; p1; p1 = p1->prox) {
+        if (valor == p1->valor) {
+            continue;
+        }
         valor = p1->valor;
         qtdValor = 0;
         if (valor != valorModa) {
@@ -238,12 +313,29 @@ void calcularModaCarboidrato(Celula *lista, FILE *procuradorSaida) {
             if (qtdValor > qtdValorModa) {
                 qtdValorModa = qtdValor;
                 valorModa = valor;
+                listaModa = destruir(listaModa);
+                listaModa = inserirOrdenado(valorModa, listaModa);
+            }
+
+            if (qtdValor == qtdValorModa) {
+                valorModa = valor;
+                listaModa = inserirControleDuplicidade(valorModa, listaModa);
             }
         }
     }
 
-    cout <<  "Moda da Carboidrato: " << valorModa << " aparece " << qtdValorModa << " vezes na lista" << endl;
-    fprintf(procuradorSaida, "Moda da Carboidrato: %d aparece %d vezes\n", valorModa, qtdValorModa);   
+    Celula *p;
+    cout <<  "Moda da Carboidrato: ";
+    for (p = listaModa; p; p = p->prox) {
+        cout << p->valor << "\t";
+    }
+    cout << " aparece(m) " << qtdValorModa << " vezes na lista" << endl;
+
+    fprintf(procuradorSaida, "Moda da Carboidrato: ");
+    for (p = listaModa; p; p = p->prox) {
+        fprintf(procuradorSaida, "%d\t", p->valor);
+    }
+    fprintf(procuradorSaida, " aparece(m) %d vezes\n", qtdValorModa);
 }
 
 void calcularMedianaGlicemia(Celula *lista, FILE *procuradorSaida) {
@@ -412,6 +504,58 @@ Celula *inserirOrdenado(int valor, Celula *lista) {
     pR->prox = novo;
     novo->prox = p;
     return lista;
+}
+
+Celula *inserirControleDuplicidade(int valor, Celula *lista) {
+    //alocar memória
+    Celula *novo = (Celula *)malloc(sizeof(Celula));
+
+    //depositar valores de parâmetro
+    novo->valor = valor;
+    novo->prox = NULL;
+
+    if (!lista) return novo; //se a lista for vazia, o novo será o primeiro elemento nela
+
+    //percorrer toda a lista e inserir na última posição
+    Celula *p, *pR;
+    for (pR = NULL, p = lista; p != NULL; pR = p, p = p->prox) {
+        if (valor == p->valor) {
+            free(novo);
+            return lista;
+        }
+        if (valor <= p->valor) { //encontramos a posição do valor
+            break;  //sai do for      
+        }
+    }
+    //existem 2 motivos para sair do for:
+    //1o pq o p chegou no final da lista - sabe-se então que o valor será o último elemento
+    if (!p) {
+        pR->prox = novo;
+        return lista;
+    }
+    //2o pq o break executou - ou o valor pode ser o primeiro ou pode estar no meio
+    if (p == lista) {
+        novo->prox = lista; //novo->prox = p;
+        return novo;
+    }
+    //não é o primeiro e nem o último, ou seja, está no meio
+    pR->prox = novo;
+    novo->prox = p;
+    return lista;
+}
+
+Celula *destruir(Celula *lista) {
+    if (!lista) {
+        return lista;
+    }
+    Celula *pR, *p;
+
+    for (pR = lista, p = lista->prox; p ; pR = p, p = p->prox) {
+        free(pR);
+    }
+    free(pR);
+
+    return NULL;
 }
 
 int contarElementos(Celula *lista) {
