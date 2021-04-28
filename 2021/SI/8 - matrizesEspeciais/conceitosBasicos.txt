@@ -1,0 +1,34 @@
+Matrizes especiais
+    * muitas linhas e muitas colunas - dimensão 'grande'
+    * a maioria das células igual a zero ou nula
+    * ocorrem em tratamento de imagens e vídeos
+
+    * Principais PROBLEMAS de matrizes especiais  
+        - consumo excessivo da memória
+        - tempo de processamento excessivo
+
+    * SOLUÇÃO para o problema
+        - converter os elementos não nulos em elementos de uma lista encadeada
+            - guarda-se: posição linha, posição coluna, valor (pixel)
+                - em tons de cinza, pixel vai de 0 a 255
+                - em tons RGB: 0-255 para vermelho; 0-255 para verde; 0-255 para azul
+
+                linha = 0
+                coluna = 1
+                r = 200
+                g = 123
+                b = 233
+                prox = -> .
+        
+        - descartar a matriz especial
+
+
+    TIPOS
+        Esparsa - imagens, vídeos, planilhas eletrônicas
+        
+        Diagonal principal: i == j
+        Diagonal secundária: i + j == n - 1
+        Triangular superior da principal: j > i
+        Triangular inferior da principal: i > j
+        Triangular superior da secundária: i + j > n - 1
+        Triangular inferior da secundária: i + j < n - 1

@@ -1,0 +1,40 @@
+FILA é uma Estrutura de Dados Abstrata como pilha e lista
+    - Regras na inserção e na remoção como pilhas
+        - First In, First Out - FIFO - Primeiro que entra é o primeiro que sai
+
+    - Fila é utilizada para controle de prioridade de atendimento
+
+    - Diferente do que acontece com as outras estruturas, fila usa 2 PONTEIROS
+        - inicio (cabeça) -> ponteiro que aponta para o elemento mais antigo da estrutura
+            -> neste ponteiro que são realizadas as REMOÇÕES
+        - fim (cauda) -> ponteiro que aponta para o elemento mais recente da estrutura
+            -> neste ponteiro que são realizadas as INSERÇÕES
+
+    - DIFERENTE DE LISTAS E PILHAS, porque se tem 2 structs
+        - primeiro struct é igual a listas simples e pilhas
+
+    typedef struct no {
+        int valor;
+        struct no *prox;
+    } Celula;
+
+        - segundo struct para contemplar os dois ponteiros (encapsulamento)
+    
+    typedf struct {
+        Celula *inicio; //ponteiro para as remoções
+        Celula *fim; //ponteiro para as inserções
+    } Fila; // como se fosse uma classe na Orientação a Objetos
+
+
+
+    main() {
+        Celula *lista1 = NULL;
+        Celula *pilha10 = NULL;
+        
+        Fila filaNormal;
+
+        filaNormal.inicio = NULL;
+        filaNormal.fim = NULL;
+
+        filaNormal = inserir(100, filaNormal);
+    }
