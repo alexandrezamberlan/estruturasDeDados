@@ -43,17 +43,10 @@ int main() {
 int maiorElemento(CelulaD *lista) {
     if (!lista) return -27;
 
-    //listas duplas, sempre que usarmos, precisamos garantir que o controle esteja no início
-    for ( ; lista->ant; lista = lista->ant);
-
-    int maior = lista->valor;
     CelulaD *p;
-    for (p = lista->prox; p; p = p->prox) {
-        if (p->valor > maior) {
-            maior = p->valor;
-        }
-    }
-    return maior;    
+    for (p = lista->prox; p; p = p->prox);
+    
+    return p->valor;    
 }
 
 CelulaD *inserirD(int valor, CelulaD *lista) {
@@ -71,20 +64,30 @@ CelulaD *inserirD(int valor, CelulaD *lista) {
     for ( ; lista->ant; lista = lista->ant);
 
     //percorrer toda a lista e inserir na última posição
-    CelulaD *p;
-    for (p = lista; p->prox != NULL; p = p->prox){ //percurso para parar o p no último elemento
-        if (valor == p->valor) {
-            free(novo);
-            return lista;
+    CelulaD *p, *pR;
+    for (pR = NULL, p = lista; p != NULL; pR = p, p = p->prox){ 
+        if (valor < p->valor) {
+            break;
         }
     }
-    if (valor == p->valor) {
-        free(novo);
+    //primeiro
+    if (p == lista) {
+        novo->prox = lista;
+        lista->ant = novo;
+        return novo;
+    }
+    //ultimo
+    if (!p) {
+        pR->prox = novo;
+        novo->ant = pR;
         return lista;
     }
-    //engatar na última posição
-    p->prox = novo; //ultimo elemento vai apontar agora para o novo elemento alocado
-    novo->ant = p; //novo elemento alocado aponta para o último elemento
+    //entao so pode estar no meio
+
+    pR->prox = novo;
+    novo->ant = pR;
+    novo->prox = p;
+    p->ant = novo;
 
     //retornar o primeiro elemento
     return lista;
