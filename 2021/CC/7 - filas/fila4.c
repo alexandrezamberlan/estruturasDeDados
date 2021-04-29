@@ -43,18 +43,15 @@ int main() {
                         filaPrioritaria = remover(filaPrioritaria, &senha);
                         if (senha != -27) {
                                 printf("Atenção... chamando a senha P%d\n", senha); 
-                                //colocar em uma lista as senhas já atendidas
                                 delay(2000);
                         }
                     } else {
                         filaNormal = remover(filaNormal, &senha);
                         if (senha != -27) {
                                 printf("Atenção... chamando a senha N%d\n", senha); 
-                                //colocar em uma lista as senhas já atendidas
                                 delay(2000);
                         }
                     }
-                    //mostrar a lista com as senhas atendidas
                     contaAtendimentos++;
                     break;
             case 4: 
