@@ -1,0 +1,57 @@
+RECURSÃO é um processo de autochamamento de um método ou de um mesmo método
+
+É uma técnica que substitui as instruções de repetição pelo 'EMPILHAMENTO' de processos.
+
+Vantagens:
+    - possibilidade de executar códigos no empilhamento do processo e no desempilhamento do processo;
+    - códigos mais simples em termos visuais;
+
+Desvantagens:
+    - consumo de memória, pois empilha o mesmo processo muitas vezes
+    - dificuldade de visualizar o que ocorre com a memória
+
+Aplicações:
+    - ÁRVORES -> percurso
+
+Situações exemplos:
+
+Repetição por iteração -> uso do for; while; do-while
+        A        B      C
+for (int i = 0; i < 10; i++) {
+    cout << "turma de ED" << endl;
+}
+        A               B      C
+for (Celula *p = lista; p; p = p->prox) {
+}
+
+string frase = "turma de estruturas de dados";
+       A           B                 C
+for (int i = 0; i < frase.length(); i++) {
+}
+
+
+Repetição por recursão -> uso do empilhamento de processo -> é uma técnica do Sistema Operacional para empilhar processos.
+                             (A) - ocorre no parâmetro
+void exibirR(string frase, int i) {
+    if (i > 0) { (B) - ocorre no primeiro if
+        cout << frase << endl;
+        exibirR(frase, i - 1); //transformação da variável de controle (C) - ocorre no ponto de recursão
+    }
+}
+
+Sempre numa repetição, seja por iteração ou por recursão, há 3 PONTOS IMPORTANTES:
+ - inicialização da variável de controle (A);
+ - testar a variável de controle para a parada da repetição (B);
+ - transformação da variável de controle (ou incremento ou decremento) (C)
+
+int main() {
+    exibirR("turma de ED", 4);
+}
+
+
+Há recursão em métodos SEM retorno (void)
+    - barbada
+
+Há recursão em métodos COM retorno (return)
+    - atenção
+
