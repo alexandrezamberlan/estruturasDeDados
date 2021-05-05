@@ -13,12 +13,6 @@ Desvantagens:
 Aplicações:
     - ÁRVORES -> percurso
 
-Sempre numa repetição, seja por iteração ou por recursão, há 3 PONTOS IMPORTANTES:
- - inicialização da variável de controle (A);
- - testar a variável de controle para a parada da repetição (B);
- - transformação da variável de controle (ou incremento ou decremento) (C)
-
-
 Situações exemplos:
 
 Repetição por iteração -> uso do for; while; do-while
@@ -35,25 +29,26 @@ string frase = "turma de estruturas de dados";
 for (int i = 0; i < frase.length(); i++) {
 }
 
+
 Repetição por recursão -> uso do empilhamento de processo -> é uma técnica do Sistema Operacional para empilhar processos.
                              (A) - ocorre no parâmetro
 void exibirR(string frase, int i) {
     if (i > 0) { (B) - ocorre no primeiro if
-        //todo o código que vem antes do ponto de recursão é executado no empilhamento
         cout << frase << endl;
-        //códigos ...
         exibirR(frase, i - 1); //transformação da variável de controle (C) - ocorre no ponto de recursão
-
-        //todo o código que vem depois do ponto de recursão é executado no desempilhamento
-        //códigos ...
     }
 }
+
+Sempre numa repetição, seja por iteração ou por recursão, há 3 PONTOS IMPORTANTES:
+ - inicialização da variável de controle (A);
+ - testar a variável de controle para a parada da repetição (B);
+ - transformação da variável de controle (ou incremento ou decremento) (C)
 
 int main() {
     exibirR("turma de ED", 4);
 }
 
-Categorias: 
+
 Há recursão em métodos SEM retorno (void)
     - barbada
 
