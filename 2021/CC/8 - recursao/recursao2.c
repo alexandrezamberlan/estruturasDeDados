@@ -34,10 +34,10 @@ int main() {
     scanf("%d", &valor);
 
     // exibirCrescente(valor);
-    // exibirCrescenteR(valor);
+    exibirCrescenteR(valor);
     
-    exibirDecrescente(valor);
-    // exibirDecrescenteR(valor);
+    //exibirDecrescente(valor);
+    //exibirDecrescenteR(valor);
 
     return 1;
 }
