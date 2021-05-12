@@ -1,5 +1,47 @@
 1) fazer um método recursivo que receba um vetor de inteiros, seu tamanho e um valor de pesquisa. 
 O método deve 1 se o valor encontra-se no vetor ou 0 se o valor não se encontra no vetor.
 
+int buscarElementoR(int *vetor, int n, int pesquisa) {
+    if (n > 0) {
+        if (vetor[n - 1] == pesquisa) {
+            return 1; //1 é localizado e já interrompemos o processo de empilhamento
+        } else {
+            return buscarElementoR(vetor, n - 1, pesquisa);
+        }
+    } else {
+        return 0; //0 não localizado
+    }
+}
+
 1) fazer um método recursivo que receba um vetor de inteiros, seu tamanho e um valor de pesquisa. 
 O método deve calcular e retornar quantos valores do vetor são múltiplos do valor passado no parâmetro.
+
+int contarMultiplosR(int *vetor, int n, int pesquisa) {
+    if (n > 0) {
+        if (vetor[n - 1] % pesquisa == 0) {
+            return 1 + contarMultiplosR(vetor, n - 1, pesquisa);
+        } else {
+            return 0 + contarMultiplosR(vetor, n - 1, pesquisa);
+        }
+    } else {
+        return 0;
+    }
+}
+
+3) estudar o método inserir recursivo em lista simples e fazer o excluir recursivo;
+
+4) implementar o método localizar recursivo. O método deve receber um valor inteiro e o
+endereço da lista simples. Ao final, caso a valor exista na lista, retornar o endereço
+do valor, ou NULL caso não exista;
+
+5) implementar o método localizarPosicaoLogica de forma recursiva. O método deve receber
+um valor inteiro e o endereço da lista simples. Ao final, caso o valor exista na lista, 
+retornar sua posição lógica (0 é a primeira posição, 1 é a segunda, assim por diante).
+Caso o valor não esteja na lista, retornar -27;
+
+6) implementar um método recursivo que receba o endereço de uma lista simples e exiba
+todos os valores pares contigo na lista;
+
+7) implementar um método recursivo que receba uma lista simples e retorne o total de
+elementos pares contidos na lista;
+
