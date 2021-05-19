@@ -46,9 +46,9 @@ Celula *excluirR(int valor, Celula *lista) {
     if (lista) {
         if (valor == lista->valor) {
             //encontramos e vamos apagar
-            Celula *lixo = lista;
+            Celula *backup = lista->prox;
             free(lista);
-            return lixo->prox;
+            return backup;
         } else {
             lista->prox = excluirR(valor, lista->prox); //teoria do joão e maria -> rastro
             return lista;
