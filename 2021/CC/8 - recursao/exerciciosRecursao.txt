@@ -13,7 +13,7 @@ int buscarElementoR(int *vetor, int n, int pesquisa) {
     }
 }
 
-1) fazer um método recursivo que receba um vetor de inteiros, seu tamanho e um valor de pesquisa. 
+2) fazer um método recursivo que receba um vetor de inteiros, seu tamanho e um valor de pesquisa. 
 O método deve calcular e retornar quantos valores do vetor são múltiplos do valor passado no parâmetro.
 
 int contarMultiplosR(int *vetor, int n, int pesquisa) {
