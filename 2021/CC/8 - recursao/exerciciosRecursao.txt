@@ -30,18 +30,82 @@ int contarMultiplosR(int *vetor, int n, int pesquisa) {
 
 3) estudar o método inserir recursivo em lista simples e fazer o excluir recursivo;
 
+Celula *excluirR(int valor, Celula *lista) {
+    if (lista) {
+        if (valor == lista->valor) {
+            //encontramos e vamos apagar
+            Celula *lixo = lista;
+            free(lista);
+            return lixo->prox;
+        } else {
+            lista->prox = excluirR(valor, lista->prox); //teoria do joão e maria -> rastro
+            return lista;
+        }
+    } else {
+        return NULL; //ao se chegar aqui, é pq o valor não foi localizado
+    }
+}
+
 4) implementar o método localizar recursivo. O método deve receber um valor inteiro e o
 endereço da lista simples. Ao final, caso a valor exista na lista, retornar o endereço
 do valor, ou NULL caso não exista;
 
+Celula  *localizarElementoR(int valor, Celula *lista) {
+    if (lista) {
+        if (valor == lista->valor) {
+            return lista;
+        } else {
+            return localizarElementoR(valor, lista->prox);
+        }
+    } else {
+        return NULL; //valor não encontrado
+    }
+}
+
 5) implementar o método localizarPosicaoLogica de forma recursiva. O método deve receber
-um valor inteiro e o endereço da lista simples. Ao final, caso o valor exista na lista, 
+um valor inteiro, o endereço da lista simples. Ao final, caso o valor exista na lista, 
 retornar sua posição lógica (0 é a primeira posição, 1 é a segunda, assim por diante).
 Caso o valor não esteja na lista, retornar -27;
 
+int localizarPosicaoLogicaElementoR(int valor, Celula *lista) {
+    if (lista) {
+        if (valor == lista->valor) {
+            return 0;
+        } else {
+            int respostaDeCima = localizarPosicaoLogicaElementoR(valor, lista->prox);
+            if (respostaDeCima != -27) {
+                return 1 + respostaDeCima;
+            } else {
+                return respostaDeCima;
+            }            
+        }
+    } else {
+        return -27; //valor não encontrado
+    }
+}
+
 6) implementar um método recursivo que receba o endereço de uma lista simples e exiba
-todos os valores pares contigo na lista;
+todos os valores pares contidos na lista;
+
+void exibirParesR(Celula *lista) {
+    if (lista) {
+        if (lista->valor % 2 == 0) {
+            printf("%d\n", lista->valor);
+        }
+        exibirParesR(lista->prox);
+    }
+}
 
 7) implementar um método recursivo que receba uma lista simples e retorne o total de
 elementos pares contidos na lista;
+
+int contarParesR(Celula *lista) {
+    if (lista) {
+        if (lista->valor % 2 == 0) {
+            return 1 + contarParesR(lista->prox);
+        }
+        return 0 + contarParesR(lista->prox);
+    }
+    return 0;
+}
 

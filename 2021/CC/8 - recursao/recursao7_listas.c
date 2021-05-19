@@ -23,10 +23,18 @@ int main() {
     
     printf("Digite um valor para pesquisa: ");
     scanf("%d", &valor);
+    printf("O %d está na lista no endereço %p\n", valor, localizarElementoR(valor, lista));
+    printf("O %d está na lista na posição %d\n", valor, localizarPosicaoLogicaElementoR(valor, lista));
     lista = excluirR(valor, lista);
 
     exibirR(lista);
     int quantidadeElementos = contarElementosR(lista);
     printf("A lista possui %d elementos\n", quantidadeElementos);
+
+
+    printf("Na lista há %d pares..... exibindo os pares restantes na lista\n", contarParesR(lista));
+    exibirParesR(lista);
+
+
     return 1;
 }

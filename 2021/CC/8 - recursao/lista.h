@@ -57,3 +57,51 @@ Celula *excluirR(int valor, Celula *lista) {
         return NULL; //ao se chegar aqui, é pq o valor não foi localizado
     }
 }
+
+Celula  *localizarElementoR(int valor, Celula *lista) {
+    if (lista) {
+        if (valor == lista->valor) {
+            return lista;
+        } else {
+            return localizarElementoR(valor, lista->prox);
+        }
+    } else {
+        return NULL; //valor não encontrado
+    }
+}
+
+int localizarPosicaoLogicaElementoR(int valor, Celula *lista) {
+    if (lista) {
+        if (valor == lista->valor) {
+            return 0;
+        } else {
+            int respostaDeCima = localizarPosicaoLogicaElementoR(valor, lista->prox);
+            if (respostaDeCima != -27) {
+                return 1 + respostaDeCima;
+            } else {
+                return respostaDeCima;
+            }            
+        }
+    } else {
+        return -27; //valor não encontrado
+    }
+}
+
+void exibirParesR(Celula *lista) {
+    if (lista) {
+        if (lista->valor % 2 == 0) {
+            printf("%d\n", lista->valor);
+        }
+        exibirParesR(lista->prox);
+    }
+}
+
+int contarParesR(Celula *lista) {
+    if (lista) {
+        if (lista->valor % 2 == 0) {
+            return 1 + contarParesR(lista->prox);
+        }
+        return 0 + contarParesR(lista->prox);
+    }
+    return 0;
+}
