@@ -1,4 +1,21 @@
 1) estudar o método inserir recursivo em lista simples e fazer o excluir recursivo;
+Celula *excluirR(int valor, Celula *lista) {
+    if (lista) {
+        //vou pesquisar e avançar
+        if (valor == lista->valor) {
+            //preparar para excluir
+            Celula *backup = lista->prox;
+            free(lista);
+            return backup;
+        } else {
+            //não é o valor a ser excluido, então vamos avançar na lista
+            lista->prox = excluirR(valor, lista->prox); //ponto de recursão, só com a teoria do joão e maria
+            return lista;
+        }
+    } else {
+        return NULL;
+    }
+}
 
 2) implementar o método localizar recursivo. O método deve receber um valor inteiro e o
 endereço da lista simples. Ao final, caso a valor exista na lista, retornar o endereço
@@ -12,6 +29,24 @@ Caso o valor não esteja na lista, retornar -27;
 4) implementar um método recursivo que receba o endereço de uma lista simples e exiba
 todos os valores pares contigo na lista;
 
+void exibirParesR(Celula *lista) {
+    if (lista) {
+        if (lista->valor % 2 == 0) {
+            cout << lista->valor << endl;
+        }
+        exibirParesR(lista->prox);  
+    } 
+}
+
 5) implementar um método recursivo que receba uma lista simples e retorne o total de
 elementos pares contidos na lista;
 
+int contarParesR(Celula *lista) {
+    if (lista) {
+        if (lista->valor % 2 == 0)
+            return 1 + contarParesR(lista->prox);
+        return 0 + contarParesR(lista->prox);
+    } else {
+        return 0;
+    }
+}

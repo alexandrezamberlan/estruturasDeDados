@@ -22,6 +22,24 @@ Celula *inserirR(int valor, Celula *lista) {
     }
 }
 
+Celula *excluirR(int valor, Celula *lista) {
+    if (lista) {
+        //vou pesquisar e avançar
+        if (valor == lista->valor) {
+            //preparar para excluir
+            Celula *backup = lista->prox;
+            free(lista);
+            return backup;
+        } else {
+            //não é o valor a ser excluido, então vamos avançar na lista
+            lista->prox = excluirR(valor, lista->prox); //ponto de recursão, só com a teoria do joão e maria
+            return lista;
+        }
+    } else {
+        return NULL;
+    }
+}
+
 void exibirR(Celula *lista) {
     if (lista) {
         cout << lista->valor << "\t";
@@ -62,4 +80,12 @@ int contarParesR(Celula *lista) {
     } else {
         return 0;
     }
+}
+
+Celula *destruirR(Celula *lista) {
+    if (lista) {
+        lista->prox = destruirR(lista->prox);
+        free(lista);
+    } 
+    return NULL;
 }
