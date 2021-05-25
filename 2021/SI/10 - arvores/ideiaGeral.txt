@@ -1,0 +1,31 @@
+Árvores encadeadas dinamicamente
+    - ED Abstrata que possui todas as operações: percurso; inserção; remoção; alteração; pesquisa; destruição
+    - Diferentes das ED pilha, lista e fila, Árvores não são lineares
+        - ED lineares seguem o padrão de um vetor, uma linha, ou um elemento após o outro,
+          como encadeamento do próximo, no mínimo, e as vezes com encadeamento do anterior 
+        - ED não lineares há um relacionamento tipo pai-filho, ou raiz-filho, sendo que todo nó/nodo/célula 
+          pode ter N filhos e um filho pode ter um PAI.
+
+Conceitos:
+Nodo ou nó
+Nó ou nodo folha (sem filhos)
+Nodo ou nó raiz
+Árvore e subárvores (todo nó é uma subárvore)
+Níveis = cada fatia de hierarquia da á
+Altura = qtd de níveis + 1
+Floresta = todos os nós exceto raiz e folhas
+Caminho ou percurso
+    - Formas de percorrer a árvore:
+        - amplitude ou largura
+        - profundidade
+
+
+typedef struct no {
+	int valor;
+    struct no *esq;
+	struct no *dir;
+} Arvore;
+
+O foco da disciplina é trabalhar com árvores binárias, ou seja, com no máximo 2 filhos
+
+E árvores binárias ordenadas, também conhecidas como árvores binárias de pesquisa ou busca
