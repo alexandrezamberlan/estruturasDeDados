@@ -1,3 +1,7 @@
+#include <stdlib.h>
+#include <iostream>
+using namespace std;
+
 typedef struct no {
     int valor;
     struct no *esq;
@@ -7,11 +11,11 @@ typedef struct no {
 Arvore *inserir(int valor, Arvore *raiz) {
     if (raiz) {
         if (valor < raiz->valor) { //avançar ou empilhar para a esquerda
-            raiz->esq = inserir(valor, raiz->esq);
+            raiz->esq = inserir(valor, raiz->esq);  //teoria da guia ou joão e maria (migalhas)
         } else { //avançar ou empilhar para a direita
             raiz->dir = inserir(valor, raiz->dir);
         }
-        return raiz;
+        return raiz;  //desempilhar e retornar a raiz para o método que o chamou
     } else {
         //se estamos aqui, pq chegamos em um folha e estamos prontos para adicionar o nodo na árvore
         Arvore *novo = (Arvore*)malloc(sizeof(Arvore));
@@ -26,9 +30,9 @@ Arvore *inserir(int valor, Arvore *raiz) {
 //RED -> visita Raiz; vai para Esquerda; vai para Direita
 void exibirRED(Arvore *raiz) {
     if (raiz) {
-        printf("%d\n", raiz->valor); //antes do primeiro empilhamento
-        exibirRED(raiz->esq);
-        exibirRED(raiz->dir);
+        cout << raiz->valor << endl; //antes do primeiro empilhamento
+        exibirRED(raiz->esq); //avança empilhando para a esquerda da árvore
+        exibirRED(raiz->dir); //avança empilhando para a direita da árvores
     }
 }
 
@@ -36,7 +40,7 @@ void exibirRED(Arvore *raiz) {
 void exibirERD(Arvore *raiz) {
     if (raiz) {
         exibirERD(raiz->esq);
-        printf("%d\n", raiz->valor); //depois do primeiro empilhamento
+        cout << raiz->valor << endl; //depois do primeiro empilhamento
         exibirERD(raiz->dir);
     }
 }
@@ -46,6 +50,71 @@ void exibirEDR(Arvore *raiz) {
     if (raiz) {
         exibirEDR(raiz->esq);
         exibirEDR(raiz->dir);
-        printf("%d\n", raiz->valor); //depois de todos os empilhamentos
+        cout << raiz->valor << endl; //depois de todos os empilhamentos
     }
 }
+
+//método para exibir uma árvore baseado no livro C Completo e Total de Robert Schild
+void exibir(Arvore *raiz, int nivel) {
+    if (raiz) {
+        //avançar ou empilhar para a direita.... imprimir os maiores valores
+        exibir(raiz->dir, nivel + 1);
+
+        //imprimir o elemento que estiver na raiz do momento
+        int i;
+        for (i = 0; i < nivel; i++) {
+            cout << "   ";
+        }
+        cout << "(" << nivel << ")" << raiz->valor << endl;
+
+
+        //avançar ou empilhar para a esquerda.... imprimir os menores valores
+        exibir(raiz->esq, nivel + 1);
+    }
+}
+
+int contar(Arvore *raiz) {
+    if (raiz) {
+        return 1 + contar(raiz->esq) + contar(raiz->dir);
+    } else {
+        return 0;
+    }
+}
+
+int somar(Arvore *raiz) {
+    if (raiz) {
+        return raiz->valor + somar(raiz->esq) + somar(raiz->dir);
+    } else {
+        return 0;
+    }
+}
+
+int contarPares(Arvore *raiz) {
+    if (raiz) {
+        if (raiz->valor % 2 == 0)
+            return 1 + contarPares(raiz->esq) + contarPares(raiz->dir);
+        return 0 + contarPares(raiz->esq) + contarPares(raiz->dir);
+    } else {
+        return 0;
+    }
+}
+
+
+
+/*
+                            100
+            20                                150
+    10              25
+                            50
+
+RED: 100 20 10 25 50 150
+ERD: 10 20 25 50 100 150  -> percurso ordenado
+EDR: 10 50 25 20 150 100  -> percurso das folhas à raiz
+
+                46(0)
+        13(1)
+    11(2)           37(2)
+                33(3)       41(3)
+
+
+*/
