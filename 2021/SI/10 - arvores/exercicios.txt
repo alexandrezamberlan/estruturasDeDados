@@ -1,0 +1,5 @@
+1) alterar o somar() é somar os valores que forem pares.
+
+2) fazer o método localizar(), passando um valor de pesquisa
+e a árvore. O método deve retornar 1 se localizou o valor ou
+0 se não localizou o valor.
