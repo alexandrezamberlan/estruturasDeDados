@@ -99,6 +99,57 @@ int contarPares(Arvore *raiz) {
     }
 }
 
+int somarPares(Arvore *raiz) {
+    if (raiz) {
+        if (raiz->valor % 2 == 0)
+            return raiz->valor + somarPares(raiz->esq) + somarPares(raiz->dir);
+        return 0 + somarPares(raiz->esq) + somarPares(raiz->dir);
+    } else {
+        return 0;
+    }
+}
+
+bool localizar(int valor, Arvore *raiz) {
+    if (raiz) {
+        if (valor == raiz->valor) return true; //valor localizado
+        if (valor < raiz->valor) { //vamos avançar na árvore para o lado esquerdo
+            return localizar(valor, raiz->esq);
+        } else { //vamos avançar na árvore para o lado direito
+            return localizar(valor, raiz->dir);
+        }
+    } else {
+        return false; //percorri a arvore e cheguei em um nó folha e o valor não foi localizado
+    }
+}
+
+
+int descobrirNivel(int valor, Arvore *raiz) {
+    if (raiz) {
+        if (valor == raiz->valor) return 0; 
+        if (valor < raiz->valor) { //vamos avançar na árvore para o lado esquerdo
+            int resultadoEmpilhamento = descobrirNivel(valor, raiz->esq);
+            if (resultadoEmpilhamento != -1) return resultadoEmpilhamento + 1;
+            return resultadoEmpilhamento;
+        } else { //vamos avançar na árvore para o lado direito
+            int resultadoEmpilhamento = descobrirNivel(valor, raiz->dir);
+            if (resultadoEmpilhamento != -1) return resultadoEmpilhamento + 1;
+            return resultadoEmpilhamento;
+        }
+    } else {
+        return -1; //percorri a arvore e cheguei em um nó folha e o valor não foi localizado
+    }
+}
+
+int calcularAltura(Arvore *raiz) {
+    if (raiz) {
+        int alturaE = calcularAltura(raiz->esq);
+        int alturaD = calcularAltura(raiz->dir);
+        if (alturaE > alturaD) return alturaE + 1;
+        /*else*/ return alturaD + 1;
+    } else {
+        return 0;
+    }
+}
 
 
 /*

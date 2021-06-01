@@ -1,5 +1,31 @@
 1) alterar o somar() é somar os valores que forem pares.
 
+int somarPares(Arvore *raiz) {
+    if (raiz) {
+        if (raiz->valor % 2 == 0)
+            return raiz->valor + somarPares(raiz->esq) + somarPares(raiz->dir);
+        return 0 + somarPares(raiz->esq) + somarPares(raiz->dir);
+    } else {
+        return 0;
+    }
+}
+
 2) fazer o método localizar(), passando um valor de pesquisa
 e a árvore. O método deve retornar 1 se localizou o valor ou
 0 se não localizou o valor.
+
+bool localizar(int valor, Arvore *raiz) {
+    if (raiz) {
+        if (valor == raiz->valor) return true; //valor localizado
+        if (valor < raiz->valor) { //vamos avançar na árvore para o lado esquerdo
+            return localizar(valor, raiz->esq);
+        } else { //vamos avançar na árvore para o lado direito
+            return localizar(valor, raiz->dir);
+        }
+    } else {
+        return false; //percorri a arvore e cheguei em um nó folha e o valor não foi localizado
+    }
+}
+
+
+
