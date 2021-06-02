@@ -3,6 +3,19 @@ A partir dos códigos arvore1.c e arvore.h, faça os seguintes métodos como exe
 1) método que recebe um valor e um ponteiro para uma árvore e retorna quantas vezes esse valor
 aparece na árvore
 
+int contarVezes(int valor, Arvore *raiz) {
+    if (raiz) {
+        int qtdVezesEsquerda = contarVezes(valor, raiz->esq);//empilhar tudo para esquerda
+        int qtdVezesDireita = contarVezes(valor, raiz->dir);//empilhar tudo para direita
+
+        //so então testar, ou seja, o teste vem das folhas em direção a raiz
+        if (valor == raiz->valor) return 1 + qtdVezesEsquerda + qtdVezesDireita;
+        return 0 + qtdVezesEsquerda + qtdVezesDireita;
+    } else {
+        return 0;
+    }
+}
+
 2) método que recebe um valor e um ponteiro para uma árvore e retorna quantos números da árvore 
 são múltiplos desse valor
 

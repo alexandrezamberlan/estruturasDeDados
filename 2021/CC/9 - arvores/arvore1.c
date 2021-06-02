@@ -34,5 +34,7 @@ int main () {
         printf("Valor não localizado na árvore\n");
     }
 
+    printf("O valor %d aparece na árvore %d vezes\n", valorPesquisa, contarVezes(valorPesquisa, raiz));
+
     return 1;
 }

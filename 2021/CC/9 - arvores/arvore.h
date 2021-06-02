@@ -91,6 +91,19 @@ int localizarNivel(int valor, Arvore *raiz) {
     }
 }
 
+int contarVezes(int valor, Arvore *raiz) {
+    if (raiz) {
+        int qtdVezesEsquerda = contarVezes(valor, raiz->esq);//empilhar tudo para esquerda
+        int qtdVezesDireita = contarVezes(valor, raiz->dir);//empilhar tudo para direita
+
+        //so então testar, ou seja, o teste vem das folhas em direção a raiz
+        if (valor == raiz->valor) return 1 + qtdVezesEsquerda + qtdVezesDireita;
+        return 0 + qtdVezesEsquerda + qtdVezesDireita;
+    } else {
+        return 0;
+    }
+}
+
 //RED -> visita Raiz; vai para Esquerda; vai para Direita
 void exibirRED(Arvore *raiz) {
     if (raiz) {
