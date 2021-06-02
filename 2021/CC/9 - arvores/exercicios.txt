@@ -1,0 +1,15 @@
+A partir dos códigos arvore1.c e arvore.h, faça os seguintes métodos como exercícios. 
+
+1) método que recebe um valor e um ponteiro para uma árvore e retorna quantas vezes esse valor
+aparece na árvore
+
+2) método que recebe um valor e um ponteiro para uma árvore e retorna quantos números da árvore 
+são múltiplos desse valor
+
+3) método que recebe um ponteiro para uma árvore e retorna quantos nós folhas há na árvore. 
+Lembre que um nó folha é aquele que não possui filho nem na esquerda e nem na direita
+
+4) método que recebe um ponteiro para uma árvore e retorna quantos nós não folhas há na árvore.
+
+5) método que recebe um valor e um ponteiro para uma árvore e retorna 1 se o valor está em um nível
+par, caso contrário retorna 0.

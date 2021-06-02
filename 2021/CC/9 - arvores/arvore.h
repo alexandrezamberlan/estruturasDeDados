@@ -35,6 +35,61 @@ void exibir(Arvore *raiz, int nivel) {
     }
 }
 
+int contarNos(Arvore *raiz) {
+    if (raiz) {
+        return 1 + contarNos(raiz->esq) + contarNos(raiz->dir);
+    } else {
+        return 0;
+    }
+}
+
+int somarNos(Arvore *raiz) {
+    if (raiz) {
+        return raiz->valor + somarNos(raiz->esq) + somarNos(raiz->dir);
+    } else {
+        return 0;
+    }
+}
+
+int contarNosPares(Arvore *raiz) {
+    if (raiz) {
+        if (raiz->valor % 2 == 0)
+            return 1 + contarNosPares(raiz->esq) + contarNosPares(raiz->dir);
+        return 0 + contarNosPares(raiz->esq) + contarNosPares(raiz->dir);
+    } else {
+        return 0;
+    }
+}
+
+int localizar(int valor, Arvore *raiz) {
+    if (raiz) {
+        if (valor == raiz->valor) return 1; //valor encontrado, começa o processo de desempilhamento
+        if (valor < raiz->valor) { //testar o lado esquerdo da árvore
+            return localizar(valor, raiz->esq);
+        } else { //testar o lado direito da árvore
+            return localizar(valor, raiz->dir);
+        }
+    } else {
+        return 0; //valor não localizado, começa o processo de desempilhamento
+    }
+}
+
+int localizarNivel(int valor, Arvore *raiz) {
+    if (raiz) {
+        if (valor == raiz->valor) return 0; //valor encontrado, começa o processo de desempilhamento
+        if (valor < raiz->valor) { //testar o lado esquerdo da árvore
+            int resultadoEmpilhamento = localizarNivel(valor, raiz->esq);
+            if (resultadoEmpilhamento != -1) return resultadoEmpilhamento + 1;
+            return resultadoEmpilhamento; //continuo informando que valor não foi localizado
+        } else { //testar o lado direito da árvore
+             int resultadoEmpilhamento = localizarNivel(valor, raiz->dir);
+            if (resultadoEmpilhamento != -1) return resultadoEmpilhamento + 1;
+            return resultadoEmpilhamento; //continuo informando que valor não foi localizado
+        }
+    } else {
+        return -1; //valor não localizado, começa o processo de desempilhamento
+    }
+}
 
 //RED -> visita Raiz; vai para Esquerda; vai para Direita
 void exibirRED(Arvore *raiz) {
