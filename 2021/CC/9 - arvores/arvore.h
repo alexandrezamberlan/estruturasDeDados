@@ -22,6 +22,19 @@ Arvore *inserir(int valor, Arvore *raiz) {
     }
 }
 
+void exibir(Arvore *raiz, int nivel) {
+    if (raiz) {
+        exibir(raiz->dir, nivel + 1); //empilhando tudo para direita, busca-se exibir os maiores primeiro
+        
+        for (int i = 0; i < nivel; i++) {
+            printf("   ");
+        }
+        printf("%d(%d)\n", raiz->valor,nivel); 
+
+        exibir(raiz->esq, nivel + 1); //empilhando tudo para esquerda, busca-se exibir os menores
+    }
+}
+
 
 //RED -> visita Raiz; vai para Esquerda; vai para Direita
 void exibirRED(Arvore *raiz) {
@@ -49,3 +62,25 @@ void exibirEDR(Arvore *raiz) {
         printf("%d\n", raiz->valor); //depois de todos os empilhamentos
     }
 }
+
+/*
+                            100
+            20                                150
+    10              25
+                            50
+
+RED: 100 20 10 25 50 150 -> pré-fixado
+ERD: 10 20 25 50 100 150  -> percurso ordenado -> infixado
+EDR: 10 50 25 20 150 100  -> percurso das folhas à raiz -> pós-fixado
+
+                46(0)
+        13(1)
+    11(2)           37(2)
+              33(3)       41(3)
+
+RED: 46 13 11 37 33 41 
+ERD: 11 13 33 37 41 46
+EDR: 11 33 41 37 13 46
+
+
+*/
