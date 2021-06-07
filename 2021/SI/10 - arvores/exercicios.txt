@@ -1,4 +1,4 @@
-1) alterar o somar() é somar os valores que forem pares.
+1) alterar o somar() para  somar os valores que forem pares.
 
 int somarPares(Arvore *raiz) {
     if (raiz) {
@@ -26,6 +26,33 @@ bool localizar(int valor, Arvore *raiz) {
         return false; //percorri a arvore e cheguei em um nó folha e o valor não foi localizado
     }
 }
+=====================================================
+A partir dos códigos arvore1.cpp e arvore.h, faça os seguintes métodos como exercícios. 
 
+3) método que recebe um valor e um ponteiro para uma árvore e retorna quantas vezes esse valor
+aparece na árvore
 
+int contarVezes(int valor, Arvore *raiz) {
+    if (raiz) {
+        int qtdVezesEsquerda = contarVezes(valor, raiz->esq);//empilhar tudo para esquerda
+        int qtdVezesDireita = contarVezes(valor, raiz->dir);//empilhar tudo para direita
+
+        //so então testar, ou seja, o teste vem das folhas em direção a raiz
+        if (valor == raiz->valor) return 1 + qtdVezesEsquerda + qtdVezesDireita;
+        return 0 + qtdVezesEsquerda + qtdVezesDireita;
+    } else {
+        return 0;
+    }
+}
+
+4) método que recebe um valor e um ponteiro para uma árvore e retorna quantos números da árvore 
+são múltiplos desse valor
+
+5) método que recebe um ponteiro para uma árvore e retorna quantos nós folhas há na árvore. 
+Lembre que um nó folha é aquele que não possui filho nem na esquerda e nem na direita
+
+6) método que recebe um ponteiro para uma árvore e retorna quantos nós não folhas há na árvore.
+
+7) método que recebe um valor e um ponteiro para uma árvore e retorna 1 se o valor está em um nível
+par, caso contrário retorna 0.
 
