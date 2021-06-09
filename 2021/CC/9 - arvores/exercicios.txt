@@ -19,10 +19,49 @@ int contarVezes(int valor, Arvore *raiz) {
 2) método que recebe um valor e um ponteiro para uma árvore e retorna quantos números da árvore 
 são múltiplos desse valor
 
+int multiplos(int valor, Arvore *raiz) {
+    if (raiz) {
+        int qtdVezesEsquerda = multiplos(valor, raiz->esq);//empilhar tudo para esquerda
+        int qtdVezesDireita = multiplos(valor, raiz->dir);//empilhar tudo para direita
+
+        //so então testar, ou seja, o teste vem das folhas em direção a raiz
+        if (raiz->valor % valor == 0) return 1 + qtdVezesEsquerda + qtdVezesDireita;
+        return 0 + qtdVezesEsquerda + qtdVezesDireita;
+    } else {
+        return 0;
+    }
+}
+
 3) método que recebe um ponteiro para uma árvore e retorna quantos nós folhas há na árvore. 
 Lembre que um nó folha é aquele que não possui filho nem na esquerda e nem na direita
 
+int contarFolhas(Arvore *raiz){
+    if (raiz) {
+        if (!raiz->esq && !raiz->dir) return 1;
+        return contarFolhas(raiz->esq) + contarFolhas(raiz->dir);
+    } else {
+        return 0;
+    }
+}
+
 4) método que recebe um ponteiro para uma árvore e retorna quantos nós não folhas há na árvore.
 
-5) método que recebe um valor e um ponteiro para uma árvore e retorna 1 se o valor está em um nível
+int contarNaoFolhas(Arvore *raiz){
+    if (raiz) {
+        if (raiz->esq || raiz->dir) return 1 + contarNaoFolhas(raiz->esq) + contarNaoFolhas(raiz->dir);
+    } 
+    return 0;
+}
+
+5) rotina que recebe um valor e um ponteiro para uma árvore e retorna 1 se o valor está em um nível
 par, caso contrário retorna 0.
+
+int nivel = localizarNivel(valorPesquisa, raiz);
+    if (nivel != -1) {
+        printf("Valor localizado na árvore no nível %d\n", nivel);
+        if (nivel % 2 == 0) {
+            printf("Valor está em um nível par\n");
+        }
+    } else {
+        printf("Valor não localizado na árvore\n");
+    }

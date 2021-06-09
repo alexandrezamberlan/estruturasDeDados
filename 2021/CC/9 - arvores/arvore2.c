@@ -20,29 +20,20 @@ int main () {
     
     exibir(raiz, 0);
     printf("\nEsta árvore possui %d nós\n", contarNos(raiz));
-    printf("A soma dos elementos da árvore é: %d\n", somarNos(raiz));
-    printf("Esta árvore possui %d nós pares\n", contarNosPares(raiz));
-
+    
     int valorPesquisa;
     printf("Digite valor para pesquisa: ");
     scanf("%d", &valorPesquisa);
 
-    int nivel = localizarNivel(valorPesquisa, raiz);
-    if (nivel != -1) {
-        printf("Valor localizado na árvore no nível %d\n", nivel);
-        if (nivel % 2 == 0) {
-            printf("Valor está em um nível par\n");
-        }
-    } else {
-        printf("Valor não localizado na árvore\n");
-    }
-
+    
     printf("O valor %d aparece na árvore %d vezes\n", valorPesquisa, contarVezes(valorPesquisa, raiz));
-    printf("A quantidade de múltiplos de %d é: %d\n", valorPesquisa, multiplos(valorPesquisa, raiz));
+    
     printf("A quantidade de nós folhas é: %d\n", contarFolhas(raiz));
-    printf("E os nós folhas são: "); mostrarFolhas(raiz);
-    printf("\n");
-    printf("A quantidade de nós NÃO folhas é: %d\n", contarNaoFolhas(raiz));
+
+    raiz = podar(raiz);
+    printf("Poda realizada.... exibindo a árvore pós poda com %d nós\n", contarNos(raiz));
+    exibir(raiz, 0);
+    
 
     return 1;
 }

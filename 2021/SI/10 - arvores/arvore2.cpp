@@ -33,6 +33,7 @@ int main() {
     exibir(raiz, 0);
     cout << "Esta árvore possui " << contar(raiz) << " elementos" << endl;
     cout << "A soma dos elementos da árvore é: " << somar(raiz) << endl;
+    cout << "Esta árvore tem altura de: " << calcularAltura(raiz) << endl;
     cout << "A quantidade de números pares é: " << contarPares(raiz) << " elementos" << endl;
     cout << "A soma dos elementos pares é: " << somarPares(raiz) << endl;
 
@@ -47,7 +48,12 @@ int main() {
         cout << "Valor não localizado na árvore" << endl;
     }
 
-    cout << "Esta árvore tem altura de: " << calcularAltura(raiz) << endl;
+    cout << "O total de elementos múltiplos de " << valor << " é: " << multiplos(valor,raiz) << endl;
+
+    cout << "Total de folhas na árvore é: " << contarFolhas(raiz) << endl;
+    cout << "Total de nós não folhas na árvore é: " << contarNaoFolhas(raiz) << endl;
+
+    
 
     
     return 1;

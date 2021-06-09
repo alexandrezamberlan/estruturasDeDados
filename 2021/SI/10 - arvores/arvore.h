@@ -151,6 +151,42 @@ int calcularAltura(Arvore *raiz) {
     }
 }
 
+int multiplos(int valor, Arvore *raiz) {
+    if (raiz) {
+        int qtdVezesEsquerda = multiplos(valor, raiz->esq);//empilhar tudo para esquerda
+        int qtdVezesDireita = multiplos(valor, raiz->dir);//empilhar tudo para direita
+
+        //so então testar, ou seja, o teste vem das folhas em direção a raiz
+        if (raiz->valor % valor == 0) return 1 + qtdVezesEsquerda + qtdVezesDireita;
+        return 0 + qtdVezesEsquerda + qtdVezesDireita;
+    } else {
+        return 0; //chegou ao final das folhas e não encontrou valor múltiplo
+    }
+}
+
+int contarFolhas(Arvore *raiz) {
+    if (raiz) {
+        //testar se é folha.... no que não tem filho nem na esquerda e nem na direita
+        if (!raiz->esq && !raiz->dir) {
+            return 1; //nó folha localizado
+        } // se não é folha, precisa avançar tanto para esquerda, quanto para direita
+        return 0 + contarFolhas(raiz->esq) + contarFolhas(raiz->dir);
+    } else {
+        return 0; //se chegou aqui, porque passou por todos os nós, inclusive as folhas
+    }
+}
+
+int contarNaoFolhas(Arvore *raiz) {
+    if (raiz) {
+        //testar se é folha.... no que não tem filho nem na esquerda e nem na direita
+        if (raiz->esq || raiz->dir) {
+            return 1 + contarNaoFolhas(raiz->esq) + contarNaoFolhas(raiz->dir);
+        } 
+    }  
+    return 0; //chegou em folha
+}
+
+
 
 /*
                             100

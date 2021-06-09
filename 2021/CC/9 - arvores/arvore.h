@@ -104,6 +104,66 @@ int contarVezes(int valor, Arvore *raiz) {
     }
 }
 
+int multiplos(int valor, Arvore *raiz) {
+    if (raiz) {
+        int qtdVezesEsquerda = multiplos(valor, raiz->esq);//empilhar tudo para esquerda
+        int qtdVezesDireita = multiplos(valor, raiz->dir);//empilhar tudo para direita
+
+        //so então testar, ou seja, o teste vem das folhas em direção a raiz
+        if (raiz->valor % valor == 0) return 1 + qtdVezesEsquerda + qtdVezesDireita;
+        return 0 + qtdVezesEsquerda + qtdVezesDireita;
+    } else {
+        return 0;
+    }
+}
+
+int contarFolhas(Arvore *raiz){
+    if (raiz) {
+        if (!raiz->esq && !raiz->dir) return 1;
+        return contarFolhas(raiz->esq) + contarFolhas(raiz->dir);
+    } else {
+        return 0;
+    }
+}
+
+void mostrarFolhas(Arvore *raiz){
+    if (raiz) {
+        if (!raiz->esq && !raiz->dir) printf("%d\t", raiz->valor);
+        
+        mostrarFolhas(raiz->esq);
+        mostrarFolhas(raiz->dir);
+    } 
+}
+
+int contarNaoFolhas(Arvore *raiz){
+    if (raiz) {
+        if (raiz->esq || raiz->dir) return 1 + contarNaoFolhas(raiz->esq) + contarNaoFolhas(raiz->dir);
+    } 
+    return 0;
+}
+
+Arvore *podar(Arvore *raiz){
+    if (raiz) {
+        if (!raiz->esq && !raiz->dir) {
+            free(raiz);
+            return NULL;
+        }
+        raiz->esq = podar(raiz->esq);
+        raiz->dir = podar(raiz->dir);
+        return raiz;
+    } else {
+        return NULL;
+    }
+}
+
+Arvore *excluir(int valor, Arvore *raiz) {
+    if (raiz) {
+        if ()
+    } else {
+        return NULL;
+    }
+}
+
 //RED -> visita Raiz; vai para Esquerda; vai para Direita
 void exibirRED(Arvore *raiz) {
     if (raiz) {
