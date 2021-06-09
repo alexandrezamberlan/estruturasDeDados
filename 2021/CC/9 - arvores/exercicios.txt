@@ -65,3 +65,11 @@ int nivel = localizarNivel(valorPesquisa, raiz);
     } else {
         printf("Valor não localizado na árvore\n");
     }
+
+
+6) método que recebe um ponteiro para uma árvore de pesquisa (ordenada) e retorna o menor valor
+
+7) método que recebe um ponteiro para uma árvore de pesquisa (ordenada) e retorna o maior valor
+
+8) rotina que recebe um valor e um ponteiro para uma árvore de pesquisa (ordenada) e apaga
+todas as ocorrências do valor na árvore

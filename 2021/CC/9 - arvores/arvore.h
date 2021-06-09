@@ -155,10 +155,37 @@ Arvore *podar(Arvore *raiz){
         return NULL;
     }
 }
-
+/*
+            46(0)
+        13(1)
+    11(2)           30(2)          
+                            32(3)
+                                    41(4)
+                    
+*/
 Arvore *excluir(int valor, Arvore *raiz) {
     if (raiz) {
-        if ()
+        if (valor == raiz->valor) { //valor localizado para ser excluido
+            //descobrir se é folha
+            if (!raiz->esq && !raiz->dir) {
+                free(raiz);
+                return NULL;
+            } else {  //se nao for folha, pegar o filho da esquerda como novo pai
+                Arvore *novoPai = raiz->esq;
+                Arvore *r;
+                for (r = novoPai->dir; r->dir; r = r->dir); //levando o ponteiro r para a porçao mais a direita do novoPai
+
+                r->dir = raiz->dir;
+
+                free(raiz);
+                return novoPai;
+            }
+        } else { //valor não localizado... preciso avançar na árvore, ou para esquerda ou para direita
+            if (valor < raiz->valor)
+                raiz->esq = excluir(valor, raiz->esq); //vai pra esquerda
+            else raiz->dir = excluir(valor, raiz->dir); //vai pra direita
+        }
+        return raiz;
     } else {
         return NULL;
     }
@@ -203,8 +230,10 @@ EDR: 10 50 25 20 150 100  -> percurso das folhas à raiz -> pós-fixado
 
                 46(0)
         13(1)
-    11(2)           37(2)
-              33(3)       41(3)
+    11(2)           
+              33(2)       
+                    35(3)
+                            41(4)
 
 RED: 46 13 11 37 33 41 
 ERD: 11 13 33 37 41 46

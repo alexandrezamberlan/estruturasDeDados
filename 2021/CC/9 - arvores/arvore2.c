@@ -20,18 +20,18 @@ int main () {
     
     exibir(raiz, 0);
     printf("\nEsta árvore possui %d nós\n", contarNos(raiz));
-    
+    printf("A quantidade de nós folhas é: %d\n", contarFolhas(raiz));
+    raiz = podar(raiz);
+    printf("Poda realizada.... exibindo a árvore pós poda com %d nós\n", contarNos(raiz));
+    exibir(raiz, 0);
+
     int valorPesquisa;
     printf("Digite valor para pesquisa: ");
     scanf("%d", &valorPesquisa);
-
-    
     printf("O valor %d aparece na árvore %d vezes\n", valorPesquisa, contarVezes(valorPesquisa, raiz));
-    
-    printf("A quantidade de nós folhas é: %d\n", contarFolhas(raiz));
 
-    raiz = podar(raiz);
-    printf("Poda realizada.... exibindo a árvore pós poda com %d nós\n", contarNos(raiz));
+    raiz = excluir(valorPesquisa, raiz);
+    printf("Exclusão realizada.... exibindo a árvore pós exclusão com %d nós\n", contarNos(raiz));
     exibir(raiz, 0);
     
 
