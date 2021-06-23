@@ -1,0 +1,68 @@
+Grafo -> Estrutura de Dados Abstrata Não Linear
+    -> um grafo ele contempla ou contém todas as outras Estruturas de Dados
+    -> grafo para representar MAPAS, por exemplo
+        - há caminho entre ponto A e um ponto B 
+        - há um melhor caminho entre o ponto A e o ponto B
+        - operações clássicas em grafos:
+            - inserir: ponto ou um nó ou um vértice e um arco (ligação entre dois pontos)
+            - exibir:
+            - alterar:
+            - excluir:
+            - percorrer: existem duas formas de percurso: amplitude ou largura e profundidade
+    -> Conceitos:
+        - nó ou vértice -> conjunto de vértices do grafo/mapa
+        - arco ou aresta (ligação entre dois vértices) -> conjunto de arcos
+        - simetria: para todo vértice há um arco de ida-volta
+        - assimetria: é contrário de simétrico, também conhecido como DIGRAFO, ou seja, é um grafo dirigido
+        - grau: quantidade de arcos que incidem ou saem do vértice
+        - conexao: uma relação de arco direto entre dois vértices
+        - caminho: é um conjunto de arcos necessários entre vários vértices
+
+    -> Reprentação de um grafo
+        -> matriz de adjacência
+        -> matriz de incidência (mais para o final do semestre)
+    
+    -> Caminho ou Percurso em Grafos
+        -> Lembrem que toda ÁRVORE é um Grafo
+        -> Percurso em Amplitude ou Largura
+            - fila para dar prioridade de quem entrou primeiro
+            - lista ou vetor de visitados para saber quem já foi visitado no grafo
+
+            Exemplo do grafoSimetricoValorado
+            A ao G
+            visitados A B C D E F G 
+                      1 1 1 1 1 1 1
+            
+            fila     
+
+            impressao na tela (uso do vértice)
+            A B D C E F G
+
+
+                        A 
+                B               D
+            C       E        F
+            *      G         *
+                 
+
+            ===================
+            F ao G
+            visitados A B C D E F G 
+                      1 1 1 1 1 1 1
+            
+            fila  A B C
+
+            impressao na tela (uso do vértice)
+            F D E G 
+ 
+                            F 
+                    D       E      G 
+                A      B  C
+
+           
+
+
+
+        -> Percurso em Profundidade
+            - pilha recursiva para visitar o primeiro elemento mais à esquerda (vizinho adjacente)
+            - lista ou vetor de visitados para saber quem já foi visitado no grafo

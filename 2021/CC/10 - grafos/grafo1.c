@@ -69,18 +69,19 @@ int main() {
 	Grafo *grafo = NULL;
 	Grafo *grafo1 = NULL;
 
-	// grafo = inicializarGrafo(5); //'construtor' do grafo
 
-	// inserirGrafo(0,1,grafo);
-	// inserirGrafo(0,4,grafo);
-	// inserirGrafo(1,0,grafo);
-	// inserirGrafo(1,2,grafo);
-	// inserirGrafo(2,3,grafo);
-	// inserirGrafo(3,0,grafo);
-	// inserirGrafo(4,3,grafo);
-	// exibirGrafo(grafo);
+	grafo = inicializarGrafo(5); //'construtor' do grafo
 
-	// printf("\n");
+	inserirGrafo(0,1,grafo);
+	inserirGrafo(0,4,grafo);
+	inserirGrafo(1,0,grafo);
+	inserirGrafo(1,2,grafo);
+	inserirGrafo(2,3,grafo);
+	inserirGrafo(3,0,grafo);
+	inserirGrafo(4,3,grafo);
+	exibirGrafo(grafo);
+
+	printf("\n");
 
 	grafo1 = inicializarGrafo(7); //'construtor' do grafo
 
