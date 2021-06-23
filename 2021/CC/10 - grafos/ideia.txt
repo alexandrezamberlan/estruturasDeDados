@@ -8,7 +8,7 @@ Grafo -> Estrutura de Dados Abstrata Não Linear
             - exibir:
             - alterar:
             - excluir:
-            - percorrer: existem duas formas de percurso: amplitude ou largura e profundidade
+            - percorrer: existem duas formas de percurso: amplitude ou largura e profundidade 
     -> Conceitos:
         - nó ou vértice -> conjunto de vértices do grafo/mapa
         - arco ou aresta (ligação entre dois vértices) -> conjunto de arcos
