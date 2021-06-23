@@ -51,6 +51,18 @@ void inserirGrafoSimetrico(int origem, int destino, Grafo *g) {
 	}
 }
 
+void inserirGrafoSimetricoValorado(int origem, int destino, Grafo *g, int valor) {
+	if (origem < 0 || origem >= g->qtdVertices || destino < 0 ||
+		destino >= g->qtdVertices || g->matrizAdj[origem][destino] != 0 ||
+		origem == destino) {
+		printf("Aresta nao cadastrada\n");
+	} else {
+		g->matrizAdj[origem][destino] = valor;
+		g->matrizAdj[destino][origem] = valor;
+		g->qtdArestas+=2;
+	}
+}
+
 void exibirGrafo(Grafo *g) {
 	if (!g) {
 		printf("Grafo nao existe\n");
