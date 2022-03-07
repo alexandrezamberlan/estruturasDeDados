@@ -4,5 +4,48 @@
     compilação e execução por linha de comando - terminal shell
 
 2) Git
+    modo terminal versus modo gráfico
 
 3) Arquivos texto
+    - arquivos com texto puro (plain text)
+        - xml, json, csv, 
+    
+    - tipos de variáveis (ponteiro) para manipular arquivo (nome, tipo, endereço, tamanho)
+        FILE *procuradorArquivo   //C
+    
+    - modo de abertura do arquivo
+        - modo leitura - read ou 'r'
+        - modo escrita - write ou 'w'
+        - modo inserção - append ou 'a'
+
+        fopen(nomeArquivo,<modo de abertura>)
+
+    - percorrer o arquivo, ou melhor, o seu procurador
+        - laço de repetição da primeira linha até a última linha
+
+        while (!feof(procuradorArquivo)) {
+            //escrever na tela ou
+            //analisar algo do arquivo ou
+            //testar ou
+            //..
+        }
+    
+    - fechar o arquivo
+
+        fclose(procuradorArquivo)
+
+
+    Todo arquivo texto, ou sua manipulação tem algumas operações:
+        - abrir
+        - fechar 
+        - leitura -> pegar do arquivo no HD ou SSD e trazer para a variável na RAM
+            fscanf
+            fgets
+
+        - escrita -> enviar o que está na variável da RAM para arquivo HD ou SSD  
+            fprintf
+            fputs      
+
+
+
+
