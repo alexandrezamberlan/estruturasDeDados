@@ -1,0 +1,8 @@
+1) VSCode
+    download
+    instalação de pacotes: C++ da Microsoft, GitLens, Kite
+    compilação e execução por linha de comando - terminal shell
+
+2) Git
+
+3) Arquivos texto
