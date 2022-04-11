@@ -25,7 +25,10 @@ int main() {
   cout << "Qual o número que você deseja apagar da lista? ";
   cin >> numero;
 
-  lista = excluirLista(numero, lista);
+  //lista = excluirLista(numero, lista);
+  
+  lista = excluirOcorrenciasLista(numero, lista);
+  
   cout << "Lista após exclusão" << endl;
   exibirLista(lista);
   return 1;
