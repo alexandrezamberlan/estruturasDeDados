@@ -104,6 +104,36 @@ Celula *excluirLista(int valor, Celula *lista) {
   return lista;
 }
 
+Celula *excluirOcorrenciasLista(int valor, Celula *lista) {
+  Celula *p, *pR;
+
+  if (!lista) {
+    cout << "Lista vazia. Operação cancelada!" << endl;
+    return lista;
+  }
+
+  bool houveExclusao;
+  do {
+    houveExclusao = false;
+    for (pR = NULL, p = lista; p; pR = p, p = p->prox) {
+      if (valor == p->dado) {
+        //eh o primeiro
+        if (p == lista) {
+          lista = lista->prox;
+        } else if (!p->prox) { //eh o ultimo
+          pR->prox = NULL;
+        } else { //esta entre celulas
+          pR->prox = p->prox;
+        }
+        free(p);
+        houveExclusao = true;
+        break;
+      }
+    }   
+  } while (houveExclusao);
+  return lista;
+}
+
 //metodo que recebe uma lista e retorna a quantidade de elementos
 int contarElementos(Celula *lista) {
   int contador = 0;
