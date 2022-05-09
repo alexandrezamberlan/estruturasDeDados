@@ -71,7 +71,8 @@ void inserir2(string ficha, Fila *f) {
     }
 }
 
-void exibir(Fila f) {
+void exibir(Fila f, string frase) {
+    cout << frase;
     if (!f.inicio) {
         cout << "Fila vazia" << endl;
         return;
@@ -81,6 +82,19 @@ void exibir(Fila f) {
         cout << p->ficha << "\t";
     }
     cout << endl;
+}
+
+string remover(Fila *f) {
+    if (!f->inicio) {
+        return "-27";
+    }
+    string fichaAtendimento;
+    Celula *lixo;
+    fichaAtendimento = f->inicio->ficha;
+    lixo = f->inicio;
+    f->inicio = f->inicio->prox;
+    free(lixo);
+    return fichaAtendimento;
 }
 
 int main() {
@@ -96,14 +110,17 @@ int main() {
     fila1 = inserir("p11", fila1);
     fila1 = inserir("p12", fila1);
 
-    exibir(fila1);
+    exibir(fila1, "Fila de prioridades\n");
 
 
-    inserir2("p100", &fila2);
-    inserir2("p110", &fila2);
-    inserir2("p120", &fila2);
+    inserir2("n100", &fila2);
+    inserir2("n110", &fila2);
+    inserir2("n120", &fila2);
 
-    exibir(fila2);
+    exibir(fila2, "Fila de atendimento normal\n");
+
+    cout << "Chamando ficha: " << remover(&fila1) << endl;
+    cout << "Chamando ficha: " << remover(&fila2) << endl;
 
 
     return 1;
