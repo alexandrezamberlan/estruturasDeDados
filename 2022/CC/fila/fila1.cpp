@@ -71,6 +71,18 @@ void inserir2(string ficha, Fila *f) {
     }
 }
 
+void exibir(Fila f) {
+    if (!f.inicio) {
+        cout << "Fila vazia" << endl;
+        return;
+    }
+    Celula *p;
+    for (p = f.inicio; p; p = p->prox) {
+        cout << p->ficha << "\t";
+    }
+    cout << endl;
+}
+
 int main() {
    
     Fila fila1;
@@ -84,9 +96,14 @@ int main() {
     fila1 = inserir("p11", fila1);
     fila1 = inserir("p12", fila1);
 
+    exibir(fila1);
+
+
     inserir2("p100", &fila2);
     inserir2("p110", &fila2);
     inserir2("p120", &fila2);
+
+    exibir(fila2);
 
 
     return 1;
