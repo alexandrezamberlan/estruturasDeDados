@@ -1,0 +1,20 @@
+Paradigmas de Programação:
+1) Imperativo -> C, C++, Java, C#, Python
+    - o programador ao codificar algo precisa escrever O QUE, COMO e QUANDO o computador vai precisar fazer algo
+
+    lista = []
+    for (i in lista) :
+        if (i.idade >= 45):
+            print(i.nome)
+            
+
+2) Lógico -> SQL, Prolog, 
+    - o programador ao codificar algo precisa escrever O QUE e QUANDO o computador vai precisar fazer algo
+    o COMO há um motor de raciocínio implementado.
+
+
+    select Empregado.nome
+    from Empregado
+    where Empregado.idade > 45;
+
+    
