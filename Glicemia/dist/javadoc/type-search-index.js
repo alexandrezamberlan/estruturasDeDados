@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"Controller","l":"Controller"},{"p":"Model","l":"Glicemia"},{"p":"View","l":"GlicemiaView"},{"p":"Persistence","l":"Storage"}];updateSearchResults();
