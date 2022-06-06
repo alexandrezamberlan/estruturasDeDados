@@ -144,6 +144,38 @@ ArvoreString *inserirString(string valor, ArvoreString *raiz) {
     }
 }
 
+Arvore *excluir(int valor, Arvore *raiz) {
+    if (raiz) {
+        if (valor == raiz->valor) { //valor localizado e pronto pra exclusão
+            //eh folha
+            if (!raiz->esq && !raiz->dir) {
+                free(raiz);
+                return NULL;
+            } else {
+                Arvore *novoPai;
+                Arvore *p;
+                if (raiz->esq) novoPai = raiz->esq;
+                else novoPai = raiz->dir;
+                
+                for (p = novoPai; p->dir; p = p->dir);
+
+                p->dir = raiz->dir;
+
+                free(raiz);
+                return novoPai;
+            }
+        } else {
+            if (valor < raiz->valor) { //avancar para esquerda
+                raiz->esq = excluir(valor, raiz->esq);
+            } else { //avancar para direita
+                raiz->dir = excluir(valor, raiz->dir);
+            }
+        }
+        return raiz;
+    }
+    return NULL;
+}
+
 void exibir(Arvore *raiz, int nivel) {
     if (raiz) {
         exibir(raiz->dir, nivel + 1); //empilhando tudo para direita, busca-se exibir os maiores primeiro
