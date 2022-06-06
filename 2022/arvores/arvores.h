@@ -45,6 +45,27 @@ int calcularAlturaString(ArvoreString *raiz) {
     }
 }
 
+Arvore *rodaEsquerda(Arvore *r) {
+    Arvore *filho, *pai, *tmp;
+    pai = r;
+    filho = pai->dir;
+    tmp = filho->esq;
+    r = filho;
+    filho->esq = pai;
+    pai->dir = tmp;
+    return r;
+}
+
+Arvore *rodaDireita(Arvore *r) {
+    Arvore *filho, *pai, *tmp;
+    pai = r;
+    filho = pai->esq;
+    tmp = filho->dir;
+    r = filho;
+    filho->dir = pai;
+    pai->esq = tmp;
+    return r;
+}
 
 Arvore *inserir(int valor, Arvore *raiz) {
     if (raiz) {
@@ -85,7 +106,6 @@ ArvoreString *inserirString(string valor, ArvoreString *raiz) {
         return novo;
     }
 }
-
 
 void exibir(Arvore *raiz, int nivel) {
     if (raiz) {
