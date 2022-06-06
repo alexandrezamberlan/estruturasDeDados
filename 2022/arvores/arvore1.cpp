@@ -11,9 +11,9 @@ int main() {
     raiz = inserir(15, raiz);
     raiz = inserir(100, raiz);
     raiz = inserir(15, raiz);
-    raiz = inserir(50, raiz);
-    raiz = inserir(15, raiz);
-    raiz = inserir(10, raiz);
+    // raiz = inserir(50, raiz);
+    // raiz = inserir(15, raiz);
+    // raiz = inserir(10, raiz);
     
 
     exibir(raiz,0);

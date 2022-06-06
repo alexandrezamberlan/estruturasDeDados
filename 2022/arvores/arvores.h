@@ -67,6 +67,14 @@ Arvore *rodaDireita(Arvore *r) {
     return r;
 }
 
+void atualizarFB(Arvore *raiz) {
+    if (raiz) {
+        atualizarFB(raiz->esq);
+        atualizarFB(raiz->dir);
+        raiz->fb = calcularAltura(raiz->esq) - calcularAltura(raiz->dir);
+    }
+}
+
 Arvore *inserir(int valor, Arvore *raiz) {
     if (raiz) {
         if (valor < raiz->valor) { //avançar ou empilhar para a esquerda
@@ -75,6 +83,35 @@ Arvore *inserir(int valor, Arvore *raiz) {
             raiz->dir = inserir(valor, raiz->dir);
         }
         raiz->fb = calcularAltura(raiz->esq) - calcularAltura(raiz->dir);
+
+        //descobrir se esta ou nao balanceado
+        if (raiz->fb == -2) { //rotacao para esquerda
+            //descobrir se eh rotacao simples
+            if (raiz->fb < 0 && raiz->dir->fb < 0) {
+                raiz = rodaEsquerda(raiz);
+            } else {
+                //rotacao dupla
+                //1 - rodar o filho para direita
+                raiz->dir = rodaDireita(raiz->dir);
+                //2 - rodar o pai para a esquerda
+                raiz = rodaEsquerda(raiz);
+            }
+            //atualizar o fb dos nodos da raiz
+            atualizarFB(raiz);
+        } else if (raiz->fb == 2) { //rotacao para direita
+            //descobrir se eh rotacao simples
+            if (raiz->fb > 0 && raiz->esq->fb > 0) {
+                raiz = rodaDireita(raiz);
+            } else {
+                //rotacao dupla
+                //1 - rodar o filho para esquerda
+                raiz->esq = rodaEsquerda(raiz->esq);
+                //2 - rodar o pai para a direita
+                raiz = rodaDireita(raiz);
+            }
+            //atualizar o fb dos nodos da raiz
+            atualizarFB(raiz);
+        }
         return raiz;
     } else {
         //se estamos aqui, pq chegamos em um folha e estamos prontos para adicionar o nodo na árvore
