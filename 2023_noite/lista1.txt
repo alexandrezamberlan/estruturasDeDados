@@ -1,0 +1,18 @@
+Lista com alocação dinâmica
+    - uso de struct + ponteiro
+    - estrutura de dados linear com ordenação
+    - Lista possui todas as operações (inserir, remover, localizar, percorrer), contudo, 
+      percurso é a mais importante
+    - Há 3 tipos de lista:
+        - simples
+        - circular
+        - dupla
+
+
+Lista Simples
+// o struct é o mesmo de pilha e de fila
+typedef struct no {
+    int valor;
+    struct no *prox;
+} Celula;
+
