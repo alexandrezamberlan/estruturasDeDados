@@ -53,6 +53,23 @@ PontoCartesiano *remover(PontoCartesiano *topo) {
     return topo;
 }
 
+
+int contarPilha(PontoCartesiano *topo) {
+    int qtd = 0;
+    for (PontoCartesiano *p = topo; p ; p = p->prox) {
+        qtd++;
+    }
+    return qtd;
+}
+
+
+void exibir(PontoCartesiano *topo) {
+
+    for (PontoCartesiano *p = topo; p ; p = p->prox) {
+        printf("(%d,%d)\n", p->x, p->y);
+    }
+    
+}
 int main() {
     PontoCartesiano *pilha = NULL;
 
@@ -60,15 +77,18 @@ int main() {
     pilha = inserir(0,7,pilha);
     pilha = inserir(0,0,pilha);
 
-    printf("Endereco do topo: %p\n", pilha);
-    printf("Valores do topo: %d,%d\n", pilha->x, pilha->y);
+    printf("Esta estrutura tem %d elementos\n", contarPilha(pilha));
+    exibir(pilha);
 
 
-    pilha = remover(pilha);
-    pilha = remover(pilha);
+    // printf("Endereco do topo: %p\n", pilha);
+    // printf("Valores do topo: %d,%d\n", pilha->x, pilha->y);
 
-    printf("Endereco do topo: %p\n", pilha);
-    printf("Valores do topo: %d,%d\n", pilha->x, pilha->y);
+    // pilha = remover(pilha);
+    // pilha = remover(pilha);
+
+    // printf("Endereco do topo: %p\n", pilha);
+    // printf("Valores do topo: %d,%d\n", pilha->x, pilha->y);
     return 1;
 }
 
