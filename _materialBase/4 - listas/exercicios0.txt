@@ -1,0 +1,17 @@
+A partir dos códigos de Lista Simples (inserção ordenada e com controle de duplicação) e dos códigos de 
+argumentosConsole (passar argumentos em programas de console), fazer um programa que receba como argumentos
+nomes de arquivos (.dat) contendo a relação de estudantes de uma disciplina.
+
+1) o primeiro programa deve inserir em uma lista simples ordenada e com controle de duplicidade todos
+os alunos presentes nos arquivos (exceto os já existentes). Ao final, exibir os nomes dos alunos inseridos
+na lista.
+
+2) o segundo programa deve realizar o mesmo que o programa anterior, contudo, cada aluno que repetir em um
+arquivo (ou turma/disciplina), deve ter sua quantidade de vezes que aparece.
+
+Para isso, sugere usar um struct
+typedef struct no {
+    string nome;
+    int qtdVezesAparece;
+    struct no *prox;
+} Celula;
