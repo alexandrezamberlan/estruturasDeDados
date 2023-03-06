@@ -1,6 +1,0 @@
-Criar um programa em C++ (modulado) que leia o arquivo de comandos.txt.
-Toda vez que o método identificar a letra 'I', inserir na pilha o valor inteiro ao lado.
-Toda vez que o método identificar a letra 'R', remover o valor do topo da pilha.
-
-Ao final, a pilha deve ser enviada para o arquivo saida.txt com os valores restantes.
-

@@ -1,7 +1,0 @@
-A partir dos códigos listaDupla1.cpp e listaDupla2.cpp criar os seguintes métodos:
-
-1) localizar um valor e informar onde o valor encontra-se (primeiro, último ou se está em alguma posição do meio)
-2) localizar e mostrar o maior valor da lista
-
-3) adaptar o método inserirD() para que ele realize a inserção em uma lista dupla de maneira ordenada
-4) implementar um método para listas duplas que receba uma lista e retorne a média dos valores na lista
