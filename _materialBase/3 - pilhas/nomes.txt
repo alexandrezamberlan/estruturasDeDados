@@ -1,5 +1,3 @@
-104 Pedro
-103 Vini
 102 Regis
-101 Alexandre
-100 Lucas
+103 Vini
+104 Pedro

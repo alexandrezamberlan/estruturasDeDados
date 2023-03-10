@@ -62,6 +62,16 @@ void atualizarArquivo(char *nomeArquivo, Celula *topo) {
     fclose(procurador);
 }
 
+int contarPilha(Celula *topo) {
+    int quantidade = 0;
+    Celula *p;
+    for (p = topo; p ; p = p->prox) {
+        quantidade++;
+    }
+    return quantidade;
+}
+
+
 int main() {
     setlocale(LC_ALL,"");
     Celula *pilhaArquivo = NULL;
@@ -110,6 +120,7 @@ int main() {
     atualizarArquivo(nomeArquivo,pilhaArquivo);
 
     //fazer o método contar elementos
+    printf("Total de elementos na estrutura: %d\n", contarPilha(pilhaArquivo));
     
     return 1;
 }
