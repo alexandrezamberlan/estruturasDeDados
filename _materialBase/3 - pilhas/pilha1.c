@@ -31,6 +31,8 @@ Celula *remover(Celula *topo) {
 
 	lixo = topo;
 	topo = topo->prox; 
+	
+	free(lixo);
 
 	return topo;
 }

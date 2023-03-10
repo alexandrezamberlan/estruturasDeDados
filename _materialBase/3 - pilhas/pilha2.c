@@ -21,6 +21,23 @@ Celula *inserirPilha(int matricula, char nome[], Celula *topo) {
     return novo;
 }
 
+Celula *removerPilha(Celula *topo) {
+	Celula *lixo;
+
+	if (!topo) {
+		printf("Pilha vazia\n");
+		return topo;
+	}
+
+	lixo = topo;
+	topo = topo->prox; 
+	
+	free(lixo);
+
+	return topo;
+}
+
+
 void exibirPilha(Celula *topo) {
     Celula *p;
     if (!topo) {
@@ -33,25 +50,38 @@ void exibirPilha(Celula *topo) {
     }
 }
 
+void atualizarArquivo(char *nomeArquivo, Celula *topo) {
+    FILE *procurador;
+    Celula *p;
+    procurador = fopen(nomeArquivo,"w");
+
+    for (p = topo; p ; p = p->prox) {
+        fprintf(procurador,"%d %s\n",p->matricula, p->nome);
+        fflush(procurador);
+    }
+    fclose(procurador);
+}
+
 int main() {
     setlocale(LC_ALL,"");
     Celula *pilhaArquivo = NULL;
-    /*
-    pilhaArquivo = inserirPilha(100,"Lucas",pilhaArquivo);
-    pilhaArquivo = inserirPilha(101,"Xandao",pilhaArquivo);
-    pilhaArquivo = inserirPilha(102,"Regis",pilhaArquivo);
-    pilhaArquivo = inserirPilha(103,"Vini",pilhaArquivo);
-    */
+   
 
+    // pilhaArquivo = inserirPilha(100,"Lucas",pilhaArquivo);
+    // pilhaArquivo = inserirPilha(101,"Xandao",pilhaArquivo);
+    // pilhaArquivo = inserirPilha(102,"Regis",pilhaArquivo);
+    // pilhaArquivo = inserirPilha(103,"Vini",pilhaArquivo);
+    // exibirPilha(pilhaArquivo);
+    
     FILE *procurador;
     char nomeArquivo[200];
 
     printf("Informe nome do arquivo com dados de alunos: ");
     scanf("%s", nomeArquivo);
 
-    procurador = fopen(nomeArquivo,"r");
+    procurador = fopen(nomeArquivo,"r"); //read - leitura +++++ write - escrita +++++ append
     if (!procurador) {
-        printf("Arquivo n„o localizado.\n");
+        printf("Arquivo nao localizado.\n");
         exit(0);
     }
     printf("Arquivo localizado e sendo trabalhado....\n");
@@ -79,5 +109,7 @@ int main() {
     //ATUALIZAR O ARQUIVO COM A PILHA ALTERADA
     atualizarArquivo(nomeArquivo,pilhaArquivo);
 
+    //fazer o m√©todo contar elementos
+    
     return 1;
 }
