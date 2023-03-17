@@ -26,11 +26,25 @@ Lista simples possui:
 
 #include "lista.h"
 
-int main() {
+Celula *popularListaAleatoria(Celula *lista, int qtd) {
+    srand(time(NULL));
+    for (int i = 0; i < qtd; i++) {
+        lista = inserir(rand() % 500, lista);
+    }
+    return lista;
+}
+
+int main(int qtdArgumentos, char **vetorArgumentos) {
+    if (qtdArgumentos != 2) {
+        printf("Problemas com os parametros...\n");
+        exit(0);
+    }
+
+    int qtdNumeros = atoi(vetorArgumentos[1]);
 
     Celula *lista = NULL;
 
-    lista = popularListaAleatoria(lista);
+    lista = popularListaAleatoria(lista,qtdNumeros);
 
     exibir(lista);
     
