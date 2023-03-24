@@ -63,3 +63,15 @@ Celula *excluir(int valor, Celula *lista) {
     }
     return lista;
 }
+
+Celula *excluirRepetidos(int valor, Celula *lista) {
+    return NULL;
+}
+
+int contar(Celula *lista) {
+    return 0;
+}
+
+Celula *localizar(int valor, Celula *lista) {
+    return NULL;
+}
