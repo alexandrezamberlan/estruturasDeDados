@@ -42,3 +42,24 @@ void exibir(Celula *lista) {
     }
     printf("\n");
 }
+
+Celula *excluir(int valor, Celula *lista) {
+    Celula *p, *pR;
+    for (pR = NULL, p = lista; p; pR = p, p = p->prox) {
+        if (valor == p->dado) { //valor encontrado
+            //testar se esta no inicio
+            if (p == lista) {
+                lista = lista->prox;
+                free(p);
+            } else if (!p->prox) { //testar se esta no fim
+                free(p);
+                pR->prox = NULL;
+            } else { //esta no meio
+                pR->prox = p->prox;
+                free(p);                
+            }
+            break;
+        }       
+    }
+    return lista;
+}
