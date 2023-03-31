@@ -34,6 +34,43 @@ Celula *inserir(int valor, Celula *lista) {
     return lista;
 }
 
+
+Celula *inserirControleDuplicados(int valor, Celula *lista) {
+    //alocar
+    Celula *novo = (Celula *)malloc(sizeof(Celula)); //casting ou coersão
+
+    //depositar
+    novo->dado = valor;
+    novo->prox = NULL;
+
+    //encadear
+    if (!lista) return novo;
+
+    Celula *p, *pR;
+    for (pR = NULL, p = lista; p; pR = p, p = p->prox) {
+        if (valor == p->dado) {
+            free(novo);
+            return lista;
+        }
+        if (valor < p->dado) {
+            break;
+        }
+    }
+    if (p == lista) { //inserir no inicio
+        novo->prox = lista;
+        return novo;
+    } else if (!p) { //inserir no fim
+        pR->prox = novo;
+    } else { //inserir no meio
+        pR->prox = novo;
+        novo->prox = p;
+    }
+
+    //retornar
+    return lista;
+}
+
+
 void exibir(Celula *lista) {
     Celula *p;
     printf("Exibindo.....\n");
