@@ -69,9 +69,35 @@ Celula *excluirRepetidos(int valor, Celula *lista) {
 }
 
 int contar(Celula *lista) {
-    return 0;
+    Celula *p;
+    int conta = 0;
+    
+    for (p = lista; p; p = p->prox) {
+        conta++;
+    }
+    return conta;
 }
 
 Celula *localizar(int valor, Celula *lista) {
+    Celula *p;
+    
+    for (p = lista; p; p = p->prox) {
+        if (valor == p->dado) {
+            return p;
+        }
+    }
+    return NULL;
+}
+
+Celula *destruir(Celula *lista) { //devolver memória ao SO
+
+    Celula *pR, *p;
+    if (!lista) return NULL;
+
+    for (pR = lista, p = lista->prox; p; pR = p, p = p->prox) {
+        free(pR);
+    }
+    free(pR); //para apagar o ultimo elemento
+
     return NULL;
 }
