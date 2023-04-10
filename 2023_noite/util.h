@@ -125,7 +125,7 @@ Celula *atualizarListaSimples(int valorAntigo, int valorNovo, Celula *lista) {
 
 typedef struct noD {
     int valor;
-    struct no *prox, *ant;
+    struct noD *prox, *ant;
 } CelulaD;
 
 void exibirListaDupla(CelulaD *lista) {
@@ -176,7 +176,7 @@ bool localizarListaDupla(int valor, CelulaD *lista) {
     return false;
 }
 
-Celula *destruirListaDupla(CelulaD *lista) {
+CelulaD *destruirListaDupla(CelulaD *lista) {
     CelulaD *pR, *p;
 
     if (!lista) return lista;
@@ -193,7 +193,7 @@ Celula *destruirListaDupla(CelulaD *lista) {
     return NULL;
 }
 
-Celula *destruirListaDupla2(CelulaD *lista) {
+CelulaD *destruirListaDupla2(CelulaD *lista) {
     CelulaD *p;
 
     if (!lista) return lista;
@@ -216,7 +216,7 @@ Celula *destruirListaDupla2(CelulaD *lista) {
     return NULL;
 }
 
-Celula *inserirListaDupla(int valor, CelulaD *lista) {
+CelulaD *inserirListaDupla(int valor, CelulaD *lista) {
     //alocar memória
     CelulaD *novo = (CelulaD *)malloc(sizeof(CelulaD));
     CelulaD *p, *pR;
