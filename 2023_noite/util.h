@@ -259,3 +259,53 @@ CelulaD *inserirListaDupla(int valor, CelulaD *lista) {
     p->ant = novo;  //codigo da lista dupla
     return lista;
 }
+
+CelulaD *removerListaDupla(int valor, CelulaD *lista) {
+    CelulaD *lixo;
+    CelulaD *p, *pR;
+
+    if (!lista) return lista;
+
+    while (lista->ant) {
+        lista = lista->ant;
+    }
+
+    //definir a posicao do valor na lista, ou seja, percorrer a lista
+    for (pR = NULL, p = lista; p ; pR = p, p = p->prox) {
+        if (valor == p->valor) {
+            lixo = p;
+            if (p == lista) { //primeira posicao
+                lista = lista->prox;
+                lista->ant = NULL;
+            } else if (!p->prox) { //ultima posicao
+                pR->prox = NULL;
+            } else { //posicao intermediaria
+                pR->prox = p->prox;
+                p->prox->ant = pR;
+            }
+            free(lixo);    
+            return lista;        
+        }
+    }
+    return lista;
+}
+
+CelulaD *removerRepetidosListaDupla(int valor, CelulaD *lista) {
+    CelulaD *p;
+
+    if (!lista) return lista;
+
+    while (lista->ant) {
+        lista = lista->ant;
+    }
+
+    p = lista; 
+    while (p) {
+        
+        if (valor == p->valor) {
+            lista = removerListaDupla(valor, lista);   
+            p = lista;        
+        } else p = p->prox;
+    }
+    return lista;
+}
