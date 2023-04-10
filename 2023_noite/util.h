@@ -224,6 +224,7 @@ CelulaD *inserirListaDupla(int valor, CelulaD *lista) {
     //depositar valores
     novo->valor = valor;
     novo->prox = NULL;
+    novo->ant = NULL;
 
     //para a primeira alocação
     if (!lista) return novo;
