@@ -1,13 +1,13 @@
 Estruturas de Dados Lineares
 
-Pilha - LIFO - operações de inserção e remoção no topo (ponteiro)
+Pilha (Stack) - LIFO - operações de inserção e remoção no topo (ponteiro)
 
-Lista - Ordenação - todas as operações (percurso como principal)
+Lista (List) - Ordenação - todas as operações (percurso como principal)
 
-Fila - FIFO (First In, First Out)
-	-> dois ponteiros:
+Fila (Queue) - FIFO (First In, First Out)
+	-> dois ponteiros DEQUE:
 		- inicio/cabeça: controla o início da fila, onde as 
-		                 exclusões serão realizadas
+		                 exclusões serão realizadas. Aqui está o mais antigo elemento
 
 		- fim/cauda: controla o final da fila, onde as 
 		             inserções serão realizadas

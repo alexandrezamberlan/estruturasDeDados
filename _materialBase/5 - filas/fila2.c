@@ -26,7 +26,7 @@ metodo que insere um elemento na cauda da fila
 */
 void inserirFila(int valor, Fila *f) {
 	Celula *novo;
-
+	//alocacao de memoria
 	novo = (Celula *)malloc(sizeof(Celula));
 	novo->conteudo = valor;
 	novo->prox = NULL;

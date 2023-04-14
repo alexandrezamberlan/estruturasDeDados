@@ -5,11 +5,8 @@ senha em atendimento (normal ou prioritário) e a chamada da senha
 Sugere-se um menu:
 
 1 - Gerar Ficha Normal - (1 a 999)
-
 2 - Gerar Ficha Prioritária (1000 - 1999)
-
 3 - Atender
-
 4 - Sair
 
 Regra do negócio: a cada 3 fichas normais atendidas, chamar um ficha Prioritária
