@@ -18,3 +18,26 @@ Fila (Queue) - FIFO (First In, First Out)
 		int dado;
 		struct *prox;
 	} Celula;
+
+	Entretanto, a variável fila precisa conter os dois ponteiros.
+	Assim, cria-se novo struct para FILA, que irá chamar o Celula.
+
+	typedef struct {
+		Celula *cabeca;
+		Celula *cauda;
+	} Fila;
+
+	main() {
+		Fila f1;
+		Fila f2;
+
+		f1.cabeca = NULL;
+		f1.cauda = NULL;
+
+		f2.cabeca = NULL;
+		f2.cauda = NULL;
+	}
+
+
+
+

@@ -94,11 +94,15 @@ void menu(Fila *filaNormal, Fila *filaPrioritaria, int *contadorFichaNormal, int
                 int ficha = remover(filaPrioritaria); 
                 if (ficha != -27) {
                     printf("Chamando ficha prioritária: %d\n\n", ficha);
+                } else {
+                    int ficha = remover(filaNormal);
                 }
             } else {
                 int ficha = remover(filaNormal);
                 if (ficha != -27) {
                     printf("Chamando ficha normal: %d\n\n", ficha);
+                } else {
+                    int ficha = remover(filaPrioritaria);
                 }
             }
             contadorAtendimentos++;

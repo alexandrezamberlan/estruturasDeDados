@@ -1,0 +1,19 @@
+Construir um programa em qualquer linguagem de programação que receba pedidos em
+um restaurante. Contudo, o restaurante trabalha com 4 pratos:
+1 - Batatas Fritas que demoram 15 minutos para serem feitas;
+2 - Hamburguer que demora 20 minutos para ser feito;
+3 - Massa Carbonara que demora 25 minutos para ser feito;
+
+Há situações que um pedido pode conter n pratos de diferentes tipos. Assim,
+o sistema deve avisar a cozinha a ordem de preparo para que todos os pratos
+sejam entregados ao mesmo tempo.
+
+Note que consideramos a ordem dos pedidos das diferentes mesas. Assim, há a necessidade
+de fila para ordenar os pedidos de uma mesa a partir do tempo de preparo. E outra fila
+para os pedidos de cada mesa.
+
+Sugere-se um menu computacional
+1 - Fazer pedido (coletar os pedidos dos clientes)
+2 - Mostrar pedidos e tempo final de entrega para a mesa
+3 - Sair
+Opção: 
