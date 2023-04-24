@@ -1,4 +1,6 @@
 RECURSÃO 
+    - acesse o vídeo, assista, anote dúvidas e faça os exercícios
+    	- https://youtu.be/5WAulVX_a0M
     - técnica de programação que substitui as instruções de repetição (for, while, do-while)
     - técnica associada ao Sistema Operacional - empilhamento do mesmo método (pilha)
         - empilhar um método == alocar tudo o que tem nele mais de uma vez (ou n vezes)
