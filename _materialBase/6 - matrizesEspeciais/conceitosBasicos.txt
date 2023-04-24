@@ -30,5 +30,5 @@ Matrizes especiais
         Diagonal secundária: i + j == n - 1
         Triangular superior da principal: j > i
         Triangular inferior da principal: i > j
-        Triangular superior da secundária: i + j > n - 1
-        Triangular inferior da secundária: i + j < n - 1
+        Triangular superior da secundária: i + j < n - 1
+        Triangular inferior da secundária: i + j > n - 1
