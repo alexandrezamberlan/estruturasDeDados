@@ -3,7 +3,7 @@
 #include <time.h>
 
 #define TAML 4
-#define TAMC 3
+#define TAMC 4
 
 void popular(int matriz[TAML][TAMC], int lin, int col) {
     for (int i = 0; i < lin; i++) {
@@ -33,11 +33,11 @@ void inicializarR(int matriz[TAML][TAMC], int lin, int col, int backLin, int bac
     }
 }
 
-void preecherR(int matriz[TAML][TAMC], int lin, int col, int backLin, int backcol)
+void preencherR(int matriz[TAML][TAMC], int lin, int col, int backLin, int backcol)
 {
     if (col > 0) {
-        if (lin + col == TAML) {
-            matriz[lin - 1][col - 1] = 0;
+        if (lin < col) {
+            matriz[lin - 1][col - 1] = 1;
         }
         preencherR(matriz, lin, col - 1, backLin, backcol);
     } else if (lin > 0) {
@@ -49,7 +49,7 @@ void exibirR(int matriz[TAML][TAMC], int lin, int col, int backLin, int backcol)
     if (col > 0) {
         exibirR(matriz, lin, col - 1, backLin, backcol);
         printf("%d\t",matriz[lin - 1][col - 1]);
-    } else if (lin > 0) {
+    } else if (lin - 1 > 0) {
         exibirR(matriz, lin - 1, backcol ,backLin, backcol);
         printf("\n");
     }
