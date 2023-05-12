@@ -26,7 +26,6 @@ void exibirR(int *v, int n) {
     }
 }
 
-
 void popularR(int *v, int n, int valor) {
     if (n > 0) {
         //codigo no empilhamento
@@ -61,6 +60,17 @@ int somarParesR(int *v, int n) {
     }
 }
 
+int localizarR(int *v, int n, int valor) {
+    if (n > 0) {
+        if (v[n - 1] == valor) {
+            return n - 1; //valor localizado, retorna a posicao, começa a desempilhar
+        } 
+        return localizarR(v, n - 1, valor);        
+    }
+    return -1; //passou por toda a estrutura e nao localizou o valor... ponto desempilhamento
+}
+
+
 int main() {
     int vetor[TAM];
 
@@ -76,10 +86,11 @@ int main() {
     int valor;
     printf("Digite valor para pesquisa: ");
     scanf("%d", &valor);
-    if (localizarR(vetor, TAM, valor)) {
-        printf("Localizado\n");
+    int posicao = localizarR(vetor, TAM, valor);
+    if (posicao != -1) {
+        printf("Localizado na posicao: %d\n", posicao);
     } else {
-        printf("Nao localizado\n")
+        printf("Nao localizado\n");
     }
 
 
