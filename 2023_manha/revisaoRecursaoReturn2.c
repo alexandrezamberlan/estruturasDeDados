@@ -73,5 +73,15 @@ int main() {
     printf("A soma dos elementos do vetor: %d\n", somarR(vetor, TAM));
     printf("A soma dos elementos pares do vetor: %d\n", somarParesR(vetor, TAM));
 
+    int valor;
+    printf("Digite valor para pesquisa: ");
+    scanf("%d", &valor);
+    if (localizarR(vetor, TAM, valor)) {
+        printf("Localizado\n");
+    } else {
+        printf("Nao localizado\n")
+    }
+
+
     return 1;
 }
