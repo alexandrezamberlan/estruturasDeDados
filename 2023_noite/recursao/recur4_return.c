@@ -33,6 +33,17 @@ void exibirVetorR(int *v, int n) {
     }
 }
 
+void substituirVetorR(int *v, int n, int vOriginal, int vDestino) {
+    if (n > 0) {
+
+        substituirVetorR(v, n-1, vOriginal, vDestino); //ponto de recursao
+        
+        if (v[n-1] == vOriginal){
+            v[n-1] = vDestino;
+        }
+    }
+}
+
 int contarParesR(int *v, int n) {
     if (n > 0){
         if (v[n-1] % 2 == 0) {
@@ -71,5 +82,12 @@ int main() {
     printf("Total de pares:%d\n", contarParesR(vetor, TAM));
     printf("A soma dos elementos:%d\n", somarR(vetor, TAM));
     printf("O menor elemento: %d\n", menorR(vetor, TAM));
+
+
+    //fazer o metodo recursivo substituirR(v, TAM, valOr, valDes)
+    substituirVetorR(vetor, TAM, 3, 0);
+    printf("Vetor apos a substituicao\n");
+    exibirVetorR(vetor, TAM);
+
     return 1;
 }
