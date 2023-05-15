@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define TAM 500
+#define TAM 5
 
 typedef struct no {
     int dado;
@@ -40,15 +40,38 @@ Celula *inserirListaR(int valor, Celula *lista) {
 }
 
 
+int somarListaR(Celula *lista) {
+    if (lista) {
+        return lista->dado + somarListaR(lista->prox);
+    }
+    return 0;
+}
+
+//10 -> 20 -> 30 
+int contarListaR(Celula *lista) {
+    if (lista) {
+        return 1 + contarListaR(lista->prox);
+    }
+    return 0;
+}
+
 int main() {
     Celula *lista = NULL;
   
     srand(time(NULL));
     for (int i = 0; i < TAM; i++) {
-        lista = inserirListaR(rand() % 20, lista);
+        lista = inserirListaR(rand() % 10, lista);
     }
     exibirListaR(lista);
 
+    printf("Total de elementos: %d\n", contarListaR(lista));
+    printf("A soma dos elementos: %d\n", somarListaR(lista));
+
+    int valorPesquisa;
+    printf("Digite valor a pesquisar: ");
+    scanf("%d", &valorPesquisa);
+
+    printf("%d localizado na posicao %p\n", valorPesquisa, localizarR(valorPesquisa, lista));
     
     return 1;
 }
