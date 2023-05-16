@@ -55,6 +55,15 @@ int contarListaR(Celula *lista) {
     return 0;
 }
 
+Celula *localizarR(int valor, Celula *lista) {
+    if (lista) {
+        if (valor == lista->dado)
+            return lista; //valor encontrado na posicao de memória de lista
+        return localizarR(valor, lista->prox);
+    } 
+    return NULL; //passamos por toda a lista e não encontramos o valor, logo retorna NULL
+}
+
 int main() {
     Celula *lista = NULL;
   
@@ -71,7 +80,11 @@ int main() {
     printf("Digite valor a pesquisar: ");
     scanf("%d", &valorPesquisa);
 
-    printf("%d localizado na posicao %p\n", valorPesquisa, localizarR(valorPesquisa, lista));
+    Celula *posicao = localizarR(valorPesquisa, lista);
+    printf("%d localizado na posicao %p->%d\n", valorPesquisa, posicao, posicao->dado);
+
+    lista = excluirListaR(valorPesquisa, lista);
+    exibirListaR(lista);
     
     return 1;
 }
