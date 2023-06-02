@@ -81,14 +81,52 @@ int contar(Arvore *raiz) {
     return 0;
 }
 
+Arvore *destruir(Arvore *raiz) {
+    if (raiz) {
+        raiz->esq = destruir(raiz->esq);
+        raiz->dir = destruir(raiz->dir);
+        free(raiz); 
+    } 
+    return NULL;
+}
+
+Arvore *localizar(int valor, Arvore *raiz) {
+    if (raiz) {
+        if (valor == raiz->valor) {
+            return raiz;
+        }
+        if (valor < raiz->valor) { //ir para esquerda
+            return localizar(valor, raiz->esq);
+        } else { //ir para direita
+            return localizar(valor, raiz->dir);
+        }
+    } 
+    return NULL;
+}
+
+
 int main() {
     Arvore *raiz = NULL;
-    srand(time(NULL));
-    for (int i = 0; i < 50 + 2; i++) {
-        raiz = inserir(rand() % 50, raiz);
-    }
+    // srand(time(NULL));
+    // for (int i = 0; i < 5000; i++) {
+    //     raiz = inserir(rand() % 5, raiz);
+    // }
+    raiz = inserir(15, raiz);
+    raiz = inserir(5, raiz);
+    raiz = inserir(50, raiz);
+    raiz = inserir(1, raiz);
+    raiz = inserir(10, raiz);
+    raiz = inserir(20, raiz);
+    raiz = inserir(100, raiz);
     printf("Total de nodos: %d\n\n", contar(raiz));
     exibir(raiz, 0);
+
+    int pesquisar;
+    printf("Valor de pesquisa: ");
+    scanf("%d", &pesquisar);
+
+    Arvore *posicao = localizar(pesquisar, raiz);
+    printf("%d localizado na posicao %p\n", pesquisar, posicao);    
 
     // printf("Exibindo RED\n");
     // exibirRED(raiz);
@@ -98,6 +136,10 @@ int main() {
 
     // printf("\n\nExibindo EDR\n");
     // exibirEDR(raiz);
+
+    // raiz = destruir(raiz);
+    // printf("Total de nodos: %d\n\n", contar(raiz));
+    // exibir(raiz, 0);
 
     return 1;
 }
