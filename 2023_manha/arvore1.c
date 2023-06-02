@@ -104,6 +104,22 @@ Arvore *localizar(int valor, Arvore *raiz) {
     return NULL;
 }
 
+int localizarNivel(int valor, Arvore *raiz) {
+    if (raiz) {
+        if (valor == raiz->valor)
+            return 0; //encontrei o valor e soma no desempilhamento
+        if (valor < raiz->valor) { //ir para esquerda
+            int respostaEmpilhamento = localizarNivel(valor, raiz->esq);
+            if (respostaEmpilhamento == -1) return -1;
+            return respostaEmpilhamento + 1;
+        } else { //ir para direita
+             int respostaEmpilhamento = localizarNivel(valor, raiz->dir);
+            if (respostaEmpilhamento == -1) return -1;
+            return respostaEmpilhamento + 1;
+        }
+    }
+    return -1;
+}
 
 int main() {
     Arvore *raiz = NULL;
@@ -127,6 +143,9 @@ int main() {
 
     Arvore *posicao = localizar(pesquisar, raiz);
     printf("%d localizado na posicao %p\n", pesquisar, posicao);    
+
+    int nivel = localizarNivel(pesquisar, raiz);
+    printf("%d localizado no nivel %d\n", pesquisar, nivel);    
 
     // printf("Exibindo RED\n");
     // exibirRED(raiz);
