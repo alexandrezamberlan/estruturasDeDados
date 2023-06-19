@@ -1,0 +1,16 @@
+C:\Users\laboratorio\source\repos\MapaRomeniaGrafo\obj\Debug\net5.0\MapaRomeniaGrafo.csproj.AssemblyReference.cache
+C:\Users\laboratorio\source\repos\MapaRomeniaGrafo\obj\Debug\net5.0\MapaRomeniaGrafo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\laboratorio\source\repos\MapaRomeniaGrafo\obj\Debug\net5.0\MapaRomeniaGrafo.AssemblyInfoInputs.cache
+C:\Users\laboratorio\source\repos\MapaRomeniaGrafo\obj\Debug\net5.0\MapaRomeniaGrafo.AssemblyInfo.cs
+C:\Users\laboratorio\source\repos\MapaRomeniaGrafo\obj\Debug\net5.0\MapaRomeniaGrafo.csproj.CoreCompileInputs.cache
+C:\Users\laboratorio\source\repos\MapaRomeniaGrafo\bin\Debug\net5.0\MapaRomeniaGrafo.exe
+C:\Users\laboratorio\source\repos\MapaRomeniaGrafo\bin\Debug\net5.0\MapaRomeniaGrafo.deps.json
+C:\Users\laboratorio\source\repos\MapaRomeniaGrafo\bin\Debug\net5.0\MapaRomeniaGrafo.runtimeconfig.json
+C:\Users\laboratorio\source\repos\MapaRomeniaGrafo\bin\Debug\net5.0\MapaRomeniaGrafo.runtimeconfig.dev.json
+C:\Users\laboratorio\source\repos\MapaRomeniaGrafo\bin\Debug\net5.0\MapaRomeniaGrafo.dll
+C:\Users\laboratorio\source\repos\MapaRomeniaGrafo\bin\Debug\net5.0\ref\MapaRomeniaGrafo.dll
+C:\Users\laboratorio\source\repos\MapaRomeniaGrafo\bin\Debug\net5.0\MapaRomeniaGrafo.pdb
+C:\Users\laboratorio\source\repos\MapaRomeniaGrafo\obj\Debug\net5.0\MapaRomeniaGrafo.dll
+C:\Users\laboratorio\source\repos\MapaRomeniaGrafo\obj\Debug\net5.0\ref\MapaRomeniaGrafo.dll
+C:\Users\laboratorio\source\repos\MapaRomeniaGrafo\obj\Debug\net5.0\MapaRomeniaGrafo.pdb
+C:\Users\laboratorio\source\repos\MapaRomeniaGrafo\obj\Debug\net5.0\MapaRomeniaGrafo.genruntimeconfig.cache
