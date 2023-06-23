@@ -2,6 +2,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Grafo {
+    
     public static boolean temCaminhoAmplitude(String origem, String destino, LinkedList<Cidade> lista, int matriz[][]) {
         Queue<Cidade> fila = new LinkedList<Cidade>();
         int visitados[] = new int[lista.size()];
