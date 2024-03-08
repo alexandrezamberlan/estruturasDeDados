@@ -1,0 +1,15 @@
+C:\Users\laboratorio\Downloads\estruturasDeDados\3 - pilha\Pilha\bin\Debug\net7.0\Pilha.exe
+C:\Users\laboratorio\Downloads\estruturasDeDados\3 - pilha\Pilha\bin\Debug\net7.0\Pilha.deps.json
+C:\Users\laboratorio\Downloads\estruturasDeDados\3 - pilha\Pilha\bin\Debug\net7.0\Pilha.runtimeconfig.json
+C:\Users\laboratorio\Downloads\estruturasDeDados\3 - pilha\Pilha\bin\Debug\net7.0\Pilha.dll
+C:\Users\laboratorio\Downloads\estruturasDeDados\3 - pilha\Pilha\bin\Debug\net7.0\Pilha.pdb
+C:\Users\laboratorio\Downloads\estruturasDeDados\3 - pilha\Pilha\obj\Debug\net7.0\Pilha.csproj.AssemblyReference.cache
+C:\Users\laboratorio\Downloads\estruturasDeDados\3 - pilha\Pilha\obj\Debug\net7.0\Pilha.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\laboratorio\Downloads\estruturasDeDados\3 - pilha\Pilha\obj\Debug\net7.0\Pilha.AssemblyInfoInputs.cache
+C:\Users\laboratorio\Downloads\estruturasDeDados\3 - pilha\Pilha\obj\Debug\net7.0\Pilha.AssemblyInfo.cs
+C:\Users\laboratorio\Downloads\estruturasDeDados\3 - pilha\Pilha\obj\Debug\net7.0\Pilha.csproj.CoreCompileInputs.cache
+C:\Users\laboratorio\Downloads\estruturasDeDados\3 - pilha\Pilha\obj\Debug\net7.0\Pilha.dll
+C:\Users\laboratorio\Downloads\estruturasDeDados\3 - pilha\Pilha\obj\Debug\net7.0\refint\Pilha.dll
+C:\Users\laboratorio\Downloads\estruturasDeDados\3 - pilha\Pilha\obj\Debug\net7.0\Pilha.pdb
+C:\Users\laboratorio\Downloads\estruturasDeDados\3 - pilha\Pilha\obj\Debug\net7.0\Pilha.genruntimeconfig.cache
+C:\Users\laboratorio\Downloads\estruturasDeDados\3 - pilha\Pilha\obj\Debug\net7.0\ref\Pilha.dll
