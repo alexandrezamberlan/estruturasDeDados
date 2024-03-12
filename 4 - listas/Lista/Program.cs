@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using System;
 
 static void exibir(List<int> lista)
 {
@@ -8,14 +8,14 @@ static void exibir(List<int> lista)
     }
 }
 
-
 List<int> lista = new List<int>();
-
+Random gerador = new Random();
 int valor;
-for (int i = 0; i < 4; i++)
+for (int i = 0; i < 100; i++)
 {
-    Console.Write("Digite um numero inteiro: ");
-    valor = int.Parse(Console.ReadLine());
+    // Console.Write("Digite um numero inteiro: ");
+    // valor = int.Parse(Console.ReadLine());
+    valor = gerador.Next(400);
     if (!lista.Contains(valor))
     {
         lista.Add(valor);
@@ -23,4 +23,5 @@ for (int i = 0; i < 4; i++)
     }
 }
 
+Console.WriteLine("Tamanho da lista " + lista.Count);
 exibir(lista);

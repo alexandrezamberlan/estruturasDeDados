@@ -1,9 +1,16 @@
-lista = []
+import random
 
-for i in range(4):
-    valor = int(input('Digite um numero inteiro: '))
+def exibir(lista):
+    for item in lista:
+        print(item)
+
+lista = []
+for i in range(100):
+    #valor = int(input('Digite um numero inteiro: '))
+    valor = random.randint(0,400)
     if (valor not in lista):
         lista.append(valor)
         lista.sort()
 
-print(lista)
+print("Tamanho da lista ", len(lista))
+exibir(lista)
