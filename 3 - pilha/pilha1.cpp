@@ -23,6 +23,12 @@ int main()
 
     exibir(pilha);
 
+    pilha = limpar(pilha);
+
+    cout << "Tentando exibir pilha destruida\n";
+    
+    exibir(pilha);
+
     return 1;
 
 }

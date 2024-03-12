@@ -62,3 +62,17 @@ Pilha *remover(Pilha* topo)
     //retornar o novo topo
     return topo;
 }
+
+Pilha *limpar(Pilha *topo)
+{
+    Pilha *lixo;
+
+    if (!topo) return topo;
+
+    for (lixo = topo, topo = topo->prox; topo; lixo = topo, topo = topo->prox) 
+    {
+        free(lixo);
+    }
+    free(lixo);
+    return NULL;
+}
