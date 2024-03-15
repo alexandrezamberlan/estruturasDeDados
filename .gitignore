@@ -7,4 +7,5 @@
 bin
 lib
 roda
+*.class
 
