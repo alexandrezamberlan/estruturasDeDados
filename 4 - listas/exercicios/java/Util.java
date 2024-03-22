@@ -25,18 +25,18 @@ public class Util {
         System.out.println();
     }
 
-    public void localizarComuns(List<Integer> lista_resultado, List<Integer> listaA, 
+    public void localizarComuns(List<Integer> listaResultado, List<Integer> listaA, 
                                                                List<Integer> listaB) {
         for (Integer item1 : listaA) {
             for (Integer item2 : listaB) {
                 if (item1 == item2) {
-                    lista_resultado.add(item1);
+                    listaResultado.add(item1);
                 }
             }    
         }
     }
 
-    public void localizarDisjuncao(List<Integer> lista_resultado, List<Integer> listaA, 
+    public void localizarDisjuncao(List<Integer> listaResultado, List<Integer> listaA, 
                                                                   List<Integer> listaB) {
 
         boolean localizado;
@@ -49,7 +49,7 @@ public class Util {
                 }
             }    
             if (!localizado) {
-                lista_resultado.add(item1);
+                listaResultado.add(item1);
             }
         }
         
@@ -62,10 +62,10 @@ public class Util {
                 }
             }    
             if (!localizado) {
-                lista_resultado.add(item2);
+                listaResultado.add(item2);
             }
         }
 
-        lista_resultado.sort(null);
+        listaResultado.sort(null);
     }
 }
