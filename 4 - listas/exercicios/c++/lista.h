@@ -6,8 +6,10 @@ typedef struct no {
 void exibir(Lista *lista){
     Lista *p;
     for (p = lista; p; p = p->prox) {
-        cout << p->dado << endl;
+        cout << p->dado << "\t";
     }
+
+    cout << endl;
 }
 
 int contar(Lista *lista){
