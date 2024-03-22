@@ -1,0 +1,15 @@
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\exercicios\c#\Lista\bin\Debug\net6.0\Lista.exe
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\exercicios\c#\Lista\bin\Debug\net6.0\Lista.deps.json
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\exercicios\c#\Lista\bin\Debug\net6.0\Lista.runtimeconfig.json
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\exercicios\c#\Lista\bin\Debug\net6.0\Lista.dll
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\exercicios\c#\Lista\bin\Debug\net6.0\Lista.pdb
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\exercicios\c#\Lista\obj\Debug\net6.0\Lista.csproj.AssemblyReference.cache
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\exercicios\c#\Lista\obj\Debug\net6.0\Lista.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\exercicios\c#\Lista\obj\Debug\net6.0\Lista.AssemblyInfoInputs.cache
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\exercicios\c#\Lista\obj\Debug\net6.0\Lista.AssemblyInfo.cs
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\exercicios\c#\Lista\obj\Debug\net6.0\Lista.csproj.CoreCompileInputs.cache
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\exercicios\c#\Lista\obj\Debug\net6.0\Lista.dll
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\exercicios\c#\Lista\obj\Debug\net6.0\refint\Lista.dll
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\exercicios\c#\Lista\obj\Debug\net6.0\Lista.pdb
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\exercicios\c#\Lista\obj\Debug\net6.0\Lista.genruntimeconfig.cache
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\exercicios\c#\Lista\obj\Debug\net6.0\ref\Lista.dll
