@@ -1,0 +1,15 @@
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\ListasComObjetos\c#\obj\Debug\net7.0\c#.csproj.AssemblyReference.cache
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\ListasComObjetos\c#\obj\Debug\net7.0\c#.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\ListasComObjetos\c#\obj\Debug\net7.0\c#.AssemblyInfoInputs.cache
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\ListasComObjetos\c#\obj\Debug\net7.0\c#.AssemblyInfo.cs
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\ListasComObjetos\c#\obj\Debug\net7.0\c#.csproj.CoreCompileInputs.cache
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\ListasComObjetos\c#\bin\Debug\net7.0\c#.exe
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\ListasComObjetos\c#\bin\Debug\net7.0\c#.deps.json
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\ListasComObjetos\c#\bin\Debug\net7.0\c#.runtimeconfig.json
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\ListasComObjetos\c#\bin\Debug\net7.0\c#.dll
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\ListasComObjetos\c#\bin\Debug\net7.0\c#.pdb
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\ListasComObjetos\c#\obj\Debug\net7.0\c#.dll
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\ListasComObjetos\c#\obj\Debug\net7.0\refint\c#.dll
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\ListasComObjetos\c#\obj\Debug\net7.0\c#.pdb
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\ListasComObjetos\c#\obj\Debug\net7.0\c#.genruntimeconfig.cache
+C:\Users\laboratorio\Downloads\estruturasDeDados\4 - listas\ListasComObjetos\c#\obj\Debug\net7.0\ref\c#.dll
