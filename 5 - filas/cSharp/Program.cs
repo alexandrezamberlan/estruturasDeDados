@@ -1,32 +1,47 @@
-﻿using System.Linq;
+﻿using Fila;
+using System.Linq;
 
-Queue<string> filaNomes = new Queue<string>();
 
-filaNomes.Enqueue("Saccol");
-filaNomes.Enqueue("Pinheiro");
-filaNomes.Enqueue("Iago");
+Queue<Aluno> filaAlunos = new Queue<Aluno>();
 
-Console.WriteLine("Exibindo fila");
-foreach (var item in filaNomes)
+filaAlunos.Enqueue(new Aluno(1, "Saccol"));
+filaAlunos.Enqueue(new Aluno(7, "Pinheiro"));
+filaAlunos.Enqueue(new Aluno(2, "Iago"));
+
+int matricula;
+string nome;
+for (int i = 0; i < 2; i++)
 {
-    Console.WriteLine(item);
+    Console.Write("Matricula: ");
+    matricula = int.Parse( Console.ReadLine() );
+    
+    Console.Write("Nome: ");
+    nome = Console.ReadLine();
+    filaAlunos.Enqueue(new Aluno(matricula, nome));
+}
+ 
+Console.WriteLine("Exibindo fila");
+foreach (var item in filaAlunos)
+{
+  Console.WriteLine(item);
 }
 
 Console.WriteLine("Exibindo inicio ou cabeça/head da fila");
-Console.WriteLine(filaNomes.Peek());
+Console.WriteLine(filaAlunos.Peek());
 
 Console.WriteLine("Exibindo se fila esta vazia");
-Console.WriteLine(filaNomes.Count()==0);
+Console.WriteLine(filaAlunos.Count()==0);
 
 Console.WriteLine("Exibindo o tamanho da fila");
-Console.WriteLine(filaNomes.Count());
+Console.WriteLine(filaAlunos.Count());
 
-Console.WriteLine("Verificando se IAGO esta na fila");
-Console.WriteLine(filaNomes.Contains("Iago"));
+Console.WriteLine("Verificando se 2,Iago esta na fila");
+Aluno a = new Aluno(2, "Iago");
+Console.WriteLine(filaAlunos.Contains(a));
 
-while (filaNomes.Count() != 0)
+while (filaAlunos.Count() != 0)
 {
-    Console.WriteLine("Removendo ..." + filaNomes.Dequeue());
+    Console.WriteLine("Removendo ..." + filaAlunos.Dequeue());
     try
     {
         Thread.Sleep(3000);
@@ -37,7 +52,48 @@ while (filaNomes.Count() != 0)
     }
 }
 
-if (filaNomes.Count() != 0) Console.WriteLine("Removendo ..." + filaNomes.Dequeue());
+if (filaAlunos.Count() > 0) Console.WriteLine("Removendo ..." + filaAlunos.Dequeue());
+
+
+
+//Queue<string> filaNomes = new Queue<string>();
+
+//filaNomes.Enqueue("Saccol");
+//filaNomes.Enqueue("Pinheiro");
+//filaNomes.Enqueue("Iago");
+
+//Console.WriteLine("Exibindo fila");
+//foreach (var item in filaNomes)
+//{
+//    Console.WriteLine(item);
+//}
+
+//Console.WriteLine("Exibindo inicio ou cabeça/head da fila");
+//Console.WriteLine(filaNomes.Peek());
+
+//Console.WriteLine("Exibindo se fila esta vazia");
+//Console.WriteLine(filaNomes.Count()==0);
+
+//Console.WriteLine("Exibindo o tamanho da fila");
+//Console.WriteLine(filaNomes.Count());
+
+//Console.WriteLine("Verificando se IAGO esta na fila");
+//Console.WriteLine(filaNomes.Contains("Iago"));
+
+//while (filaNomes.Count() != 0)
+//{
+//    Console.WriteLine("Removendo ..." + filaNomes.Dequeue());
+//    try
+//    {
+//        Thread.Sleep(3000);
+//    }
+//    catch (Exception e)
+//    {
+//        Console.WriteLine(e.Message);
+//    }
+//}
+
+//if (filaNomes.Count() != 0) Console.WriteLine("Removendo ..." + filaNomes.Dequeue());
 
 
 
