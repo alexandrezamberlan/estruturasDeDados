@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author laboratorio
+ *
+ */
+module ColecaoHash {
+}
