@@ -5,30 +5,45 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.Scanner;
-
-
-
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class Principal {
-	
+
 	public static void main(String[] args) {
 		HashSet<Double> hash = new HashSet<Double>();
+		ArrayList<Double> lista = new ArrayList<Double>();
 		Random gerador = new Random();
-		for (Double i = 0.0; i < 10000000; i++) {
+		long tempoInicio, tempoFim;  
+		
+		tempoInicio = System.nanoTime();
+		for (Double i = 0.0; i < 40000000; i++) {
 			hash.add(gerador.nextDouble(10000000));
 		}
 		System.out.println("Feito");
+        tempoFim = System.nanoTime();
+        System.out.println("Tempo (ms) para armazenar no hash: " + (tempoFim - tempoInicio)/1000000);
+
 		
-		ArrayList<Double> lista = new ArrayList<Double>();
-		lista.addAll(hash);
-		
+        tempoInicio = System.nanoTime();
+        lista.addAll(hash);
+
 		System.out.println("Feito passagem do hash para arraylist");
+        tempoFim = System.nanoTime();
+        System.out.println("Tempo (ms) para passar hash para arraylist: " + (tempoFim - tempoInicio)/1000000);
+
 		
+        
+        tempoInicio = System.nanoTime();
 		lista.sort(null);
-		
+
 		System.out.println("Feito ordenacao");
-		
-		
+
+        tempoFim = System.nanoTime();
+        System.out.println("Tempo (ms) para ordenar arraylist: " + (tempoFim - tempoInicio)/1000000);
+
+
 //		Scanner teclado = new Scanner(System.in);
 //		String nome;
 //		int matricula;
@@ -61,7 +76,7 @@ public class Principal {
 //		}
 //				
 //		
-		
+
 //		HashSet<String> hash = new HashSet<String>();
 //		for (int i = 0; i < 6; i++) {
 //			System.out.print("Digite nome: ");
@@ -78,8 +93,7 @@ public class Principal {
 //			System.out.println(item);
 //		}
 //		
-		
-		
+
 //		ArrayList<Integer> lista = new ArrayList<Integer>();
 //		for (int i = 0; i < 6; i++) {
 //			System.out.print("Digite numero: ");
@@ -95,8 +109,6 @@ public class Principal {
 //		for (Integer item : lista) {
 //			System.out.println(item);
 //		}
-		
-		
 
 	}
 
