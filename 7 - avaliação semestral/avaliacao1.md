@@ -11,7 +11,7 @@ Opção:
 
 
 A Classe de dados deve ser:
-
+```
 class Atleta {
     string fone; //chave primária
     string nome;
@@ -29,6 +29,7 @@ class Atleta {
 
     //hashCode
 }
+```java
 
 Todo o sistema precisa controlar duplicados. A chave de unicidade é o fone.
 
