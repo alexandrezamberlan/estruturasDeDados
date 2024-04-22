@@ -3,10 +3,15 @@
 Fazer um programa na linguagem Java ou C#. O programa deve conter o seguinte menu. E deve funcionar no modo console.
 
 Menu
+
     1 - Listar atletas (nome ou por pontuação decrescente)
+    
     2 - Cadastrar atleta
+    
     3 - Procurar por atleta (nome ou apelido)
+    
     4 - Remover atleta (nome ou apelido)
+    
 
 Opção: 
 
