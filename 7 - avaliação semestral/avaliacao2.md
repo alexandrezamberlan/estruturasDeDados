@@ -1,4 +1,4 @@
-# Avaliação Semestral 1
+# Avaliação Semestral 2
 
 Fazer um programa na linguagem Java ou C#. O programa deve conter o seguinte menu. E deve funcionar no modo console.
 
