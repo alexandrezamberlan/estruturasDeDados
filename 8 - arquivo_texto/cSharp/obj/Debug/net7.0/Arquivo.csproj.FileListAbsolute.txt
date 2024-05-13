@@ -13,3 +13,18 @@ C:\Users\alexz\Downloads\arquivo_texto\cSharp\Arquivo\bin\Debug\net7.0\Arquivo.d
 C:\Users\alexz\Downloads\arquivo_texto\cSharp\Arquivo\bin\Debug\net7.0\Arquivo.pdb
 C:\Users\alexz\Downloads\arquivo_texto\cSharp\Arquivo\obj\Debug\net7.0\Arquivo.genruntimeconfig.cache
 C:\Users\alexz\Downloads\arquivo_texto\cSharp\Arquivo\obj\Debug\net7.0\ref\Arquivo.dll
+C:\Users\laboratorio\Downloads\estruturasDeDados\8 - arquivo_texto\cSharp\bin\Debug\net7.0\Arquivo.exe
+C:\Users\laboratorio\Downloads\estruturasDeDados\8 - arquivo_texto\cSharp\bin\Debug\net7.0\Arquivo.deps.json
+C:\Users\laboratorio\Downloads\estruturasDeDados\8 - arquivo_texto\cSharp\bin\Debug\net7.0\Arquivo.runtimeconfig.json
+C:\Users\laboratorio\Downloads\estruturasDeDados\8 - arquivo_texto\cSharp\bin\Debug\net7.0\Arquivo.dll
+C:\Users\laboratorio\Downloads\estruturasDeDados\8 - arquivo_texto\cSharp\bin\Debug\net7.0\Arquivo.pdb
+C:\Users\laboratorio\Downloads\estruturasDeDados\8 - arquivo_texto\cSharp\obj\Debug\net7.0\Arquivo.csproj.AssemblyReference.cache
+C:\Users\laboratorio\Downloads\estruturasDeDados\8 - arquivo_texto\cSharp\obj\Debug\net7.0\Arquivo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\laboratorio\Downloads\estruturasDeDados\8 - arquivo_texto\cSharp\obj\Debug\net7.0\Arquivo.AssemblyInfoInputs.cache
+C:\Users\laboratorio\Downloads\estruturasDeDados\8 - arquivo_texto\cSharp\obj\Debug\net7.0\Arquivo.AssemblyInfo.cs
+C:\Users\laboratorio\Downloads\estruturasDeDados\8 - arquivo_texto\cSharp\obj\Debug\net7.0\Arquivo.csproj.CoreCompileInputs.cache
+C:\Users\laboratorio\Downloads\estruturasDeDados\8 - arquivo_texto\cSharp\obj\Debug\net7.0\Arquivo.dll
+C:\Users\laboratorio\Downloads\estruturasDeDados\8 - arquivo_texto\cSharp\obj\Debug\net7.0\refint\Arquivo.dll
+C:\Users\laboratorio\Downloads\estruturasDeDados\8 - arquivo_texto\cSharp\obj\Debug\net7.0\Arquivo.pdb
+C:\Users\laboratorio\Downloads\estruturasDeDados\8 - arquivo_texto\cSharp\obj\Debug\net7.0\Arquivo.genruntimeconfig.cache
+C:\Users\laboratorio\Downloads\estruturasDeDados\8 - arquivo_texto\cSharp\obj\Debug\net7.0\ref\Arquivo.dll

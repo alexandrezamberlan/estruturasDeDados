@@ -34,46 +34,16 @@ public class Atomo {
         this.y = y;
         this.z = z;
     }
+
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((sigla == null) ? 0 : sigla.hashCode());
-        result = prime * result + ((x == null) ? 0 : x.hashCode());
-        result = prime * result + ((y == null) ? 0 : y.hashCode());
-        result = prime * result + ((z == null) ? 0 : z.hashCode());
-        return result;
+    public int hashCode() {        
+        return (this.sigla + this.x + this.y + this.z).hashCode();
     }
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Atomo other = (Atomo) obj;
-        if (sigla == null) {
-            if (other.sigla != null)
-                return false;
-        } else if (!sigla.equals(other.sigla))
-            return false;
-        if (x == null) {
-            if (other.x != null)
-                return false;
-        } else if (!x.equals(other.x))
-            return false;
-        if (y == null) {
-            if (other.y != null)
-                return false;
-        } else if (!y.equals(other.y))
-            return false;
-        if (z == null) {
-            if (other.z != null)
-                return false;
-        } else if (!z.equals(other.z))
-            return false;
-        return true;
+    public boolean equals(Object obj) {   
+        Atomo other = (Atomo) obj;     
+        return this.sigla.equals(other.sigla) && this.x.equals(other.x) 
+                   && this.y.equals(other.y) && this.z.equals(other.z);       
     }
     @Override
     public String toString() {
