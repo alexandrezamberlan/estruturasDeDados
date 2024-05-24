@@ -1,0 +1,38 @@
+Explicação: https://youtu.be/5WAulVX_a0M?si=OFusEvVqCcC-f0AK
+
+Recursão é:
+    - um recurso de programação que executa repetições, sem for, while ou do-while
+    - técnica de programação baseada no comportamento de empilhar e desempilhar do SO,
+      sempre via método ou função
+    - autochamamento do método/função dentro dela mesmo
+    - um recurso CARO: ocupa demais a memória principal
+
+Há dois tipos de recursão:
+    - sem retorno - void
+        - é a mais simples, pois o método que empilha não recebe valor no desempilhamento
+    - com retorno - return
+        - é mais complexo, pois sempre um valor volta do empilhamento
+
+A estrutura da recursão ou do método recursivos são equivalentes aos comandos de repetição:
+    A) inicialização da variável de controle 
+    B) teste de parada
+    C) transformação da variável de controle
+
+    for (A; B; C)
+
+    A
+    while (B) {
+        C
+    }
+
+    A
+    do {
+        C
+    } while (B);
+
+
+
+
+
+
+
