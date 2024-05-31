@@ -1,0 +1,84 @@
+RECURSÃO 
+    - acesse o vídeo, assista, anote dúvidas e faça os exercícios
+    	- https://youtu.be/5WAulVX_a0M
+    - técnica de programação que substitui as instruções de repetição (for, while, do-while)
+    - técnica associada ao Sistema Operacional - empilhamento do mesmo método (pilha)
+        - empilhar um método == alocar tudo o que tem nele mais de uma vez (ou n vezes)
+            - DESVATAGEM: consumo de memória
+            - VANTAGEM: executar códigos no empilhamento e executar código no desempilhamento
+                        - por isso árvores são adequados com RECURSÃO
+    
+    - 3 pontos importantes de se avaliar em uma repetição com RECURSÃO
+        - ponto A: inicialização da varíavel de controle 
+        - ponto B: teste de parada/continuação
+        - ponto C: transformação na variável de controle    
+            i++
+            i--
+            lista = lista->prox
+            p = p->ant
+            p = p->prox
+
+    for (int i = 0; i < 10; i++) {
+
+    }     
+
+    - dois tipos de métodos recursivos
+        - métodos sem retorno (void)
+
+        - métodos com retorno (return)
+
+EXERCÍCIOS
+
+1) Faça um método sem retorno e recursivo que receba um número inteiro (positivo) como 
+parâmetro e exiba todos os números pares entre 0 e ele.
+//método recursivo
+
+void mostraNumerosR(valor) { //Ponto A - inicialização da variável se dá no parâmetro
+	if (valor >= 0) { //ponto B
+		//códigos executados no empilhamento
+       
+		mostraNumerosR( valor - 1 ); //ponto de recursão com o Ponto C - transformação da var. de controle
+		
+        //códigos executados no desempilhamento
+        if (valor % 2 == 0) {
+            printf("%d\t", valor);
+        }
+		
+	}
+}
+
+2) Faça um método sem retorno e recursivo que receba um número inteiro (positivo) e uma
+lista simples. O método deve exibir o endereço físico do número passado no parâmetro.
+Caso o número esteja replicado na lista, exibir todos os endereços do número.
+
+void mostraEnderecoR(int valor, Celula *lista) {
+    if (lista) {
+        if (valor == lista->conteudo) {
+            printf("%p\n", lista);
+        }
+        mostraEnderecoR(valor, lista->prox);  
+    }
+}
+
+
+4) Faça um método sem retorno e recursivo que receba um vetor de inteiros e o seu tamanho.
+Exiba todos os elementos do vetor
+
+void exibirR(int *vetor, int n) {
+    if (n > 0) {
+        exibirR(vetor, n - 1);
+        printf("%d\t",vetor[n - 1]);
+    }
+}
+
+5) Faça um método sem retorno e recursivo que receba um vetor de inteiros e o seu tamanho.
+Exiba todos os elementos pares do vetor.
+
+void exibirR(int *vetor, int n) {
+    if (n > 0) {
+        exibirR(vetor, n - 1);
+        if (vetor[n - 1] % 2 == 0) {
+            printf("%d\t",vetor[n - 1]);
+        }
+    }
+}

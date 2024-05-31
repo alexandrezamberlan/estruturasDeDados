@@ -1,0 +1,17 @@
+1) estudar o método inserir recursivo em lista simples e fazer o excluir recursivo;
+
+2) implementar o método localizar recursivo. O método deve receber um valor inteiro e o
+endereço da lista simples. Ao final, caso a valor exista na lista, retornar o endereço
+do valor, ou NULL caso não exista;
+
+3) implementar o método localizarPosicaoLogica de forma recursiva. O método deve receber
+um valor inteiro e o endereço da lista simples. Ao final, caso o valor exista na lista, 
+retornar sua posição lógica (0 é a primeira posição, 1 é a segunda, assim por diante).
+Caso o valor não esteja na lista, retornar -27;
+
+4) implementar um método recursivo que receba o endereço de uma lista simples e exiba
+todos os valores pares contigo na lista;
+
+5) implementar um método recursivo que receba uma lista simples e retorne o total de
+elementos pares contidos na lista;
+
