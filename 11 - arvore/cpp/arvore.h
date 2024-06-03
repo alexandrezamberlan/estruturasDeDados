@@ -79,10 +79,51 @@ void mostrarArvore(Arvore *raiz, int nivel) {
 }
 
 //contar
+int contarElementos(Arvore *raiz) {
+    if (raiz) {
+        return 1 + contarElementos(raiz->esq) + contarElementos(raiz->dir);
+    }
+    return 0;
+}
+
+int somarElementos(Arvore *raiz) {
+    if (raiz) {
+        return raiz->dado + somarElementos(raiz->esq) + somarElementos(raiz->dir);
+    }
+    return 0;
+}
 
 //estaContido
+bool estaContido(int valor, Arvore *raiz) {
+    if (raiz) {
+        if (valor == raiz->dado) return true;
+        if (valor < raiz->dado) { //ir para esquerda
+            return estaContido(valor, raiz->esq);
+        } else { //ir para direita
+            return estaContido(valor, raiz->dir);
+        }
+    } 
+    return false;
+}
 
 //qualONivel
+int nivel(int valor, Arvore *raiz) {
+    if (raiz) {
+        if (valor == raiz->dado) return 0;
+        if (valor < raiz->dado) { //ir para esquerda
+            int respostaEmpilhamento = nivel(valor, raiz->esq);
+            if (respostaEmpilhamento == -27)
+                return respostaEmpilhamento;
+            else return respostaEmpilhamento + 1;
+        } else { //ir para direita
+            int respostaEmpilhamento = nivel(valor, raiz->dir);
+            if (respostaEmpilhamento == -27)
+                return respostaEmpilhamento;
+            else return respostaEmpilhamento + 1;
+        }
+    } 
+    return -27;
+}
 
 //remover
 
