@@ -8,8 +8,8 @@ int main() {
     Arvore *raiz = NULL;
 
     srand(time(NULL));
-    for (int i = 0; i < 25; i++) {
-        raiz = add(rand() % 100, raiz);
+    for (int i = 0; i < 10; i++) {
+        raiz = add(rand() % 10, raiz);
     }
 
     //showRED(raiz); //??
@@ -26,6 +26,10 @@ int main() {
 
     cout << valor << " esta ou nao na arvore? " << estaContido(valor,raiz) << endl;
     cout << valor << " esta no nivel: " << nivel(valor,raiz) << endl;
+
+    raiz = remove(valor, raiz);
+    cout << "Arvore apos delecao\n";
+    mostrarArvore(raiz, 0);
 
     return 1;
 }

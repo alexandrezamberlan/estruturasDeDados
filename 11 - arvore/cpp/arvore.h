@@ -126,7 +126,40 @@ int nivel(int valor, Arvore *raiz) {
 }
 
 //remover
+Arvore *remove(int valor, Arvore *raiz) {
+    if (raiz) {
+        if (valor == raiz->dado) {
+            //delecao nodo folha
+            if (!raiz->esq && !raiz->dir) {
+                free(raiz);
+                return NULL;
+            }
+            //nao eh folha
+            Arvore *novoPai;
+            Arvore *temp;
+            Arvore *p;
+            //o filho da esquerda sera novo pai
+            if (raiz->esq) {
+                novoPai = raiz->esq;
+                temp = novoPai->dir;
+                novoPai->dir = raiz->dir;
+                for (p = novoPai->dir; p->esq; p = p->esq);
 
-//somar
-
-//calcularAltura
+                p->esq = temp;
+                free(raiz);
+                return novoPai;
+            } else {
+                novoPai = raiz->dir;
+                free(raiz);
+                return novoPai;
+            }
+        } else if (valor < raiz->dado) { //ir para esquerda
+            raiz->esq = remove(valor, raiz->esq);
+        } else { //ir para direita
+            raiz->dir = remove(valor, raiz->dir);
+        }
+        return raiz;
+    } else {
+        return NULL;
+    }
+}
