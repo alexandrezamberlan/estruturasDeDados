@@ -31,6 +31,10 @@ int main() {
     cout << "Arvore apos delecao\n";
     mostrarArvore(raiz, 0);
 
+    raiz = podar(raiz);
+    cout << "Arvore apos poda\n";
+    mostrarArvore(raiz, 0);
+
     return 1;
 }
 
