@@ -2,7 +2,42 @@ typedef struct no {
     int dado;
     struct no *esq;
     struct no *dir;
+    int fb;
 } Arvore;
+
+Arvore *rodarEsquerda(Arvore *raiz) {
+    Arvore *novoPai = raiz->dir;
+    Arvore *temp = novoPai->esq;
+    novoPai->esq = raiz;
+    raiz->dir = temp;
+    return novoPai;
+}
+
+Arvore *rodarDireita(Arvore *raiz) {
+    Arvore *novoPai = raiz->esq;
+    Arvore *temp = novoPai->dir;
+    novoPai->dir = raiz;
+    raiz->esq = temp;
+    return novoPai;
+}
+
+int altura(Arvore *raiz) {
+    if (raiz) {
+        int altEsq = altura(raiz->esq);
+        int altDir = altura(raiz->dir);
+        if (altEsq > altDir) return 1 + altEsq;
+        return 1 + altDir;
+    }
+    return 0;
+}
+
+void recalcularFB(Arvore *raiz) {
+    if (raiz) {
+        raiz->fb = altura(raiz->esq) - altura(raiz->dir);
+        recalcularFB(raiz->esq);
+        recalcularFB(raiz->dir);
+    }
+}
 
 //inserir
 Arvore *add(int valor, Arvore *raiz) {
@@ -13,6 +48,32 @@ Arvore *add(int valor, Arvore *raiz) {
         } else { //ir para direita
             raiz->dir = add(valor, raiz->dir);
         }
+        //calcular o fb
+        raiz->fb = altura(raiz->esq) - altura(raiz->dir);
+
+        if (raiz->fb == -2) {
+            //rodar para esquerda
+            if (raiz->dir->fb < 0) { //simples
+                raiz = rodarEsquerda(raiz);
+            } else {
+                //rodar filho para direita
+                raiz->dir = rodarDireita(raiz->dir);
+                //rodar pai para esquerda
+                raiz = rodarEsquerda(raiz);
+            }
+        } else if (raiz->fb == +2) {
+            //rodar para direita
+            if (raiz->esq->fb > 0) { //simples
+                raiz = rodarDireita(raiz);
+            } else {
+                //rodar filho para esquerda
+                raiz->esq = rodarEsquerda(raiz->esq);
+                //rodar pai para direita
+                raiz = rodarDireita(raiz);
+            }
+        }
+        //chamar o recalcular fb
+        recalcularFB(raiz);
         return raiz;
     } else { //chegou-se apos nós folhas.
         //alocar memoria
@@ -22,6 +83,7 @@ Arvore *add(int valor, Arvore *raiz) {
         novo->dado = valor;
         novo->esq = NULL;
         novo->dir = NULL;
+        novo->fb = 0;
 
         //refaz encadeamento
         return novo;
@@ -71,7 +133,7 @@ void mostrarArvore(Arvore *raiz, int nivel) {
         for (int i = 0; i < nivel; i++) {
             cout << "  ";
         }
-        cout << "(" << nivel << ")" << raiz->dado << endl;
+        cout << "(" << nivel << ")" << raiz->dado << "->" << raiz->fb << endl;
 
         //ir tudo para a esquerda
         mostrarArvore(raiz->esq, nivel + 1);
@@ -163,3 +225,20 @@ Arvore *remove(int valor, Arvore *raiz) {
         return NULL;
     }
 }
+
+Arvore *podar(Arvore *raiz) {
+    if (raiz) {
+        if (!raiz->esq && !raiz->dir) {
+            free(raiz);
+            return NULL;
+        }
+        raiz->esq = podar(raiz->esq);
+        raiz->dir = podar(raiz->dir);
+        return raiz;
+    }
+    return NULL;
+}
+
+
+
+
