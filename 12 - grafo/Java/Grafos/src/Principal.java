@@ -14,10 +14,17 @@ public class Principal {
         g.montarConexoesSimetricas(linhasDoArquivo);                
         //exibir grafo
         g.mostrarMatriz();
-//        g.mostrarGrafo();
+        //g.mostrarGrafo();
 
-        //System.out.println("Tem caminho entre Agudo e Julio de Castilhos? " + g.temCaminhoProfundidade("AGUDO", "JULIO DE CASTILHOS"));
-        g.temCaminhoProfundidade("AGUDO", "JULIO DE CASTILHOS");
+        String cidadeO = "AGUDO";
+        String cidadeD = "SAO PEDRO";
+        System.out.println("\n\nMostrando caminho entre " + cidadeO + " e " + cidadeD);
+     
+        System.out.println("Profundidade");
+        g.temCaminhoProfundidade(cidadeO, cidadeD);
+        
+        System.out.println("Largura");
+        g.temCaminhoLargura(cidadeO, cidadeD);
     }
     
 }

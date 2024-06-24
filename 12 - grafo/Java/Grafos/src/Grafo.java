@@ -2,6 +2,8 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Grafo {
     ArrayList<String> vertices;
@@ -54,24 +56,52 @@ public class Grafo {
         }               
     }
     
-    private boolean testaCaminhoProfundidade(int no, int destino, ArrayList<String> visitados) {
+    private void testaCaminhoProfundidade(int no, int destino, ArrayList<String> visitados) {
+        System.out.println(this.vertices.get(no));
         for (int col = 0; col < this.qtdVertices; col++) {
             if (this.matriz[no][col] != 0 && !visitados.contains(this.vertices.get(col))) {
-                if (col == destino) return true;
-                System.out.println(this.vertices.get(col));
+                if (col == destino) return;                
                 visitados.add(this.vertices.get(col));
-                return testaCaminhoProfundidade(col, destino, visitados);
+                testaCaminhoProfundidade(col, destino, visitados);
             }
         }
-        return false;
     }
     
-    public boolean temCaminhoProfundidade(String origem, String destino) {       
+    public void temCaminhoProfundidade(String origem, String destino) {       
         int indiceOrigem = this.vertices.indexOf(origem);
         int indiceDestino = this.vertices.indexOf(destino);       
         ArrayList<String> visitados = new ArrayList<>();
         visitados.add(origem);
-        return testaCaminhoProfundidade(indiceOrigem, indiceDestino, visitados);
+        testaCaminhoProfundidade(indiceOrigem, indiceDestino, visitados);
+    }
+    
+    public void temCaminhoLargura(String origem, String destino) {
+        int indiceOrigem = this.vertices.indexOf(origem);
+        int indiceDestino = this.vertices.indexOf(destino);       
+        ArrayList<String> visitados = new ArrayList<>();
+        Queue<String> fila = new LinkedList<>();
+        visitados.add(origem);
+        int no = this.vertices.indexOf(origem);
+        
+        do {
+            System.out.println(this.vertices.get(no));
+            if (this.vertices.get(no).equals(destino)) return;
+            
+            for (int col = 0; col < this.qtdVertices; col++) {
+                if (this.matriz[no][col] != 0 && !visitados.contains(this.vertices.get(col))){
+                    
+                    fila.add(this.vertices.get(col));
+                    
+                    visitados.add(this.vertices.get(col));
+                }
+            }
+            
+            if (fila.isEmpty()) {
+                break;
+            }
+            no = this.vertices.indexOf(fila.poll());
+        } while (true);
+        
     }
     
     public void montarConexoesSimetricas(ArrayList<String> linhas) {
@@ -87,7 +117,8 @@ public class Grafo {
             indiceOrigem = this.vertices.indexOf(nomeOrigem);
             indiceDestino = this.vertices.indexOf(nomeDestino);
             
-            if (this.matriz[indiceOrigem][indiceDestino] == 0 && this.matriz[indiceDestino][indiceOrigem] == 0) {
+            if (this.matriz[indiceOrigem][indiceDestino] == 0 && 
+                    this.matriz[indiceDestino][indiceOrigem] == 0) {
                 this.matriz[indiceOrigem][indiceDestino] = custo;
                 this.matriz[indiceDestino][indiceOrigem] = custo;
                 this.qtdArestas += 2;
