@@ -16,13 +16,10 @@
 
 9. **Você foi solicitado a desenvolver um programa que realiza as seguintes operações:**
 
-1. **Leitura de Arquivos:** O programa deve ler o conteúdo de múltiplos arquivos de texto. Cada arquivo contém uma lista de números inteiros (um por linha).
-
-2. **Armazenamento em Listas:** O conteúdo de cada arquivo deve ser armazenado em uma lista separada.
-
-3. **Ordenação:** Após a leitura e armazenamento dos números, o programa deve ordenar cada lista individualmente.
-
-4. **Escrita em Arquivo:** O conteúdo ordenado de cada lista deve ser escrito em um novo arquivo de texto. Cada lista deve ser salva em um arquivo com o mesmo nome que o arquivo original, mas com um sufixo "_sorted".
+ a) Leitura de Arquivos: O programa deve ler o conteúdo de múltiplos arquivos de texto. Cada arquivo contém uma lista de números inteiros (um por linha).
+ b) Armazenamento em Listas: O conteúdo de cada arquivo deve ser armazenado em uma lista separada.
+ c) Ordenação: Após a leitura e armazenamento dos números, o programa deve ordenar cada lista individualmente.
+ d) Escrita em Arquivo: O conteúdo ordenado de cada lista deve ser escrito em um novo arquivo de texto. Cada lista deve ser salva em um arquivo com o mesmo nome que o arquivo original, mas com um sufixo "_sorted".
 
 Aqui está o esqueleto do código fornecido:
 
