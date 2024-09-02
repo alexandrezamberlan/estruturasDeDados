@@ -1,3 +1,7 @@
+# 1ª Avaliação Semestral de Sistemas Distribuídos - 2024
+## Unidade 1 - Curso de Ciëncia da Computação - UFN - Prof. Alexandre Zamberlan
+### Nome: ______________________________________________
+
 1. **Explique a diferença entre arquitetura cliente-servidor e arquitetura peer-to-peer em sistemas distribuídos. Quais são as principais vantagens e desvantagens de cada uma?**
 
 2. **Explique a diferença de Sistemas Distribuídos de Sistemas Paralelos.**
@@ -52,9 +56,9 @@ process_files(input_files)
 
 **Pergunta:**
 
-1. **Identificação de Pontos de Paralelismo:** Analise o código fornecido e identifique possíveis pontos em que a criação e o uso de threads podem melhorar o desempenho do programa. Considere a leitura de arquivos, a ordenação das listas e a escrita de arquivos. Explique como a utilização de threads pode otimizar essas operações.
+9.1. **Identificação de Pontos de Paralelismo:** Analise o código fornecido e identifique possíveis pontos em que a criação e o uso de threads podem melhorar o desempenho do programa. Considere a leitura de arquivos, a ordenação das listas e a escrita de arquivos. Explique como a utilização de threads pode otimizar essas operações.
 
-2. **Modificação do Código:** Baseado em sua análise, modifique o código para incluir o uso de threads nos pontos identificados. Mostre como os threads podem ser implementados e justifique suas escolhas.
+9.2. **Modificação do Código:** Baseado em sua análise, modifique o código para incluir o uso de threads nos pontos identificados. Mostre como os threads podem ser implementados e justifique suas escolhas.
 
 **Dicas:**
 
@@ -63,3 +67,4 @@ process_files(input_files)
 - Lembre-se de que o Python possui a biblioteca `threading` para gerenciar threads, e a sincronização pode ser necessária para evitar condições de corrida, se aplicável.
 
 
+10. Explain the main principles of the Brazilian General Data Protection Law (LGPD) and discuss how it impacts companies that process personal data. The answer can be written in Portuguese.
