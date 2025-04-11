@@ -17,6 +17,7 @@ A avaliação deve ser respondida em arquivos .txt (contendo respostas das quest
 ### Questões
 
 1) Explique e exemplifique os papéis de Listas, Pilhas, Filas, Árvores e Grafos em Sistemas de Informação.
+    - 
 
 2) Qual a diferença entre Listas e Dicionários? Quando devemos usar um ou outro?
 
