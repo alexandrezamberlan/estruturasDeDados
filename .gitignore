@@ -8,4 +8,5 @@ bin
 lib
 roda
 *.class
+*.pyc
 
