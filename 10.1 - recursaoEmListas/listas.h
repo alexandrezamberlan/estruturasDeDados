@@ -66,3 +66,10 @@ void exibirR(Celula *lista) {
         exibirR(lista->prox);        
     }
 }
+
+int contarR(Celula *lista) {
+    if (lista) {
+        return 1 + contarR(lista->prox);
+    }
+    return 0; //ao chegar no final do empilhamento, sai-se de lista, logo retorna 0 pq não há mais nodos
+}
