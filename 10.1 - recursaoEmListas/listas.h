@@ -73,3 +73,49 @@ int contarR(Celula *lista) {
     }
     return 0; //ao chegar no final do empilhamento, sai-se de lista, logo retorna 0 pq não há mais nodos
 }
+
+int somarR(Celula *lista) {
+    if (lista) {
+        return lista->dado + somarR(lista->prox);
+    }
+    return 0;
+}
+
+bool estaContidoR(int numero, Celula *lista) {
+    if (lista) {
+        if (numero == lista->dado) {
+            return 1; //localizado e começo a desempilhar
+        } else {
+            return estaContidoR(numero, lista->prox); 
+        }
+    }
+    return 0; //empilhou até o final da lista e não encontrou o numero, desempilha com 0
+}
+
+int minR(Celula *lista) {
+    if (lista) {
+        return lista->dado; //pq a lista está ordenada
+    }
+    return -27; //lista vazia, retorna erro -27
+}
+
+int maxR(Celula *lista) {
+    if (lista->prox) {
+        return maxR(lista->prox);
+    }
+    return lista->dado; //empilha-se até o ultimo no, em que está o maior elemento
+}
+
+Celula *removerR(int numero, Celula *lista) {
+    if (lista) {
+        if (numero == lista->dado) { //numero localizado... remover
+            Celula *proximo = lista->prox;
+            free(lista);
+            return proximo;
+        } else {
+            lista->prox = removerR(numero, lista->prox); //avanço na recursão, mas preso na 'corda' do prox
+            return lista;
+        }
+    } 
+    return NULL; //se cheguei no final do empilhamento, nao encontrei o numero e retorno NULL
+}
