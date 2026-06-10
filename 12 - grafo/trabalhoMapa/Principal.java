@@ -10,15 +10,20 @@ public class Principal {
 
         Grafo g = new Grafo(listaVertices);
 
-        // g.mostrarVertices("Lista de cidades...");
+        g.mostrarVertices("Lista de cidades...");
         
-        System.out.println("Grafo.....");
+        // System.out.println("Grafo.....");
 
         Grafo.montarGrafo(arquivoMapa, g);
 
         g.mostrarGrafo();
 
-        
+
+        System.out.println("vertices abertos entre Arad e Fagaras - AMPLITUDE");
+        g.temCaminhoLargura("Arad", "Fagaras");
+
+        System.out.println("vertices abertos entre Arad e Fagaras - PROFUNDIDADE");
+        g.temCaminhoProfundidade("Arad", "Fagaras");
     }
 }
 

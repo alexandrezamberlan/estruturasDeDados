@@ -103,7 +103,10 @@ public class Grafo {
         System.out.println(this.listaVertices.get(no));
         for (int col = 0; col < this.qtdVertices; col++) {
             if (this.matrizADJ[no][col] != 0 && !visitados.contains(this.listaVertices.get(col))) {
-                if (col == destino) return;                
+                if (col == destino) {
+                    System.out.println(this.listaVertices.get(col));
+                    System.exit(1);
+                }                
                 visitados.add(this.listaVertices.get(col));
                 testaCaminhoProfundidade(col, destino, visitados);
             }
@@ -135,7 +138,7 @@ public class Grafo {
         Queue<String> fila = new LinkedList<>();
 
         visitados.add(origem);
-        int no = indiceOrigem;
+        int no = this.listaVertices.indexOf(origem);
         
         do {
             System.out.println(this.listaVertices.get(no));
