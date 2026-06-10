@@ -1,9 +1,3 @@
-# Atividade de aula
-
-1) A partir do código Java de grafo, chamado Principal.java, faça o equivalente em C# ou Python
-
-2) A partir dos códigos construídos, alterá-los para que as informações de cidades e conexões venha de um arquivo cidades.csv, neste formato:
-
 Arad,Sibiu,140
 Sibiu,Arad,140
 Arad,Timisoara,118
@@ -26,5 +20,3 @@ Pitesti,Bucharest,101
 Bucharest,Pitesti,101
 Pitesti,Craiova,138
 Craiova,Pitesti,138
-
-O programa deve ler o arquivo, extrair os dados de linha (origem, destino) e inserir no grafo de forma simétrica.
