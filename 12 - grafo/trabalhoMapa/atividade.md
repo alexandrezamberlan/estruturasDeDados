@@ -1,6 +1,6 @@
 # Atividade de aula
 
-1) A partir do código Java de grafo, chamado Principal.java, faça o equivalente em C# ou Python
+1) A partir das explicações em aula, monte a solução para Grafo
 
 2) A partir dos códigos construídos, alterá-los para que as informações de cidades e conexões venha de um arquivo cidades.csv, neste formato:
 
