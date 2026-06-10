@@ -135,7 +135,7 @@ public class Grafo {
         Queue<String> fila = new LinkedList<>();
 
         visitados.add(origem);
-        int no = this.listaVertices.indexOf(origem);
+        int no = indiceOrigem;
         
         do {
             System.out.println(this.listaVertices.get(no));

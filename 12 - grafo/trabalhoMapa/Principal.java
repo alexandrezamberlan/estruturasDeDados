@@ -17,6 +17,8 @@ public class Principal {
         Grafo.montarGrafo(arquivoMapa, g);
 
         g.mostrarGrafo();
+
+        
     }
 }
 
