@@ -4,6 +4,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Grafo {
     int matrizADJ[][];
@@ -80,7 +82,6 @@ public class Grafo {
         }
     }
 
-
     /**
      * metodo que exibe os vertices do grafo
      * @param frase
@@ -90,6 +91,69 @@ public class Grafo {
         for (String item : this.listaVertices) {
             System.out.println(item);
         }
+    }
+
+    /**
+     * método privado e recursivo relacionado a técnica de percurso PROFUNDIDADE
+     * @param no vértice de trabalho
+     * @param destino vértice de chegada
+     * @param visitados estrutura de dados que armazena os vértices já visitados
+     */
+    private void testaCaminhoProfundidade(int no, int destino, ArrayList<String> visitados) {
+        System.out.println(this.listaVertices.get(no));
+        for (int col = 0; col < this.qtdVertices; col++) {
+            if (this.matrizADJ[no][col] != 0 && !visitados.contains(this.listaVertices.get(col))) {
+                if (col == destino) return;                
+                visitados.add(this.listaVertices.get(col));
+                testaCaminhoProfundidade(col, destino, visitados);
+            }
+        }
+    }
+    
+    /**
+     * método com a técnica PROFUNDIDADE que verifica se tem caminho entre dois vértices
+     * @param origem vértice de partida
+     * @param destino vértice de chegada
+     */
+    public void temCaminhoProfundidade(String origem, String destino) {       
+        int indiceOrigem = this.listaVertices.indexOf(origem);
+        int indiceDestino = this.listaVertices.indexOf(destino);       
+        ArrayList<String> visitados = new ArrayList<>();
+        visitados.add(origem);
+        testaCaminhoProfundidade(indiceOrigem, indiceDestino, visitados);
+    }
+    
+    /**
+     * método com a técnica LARGURA/AMPLITUDE que verifica se tem caminho entre dois vértices
+     * @param origem vértice de partida
+     * @param destino vértice de chegada
+     */
+    public void temCaminhoLargura(String origem, String destino) {
+        int indiceOrigem = this.listaVertices.indexOf(origem);
+        int indiceDestino = this.listaVertices.indexOf(destino);       
+        ArrayList<String> visitados = new ArrayList<>();
+        Queue<String> fila = new LinkedList<>();
+
+        visitados.add(origem);
+        int no = this.listaVertices.indexOf(origem);
+        
+        do {
+            System.out.println(this.listaVertices.get(no));
+            if (this.listaVertices.get(no).equals(destino)) return;
+            
+            for (int col = 0; col < this.qtdVertices; col++) {
+                if (this.matrizADJ[no][col] != 0 && !visitados.contains(this.listaVertices.get(col))){
+                    
+                    fila.add(this.listaVertices.get(col));
+                    
+                    visitados.add(this.listaVertices.get(col));
+                }
+            }
+            if (fila.isEmpty()) {
+                break;
+            }
+            no = this.listaVertices.indexOf(fila.poll());
+        } while (true);
     }
 
     /**
